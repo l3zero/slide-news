@@ -5,8 +5,8 @@
         "node": true
     },
     "extends": [
-	"eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+	"prettier"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -27,6 +27,6 @@
     "rules": {
 	 "react-hooks/rules-of-hooks": "error",
     	 "react-hooks/exhaustive-deps": "warn",
-	 "prettier/prettier": "error"
+	 "prettier/prettier": ["error"]
     }
 }
