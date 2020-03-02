@@ -5,19 +5,19 @@ export default function TopicsCheckbox(props) {
    return (
       <div className='checkbox'>
          <h1>Choose your topics</h1>
-         <form onSubmit={topicHandler}>
+         <form onSubmit={formHandler}>
             {formData.TOPICS.map((item) => (
                <label key={item}>
                   {item}
                   <input type='checkbox' id={item.trim().toLowerCase()} name={item} value={item} key={item} />
                </label>
             ))}
-            <input id='checkboxSubmit' type='submit' value='Submit' />
+            <input id='submitButton' type='submit' value='Submit' />
          </form>
       </div>
    )
 
-   function topicHandler(e) {
+   function formHandler(e) {
       e.preventDefault()
       const eventArray = [...e.target]
       let checkedArray = []
