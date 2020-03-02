@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import Intro from './Intro'
+import Header from './static/Header'
+import Footer from './static/Footer'
+import Intro from './static/Intro'
+import News from './News'
+import Customize from './Customize'
 import {BrowserRouter as Router, Link, Switch, Route, Redirect} from 'react-router-dom'
 // const moment = require('moment')
 
@@ -30,21 +32,6 @@ const Home = () => (
    <React.Fragment>
       <Header />
       <Intro />
-      <Footer />
-   </React.Fragment>
-)
-
-const Customize = () => (
-   <React.Fragment>
-      <Header />
-      <Footer />
-   </React.Fragment>
-)
-
-const News = () => (
-   <React.Fragment>
-      <Header />
-      <div>Will add main news component here</div>
       <Footer />
    </React.Fragment>
 )
