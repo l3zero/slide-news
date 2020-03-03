@@ -1,5 +1,5 @@
 import React from 'react'
-import {formData} from '../../helpers/constData'
+import {formData} from '../../data/constData'
 
 export default function RefreshIntervals(props) {
    return (
@@ -9,7 +9,7 @@ export default function RefreshIntervals(props) {
             {formData.INTERVALS.map((item) => (
                <label key={item}>
                   {item}
-                  <input type='radio' id={item.trim().toLowerCase()} name='intervals' value={item} />
+                  <input type='radio' id={item.trim().toLowerCase()} name='intervals' value={item} checked readOnly />
                </label>
             ))}
             <input id='submitButton' type='submit' value='Submit' />

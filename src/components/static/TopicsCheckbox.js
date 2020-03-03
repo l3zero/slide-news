@@ -1,5 +1,5 @@
 import React from 'react'
-import {formData} from '../../helpers/constData'
+import {formData} from '../../data/constData'
 
 export default function TopicsCheckbox(props) {
    return (
@@ -27,6 +27,6 @@ export default function TopicsCheckbox(props) {
          }
       })
       // eslint-disable-next-line react/prop-types
-      props.handler(checkedArray)
+      checkedArray.length == 0 ? alert('Please select some options!') : props.handler(checkedArray)
    }
 }

@@ -44,6 +44,7 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "immutable": "^4.0.0-rc.12",
+    "mongoose": "^5.9.3",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1"
   }

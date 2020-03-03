@@ -1,5 +1,5 @@
 import React from 'react'
-import {formData} from '../../helpers/constData'
+import {formData} from '../../data/constData'
 
 export default function SourcesCheckbox(props) {
    return (
@@ -7,9 +7,15 @@ export default function SourcesCheckbox(props) {
          <h1>Choose your news sources</h1>
          <form onSubmit={formHandler}>
             {formData.SOURCES.map((item) => (
-               <label key={item}>
-                  {item}
-                  <input type='checkbox' id={item.trim().toLowerCase()} name={item} value={item} key={item} />
+               <label key={item.id}>
+                  {item.name}
+                  <input
+                     type='checkbox'
+                     id={item.name.trim().toLowerCase()}
+                     name={item.name}
+                     value={item.name}
+                     key={item.id}
+                  />
                </label>
             ))}
             <input id='submitButton' type='submit' value='Submit' />
@@ -27,6 +33,6 @@ export default function SourcesCheckbox(props) {
          }
       })
       // eslint-disable-next-line react/prop-types
-      props.handler(checkedArray)
+      checkedArray.length === 0 ? alert('Please select some options!') : props.handler(checkedArray)
    }
 }
