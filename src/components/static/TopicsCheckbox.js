@@ -27,6 +27,6 @@ export default function TopicsCheckbox(props) {
          }
       })
       // eslint-disable-next-line react/prop-types
-      checkedArray.length == 0 ? alert('Please select some options!') : props.handler(checkedArray)
+      checkedArray.length === 0 ? alert('Please select some options!') : props.handler(checkedArray)
    }
 }

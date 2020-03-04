@@ -7,15 +7,9 @@ export default function SourcesCheckbox(props) {
          <h1>Choose your news sources</h1>
          <form onSubmit={formHandler}>
             {formData.SOURCES.map((item) => (
-               <label key={item.id}>
+               <label key={item.url}>
                   {item.name}
-                  <input
-                     type='checkbox'
-                     id={item.name.trim().toLowerCase()}
-                     name={item.name}
-                     value={item.name}
-                     key={item.id}
-                  />
+                  <input type='checkbox' id={item.name.trim().toLowerCase()} name={item.name} value={item.name} />
                </label>
             ))}
             <input id='submitButton' type='submit' value='Submit' />
@@ -29,7 +23,7 @@ export default function SourcesCheckbox(props) {
       let checkedArray = []
       eventArray.map((item) => {
          if (item.checked) {
-            checkedArray.push(item.value)
+            checkedArray.push(formData.SOURCES.find((source) => source.name === item.value))
          }
       })
       // eslint-disable-next-line react/prop-types

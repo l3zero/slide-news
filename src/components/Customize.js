@@ -4,43 +4,34 @@ import Footer from './static/Footer'
 import TopicsCheckbox from './static/TopicsCheckbox'
 import SourcesCheckbox from './static/SourcesCheckbox'
 import RefreshIntervals from './static/RefreshIntervals'
-import {initNews} from '../data/initNews'
-import {formData} from '../data/constData'
+import {updateMyNews} from '../data/myNewsInit'
 // import '../styles/customize.css'
 
 export default function Customize() {
-   const [topics, setTopics] = useState([])
-   const [sources, setSources] = useState([])
-   const [interval, setInterval] = useState('')
-   const [options, setOptions] = useState(initNews)
+   const [myOptions, setMyOptions] = useState({})
 
    //Testing useEffect
    useEffect(() => {
-      console.log(options)
-   }, [options])
+      updateMyNews(myOptions) //Update news will be moved out at the end of customization, so it only runs once
+   }, [myOptions])
 
    return (
       <React.Fragment>
          <Header />
-         <TopicsCheckbox handler={defineTopics} />
-         <SourcesCheckbox handler={defineSources} />
-         <RefreshIntervals handler={defineInterval} />
+         <TopicsCheckbox handler={setTopics} />
+         <SourcesCheckbox handler={setSources} />
+         <RefreshIntervals handler={setInterval} />
          <Footer />
       </React.Fragment>
    )
 
-   function defineTopics(arr) {
-      setTopics(arr)
-      initNews.topics = arr
-      setOptions(initNews)
+   function setTopics(arr) {
+      setMyOptions({...myOptions, myTopics: arr})
    }
-   function defineSources(arr) {
-      setSources(arr)
-      //Partial implementation - finish next time and fix options obj
-      options.sources = formData.SOURCES.filter((item) => item.name === arr)
+   function setSources(arr) {
+      setMyOptions({...myOptions, mySources: arr})
    }
-   function defineInterval(val) {
-      setInterval(val)
-      options.interval = val
+   function setInterval(val) {
+      setMyOptions({...myOptions, myInterval: val})
    }
 }

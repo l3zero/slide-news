@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, useCallback, useMemo} from 'react'
+import React from 'react'
 import '../../styles/footer.css'
 
 export default function Footer() {

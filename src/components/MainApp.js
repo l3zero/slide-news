@@ -4,10 +4,10 @@ import Footer from './static/Footer'
 import Intro from './static/Intro'
 import News from './News'
 import Customize from './Customize'
-import {BrowserRouter as Router, Link, Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 // const moment = require('moment')
 
-export class MainApp extends Component {
+class MainApp extends Component {
    constructor(props) {
       super(props)
       this.state = {newUser: true}
