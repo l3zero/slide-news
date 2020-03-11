@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import Header from './static/Header'
 import Footer from './static/Footer'
+import News from './News'
 import TopicsCheckbox from './static/TopicsCheckbox'
 import SourcesCheckbox from './static/SourcesCheckbox'
 import RefreshIntervals from './static/RefreshIntervals'
@@ -8,7 +10,7 @@ import {updateMyNews} from '../data/myNewsInit'
 // import '../styles/customize.css'
 
 export default function Customize() {
-   const [myOptions, setMyOptions] = useState({})
+   const [myOptions, setMyOptions] = useState({test: 'testing'})
 
    //Testing useEffect
    useEffect(() => {
@@ -21,6 +23,9 @@ export default function Customize() {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
+         <button className='go' onClick={goButtonHandler}>
+            GO
+         </button>
          <Footer />
       </React.Fragment>
    )
@@ -33,5 +38,9 @@ export default function Customize() {
    }
    function setInterval(val) {
       setMyOptions({...myOptions, myInterval: val})
+   }
+   function goButtonHandler(e) {
+      e.preventDefault()
+      window.localStorage.setItem('test', JSON.stringify(myOptions))
    }
 }

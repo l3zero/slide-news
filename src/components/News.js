@@ -5,10 +5,16 @@ import Footer from './static/Footer'
 // import '../styles/news.css'
 
 export default function News() {
+   const [myOptions, setMyOptions] = useState(window.localStorage.getItem('test'))
+
+   useEffect(() => {
+      console.log(myOptions)
+   }, [myOptions])
    return (
       <React.Fragment>
          <Header />
-         <div>Will add main news component here</div>
+         <div>Here is the news component</div>
+         {myOptions}
          <Footer />
       </React.Fragment>
    )

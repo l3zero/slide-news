@@ -20,8 +20,8 @@ class MainApp extends Component {
                <Route exact path='/'>
                   {!this.state.newUser ? <Redirect exact from='/' to='/news' /> : <Home />}
                </Route>
-               <Route exact path='/customize' component={Customize} />
-               <Route exact path='/news' component={News} />
+               <Route path='/customize' component={Customize} />
+               <Route path='/news' component={News} />
             </Switch>
          </Router>
       )
