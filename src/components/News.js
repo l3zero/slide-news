@@ -4,17 +4,17 @@ import Header from './static/Header'
 import Footer from './static/Footer'
 // import '../styles/news.css'
 
-export default function News() {
-   const [myOptions, setMyOptions] = useState(window.localStorage.getItem('test'))
+export default function News(props) {
+   const [myOptions, setMyOptions] = useState({})
 
    useEffect(() => {
-      console.log(myOptions)
-   }, [myOptions])
+      // eslint-disable-next-line react/prop-types
+      setMyOptions(props.location.state.options)
+   }, [])
    return (
       <React.Fragment>
          <Header />
-         <div>Here is the news component</div>
-         {myOptions}
+         <div>Here is the news component: {JSON.stringify(myOptions)}</div>
          <Footer />
       </React.Fragment>
    )

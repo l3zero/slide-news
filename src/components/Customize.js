@@ -10,7 +10,7 @@ import {updateMyNews} from '../data/myNewsInit'
 // import '../styles/customize.css'
 
 export default function Customize() {
-   const [myOptions, setMyOptions] = useState({test: 'testing'})
+   const [myOptions, setMyOptions] = useState({})
 
    //Testing useEffect
    useEffect(() => {
@@ -23,9 +23,17 @@ export default function Customize() {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
-         <button className='go' onClick={goButtonHandler}>
-            GO
-         </button>
+         <Link
+            to={{
+               pathname: '/news',
+               state: {
+                  options: myOptions
+               }
+            }}>
+            <button className='go' onClick={goButtonHandler}>
+               GO
+            </button>
+         </Link>
          <Footer />
       </React.Fragment>
    )
@@ -40,7 +48,7 @@ export default function Customize() {
       setMyOptions({...myOptions, myInterval: val})
    }
    function goButtonHandler(e) {
-      e.preventDefault()
-      window.localStorage.setItem('test', JSON.stringify(myOptions))
+      // e.preventDefault()
+      window.localStorage.setItem('myNews', JSON.stringify(myOptions))
    }
 }
