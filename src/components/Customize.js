@@ -6,16 +6,10 @@ import News from './News'
 import TopicsCheckbox from './static/TopicsCheckbox'
 import SourcesCheckbox from './static/SourcesCheckbox'
 import RefreshIntervals from './static/RefreshIntervals'
-import {updateMyNews} from '../data/myNewsInit'
 // import '../styles/customize.css'
 
 export default function Customize() {
    const [myOptions, setMyOptions] = useState({})
-
-   //Testing useEffect
-   useEffect(() => {
-      updateMyNews(myOptions) //Update news will be moved out at the end of customization, so it only runs once
-   }, [myOptions])
 
    return (
       <React.Fragment>
@@ -30,9 +24,7 @@ export default function Customize() {
                   options: myOptions
                }
             }}>
-            <button className='go' onClick={goButtonHandler}>
-               GO
-            </button>
+            <button className='go'> GO </button>
          </Link>
          <Footer />
       </React.Fragment>
@@ -44,11 +36,7 @@ export default function Customize() {
    function setSources(arr) {
       setMyOptions({...myOptions, mySources: arr})
    }
-   function setInterval(val) {
-      setMyOptions({...myOptions, myInterval: val})
-   }
-   function goButtonHandler(e) {
-      // e.preventDefault()
-      window.localStorage.setItem('myNews', JSON.stringify(myOptions))
+   function setInterval(arr) {
+      setMyOptions({...myOptions, myInterval: arr})
    }
 }

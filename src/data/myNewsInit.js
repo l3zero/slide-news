@@ -2,17 +2,15 @@ const hash = require('object-hash')
 const moment = require('moment')
 
 export function updateMyNews(options) {
-   const myNewsInit = {
-      ...options,
-      id: createHash(options),
+   let myNewsInit = {
+      id: hash(combiner(options)),
       dateCreated: moment().format('l'),
-      timeCreated: moment().format('LTS')
+      timeCreated: moment().format('LTS'),
+      expire: moment()
+         .add(options.myInterval[0].value, 'days')
+         .format('l')
    }
    return myNewsInit
-}
-
-function createHash(options) {
-   return hash(combiner(options))
 }
 
 function combiner(obj) {
@@ -28,7 +26,10 @@ function combiner(obj) {
       .toLowerCase()
       .replace(',', '')
 
-   let interval = obj.myInterval
+   let interval = new Array(obj.myInterval)
+      .join('')
+      .trim()
+      .toLowerCase()
 
    return topics + sources + interval
 }
