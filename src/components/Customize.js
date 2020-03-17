@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import Header from './static/Header'
-import Footer from './static/Footer'
-import News from './News'
-import TopicsCheckbox from './static/TopicsCheckbox'
-import SourcesCheckbox from './static/SourcesCheckbox'
-import RefreshIntervals from './static/RefreshIntervals'
+import {Link} from 'react-router-dom'
+import News from './News.js'
+import Header from './static/Header.js'
+import Footer from './static/Footer.js'
+import TopicsCheckbox from './static/TopicsCheckbox.js'
+import SourcesCheckbox from './static/SourcesCheckbox.js'
+import RefreshIntervals from './static/RefreshIntervals.js'
+import {lsTest} from '../helpers/storageCheck.js'
 // import '../styles/customize.css'
 
 export default function Customize() {
    const [myOptions, setMyOptions] = useState({})
+
+   useEffect(() => {
+      browserSet()
+   }, [myOptions])
 
    return (
       <React.Fragment>
@@ -17,13 +22,7 @@ export default function Customize() {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
-         <Link
-            to={{
-               pathname: '/news',
-               state: {
-                  options: myOptions
-               }
-            }}>
+         <Link to='/news'>
             <button className='go'> GO </button>
          </Link>
          <Footer />
@@ -38,5 +37,13 @@ export default function Customize() {
    }
    function setInterval(arr) {
       setMyOptions({...myOptions, myInterval: arr})
+   }
+
+   function browserSet() {
+      if (Object.keys(myOptions).length !== 0) {
+         lsTest()
+            ? window.localStorage.setItem('myNews', JSON.stringify(myOptions))
+            : alert("Please enable your web browser's local storage to use this app!")
+      }
    }
 }

@@ -1,22 +1,23 @@
 /* eslint-disable react/prop-types */
 import React, {useState, useEffect} from 'react'
-import {Link, Redirect} from 'react-router-dom'
-import Header from './static/Header'
-import Footer from './static/Footer'
-import {updateMyNews} from '../data/myNewsInit'
-import {lsTest} from '../helpers/localStorager'
+import Header from './static/Header.js'
+import Footer from './static/Footer.js'
+import {updateMyNews} from '../data/myNewsInit.js'
+import {lsTest} from '../helpers/storageCheck.js'
 
 // import '../styles/news.css'
 
 export default function News(props) {
-   const [myNews, setMyNews] = useState({})
+   const [myNews, setMyNews] = useState({
+      ...JSON.parse(window.localStorage.getItem('myNews')),
+      ...updateMyNews(JSON.parse(window.localStorage.getItem('myNews')))
+   })
 
    useEffect(() => {
-      let opts =
-         props.location.state === undefined
-            ? {}
-            : {...props.location.state.options, ...updateMyNews(props.location.state.options)}
-      setMyNews(opts)
+      // const initOpts = window.localStorage.getItem('myNews')
+      // const finalOpts = myNews === null ? {} : {...myNews, ...updateMyNews(myNews)}
+      // setMyNews(finalOpts)
+      browserSet(myNews)
    }, [])
 
    return (
@@ -28,14 +29,9 @@ export default function News(props) {
       </React.Fragment>
    )
 
-   function localCheck() {
+   function browserSet(opts) {
       lsTest()
-         ? window.localStorage.setItem('myNews', JSON.stringify(myNews))
+         ? window.localStorage.setItem('myNews', JSON.stringify(opts))
          : alert("Please enable your web browser's local storage to use this app!")
    }
 }
-
-//Need to figure out how to prevent from going to news if no news obj exists
-// Object.keys(myNews).length === 0 ? (
-//    <Redirect exact from='/news' to='/' />
-// ) :

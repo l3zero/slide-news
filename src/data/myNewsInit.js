@@ -5,7 +5,6 @@ export function updateMyNews(options) {
    let myNewsInit = {
       id: hash(combiner(options)),
       dateCreated: moment().format('l'),
-      timeCreated: moment().format('LTS'),
       expire: moment()
          .add(options.myInterval[0].value, 'days')
          .format('l')
