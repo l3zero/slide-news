@@ -2,23 +2,12 @@
 import React, {useState, useEffect} from 'react'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
-import {updateMyNews} from '../data/myNewsInit.js'
-import {lsTest} from '../helpers/storageCheck.js'
-
 // import '../styles/news.css'
 
-export default function News(props) {
+export default function News() {
    const [myNews, setMyNews] = useState({
-      ...JSON.parse(window.localStorage.getItem('myNews')),
-      ...updateMyNews(JSON.parse(window.localStorage.getItem('myNews')))
+      ...JSON.parse(window.localStorage.getItem('myNews'))
    })
-
-   useEffect(() => {
-      // const initOpts = window.localStorage.getItem('myNews')
-      // const finalOpts = myNews === null ? {} : {...myNews, ...updateMyNews(myNews)}
-      // setMyNews(finalOpts)
-      browserSet(myNews)
-   }, [])
 
    return (
       <React.Fragment>
@@ -28,10 +17,4 @@ export default function News(props) {
          <Footer />
       </React.Fragment>
    )
-
-   function browserSet(opts) {
-      lsTest()
-         ? window.localStorage.setItem('myNews', JSON.stringify(opts))
-         : alert("Please enable your web browser's local storage to use this app!")
-   }
 }

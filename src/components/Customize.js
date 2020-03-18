@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import News from './News.js'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
 import TopicsCheckbox from './static/TopicsCheckbox.js'
 import SourcesCheckbox from './static/SourcesCheckbox.js'
 import RefreshIntervals from './static/RefreshIntervals.js'
+import {updateMyNews} from '../data/myNews.js'
 import {lsTest} from '../helpers/storageCheck.js'
 // import '../styles/customize.css'
 
-export default function Customize() {
-   const [myOptions, setMyOptions] = useState({})
+export default function Customize(props) {
+   const [myOptions, setMyOptions] = useState({...props.initNews})
 
    useEffect(() => {
       browserSet()
@@ -36,7 +36,8 @@ export default function Customize() {
       setMyOptions({...myOptions, mySources: arr})
    }
    function setInterval(arr) {
-      setMyOptions({...myOptions, myInterval: arr})
+      const finalOptions = {...myOptions, myInterval: arr}
+      setMyOptions({...updateMyNews(finalOptions)})
    }
 
    function browserSet() {

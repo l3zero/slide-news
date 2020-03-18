@@ -2,12 +2,19 @@ const hash = require('object-hash')
 const moment = require('moment')
 
 export function updateMyNews(options) {
-   let myNewsInit = {
-      id: hash(combiner(options)),
+   options.id = hash(combiner(options))
+   options.expire = moment()
+      .add(options.myInterval[0].value, 'days')
+      .format('l')
+   return options
+}
+
+export function initMyNews() {
+   const myNewsInit = {
+      id: '',
       dateCreated: moment().format('l'),
-      expire: moment()
-         .add(options.myInterval[0].value, 'days')
-         .format('l')
+      timeCreated: moment().format('LTS'),
+      expire: ''
    }
    return myNewsInit
 }

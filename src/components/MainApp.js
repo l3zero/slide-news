@@ -5,22 +5,23 @@ import Footer from './static/Footer.js'
 import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
+import {initMyNews} from '../data/myNews.js'
 import {lsTest} from '../helpers/storageCheck.js'
 // const moment = require('moment')
 
 class MainApp extends Component {
    constructor(props) {
       super(props)
-      this.state = {newUser: true}
+      this.state = {myNewsInit: initMyNews()}
    }
 
    //Will need to update this to use the DB instead
    componentDidMount() {
-      if (lsTest() && localCheck()) {
-         this.setState({
-            newUser: false
-         })
-      }
+      // if (lsTest() && localCheck()) {
+      //    this.setState({
+      //       newUser: false
+      //    })
+      // }
    }
 
    render() {
@@ -28,10 +29,14 @@ class MainApp extends Component {
          <Router forceRefresh={true}>
             <Switch>
                <Route exact path='/'>
-                  {!this.state.newUser ? <Redirect exact from='/' to='/news' /> : <Home />}
+                  {localCheck() ? <Redirect exact from='/' to='/news' /> : <Home />}
                </Route>
                <Route exact path='/customize'>
-                  {!this.state.newUser ? <Redirect exact from='/customize' to='/news' /> : <Customize />}
+                  {localCheck() ? (
+                     <Redirect exact from='/customize' to='/news' />
+                  ) : (
+                     <Customize initNews={this.state.myNewsInit} />
+                  )}
                </Route>
                <Route exact path='/news'>
                   {localCheck() ? <News /> : <Redirect exact from='/news' to='/' />}

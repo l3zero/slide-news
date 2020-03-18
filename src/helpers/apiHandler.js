@@ -1,6 +1,6 @@
-const fetch = require('node-fetch')
-const apiReq = require('./apiReq')
-const nodeCache = require('node-cache')
+import fetch from 'node-fetch'
+import apiReq from './apiReq'
+import nodeCache from 'node-cache'
 const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
 /*async function grabCurrentWeather(cityId, coords) {
