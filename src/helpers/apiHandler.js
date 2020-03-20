@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import apiReq from './apiReq'
+import apiReq from '../data/reqFactory'
 import nodeCache from 'node-cache'
 const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
