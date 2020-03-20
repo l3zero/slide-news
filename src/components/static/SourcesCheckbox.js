@@ -1,5 +1,5 @@
 import React from 'react'
-import {formData} from '../../data/constData'
+import {formData} from '../../data/constData.js'
 
 export default function SourcesCheckbox(props) {
    return (

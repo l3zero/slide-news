@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import Header from './static/Header'
-import Footer from './static/Footer'
-import TopicsCheckbox from './static/TopicsCheckbox'
-import SourcesCheckbox from './static/SourcesCheckbox'
-import RefreshIntervals from './static/RefreshIntervals'
-import {updateMyNews} from '../data/myNewsInit'
+import {Link} from 'react-router-dom'
+import Header from './static/Header.js'
+import Footer from './static/Footer.js'
+import TopicsCheckbox from './static/TopicsCheckbox.js'
+import SourcesCheckbox from './static/SourcesCheckbox.js'
+import RefreshIntervals from './static/RefreshIntervals.js'
+import {updateMyNews} from '../data/myNews.js'
+import {lsTest} from '../helpers/storageCheck.js'
 // import '../styles/customize.css'
 
-export default function Customize() {
-   const [myOptions, setMyOptions] = useState({})
+export default function Customize(props) {
+   const [myOptions, setMyOptions] = useState({...props.initNews})
 
-   //Testing useEffect
    useEffect(() => {
-      updateMyNews(myOptions) //Update news will be moved out at the end of customization, so it only runs once
+      browserSet()
    }, [myOptions])
 
    return (
@@ -21,6 +22,9 @@ export default function Customize() {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
+         <Link to='/news'>
+            <button className='go'> GO </button>
+         </Link>
          <Footer />
       </React.Fragment>
    )
@@ -31,7 +35,16 @@ export default function Customize() {
    function setSources(arr) {
       setMyOptions({...myOptions, mySources: arr})
    }
-   function setInterval(val) {
-      setMyOptions({...myOptions, myInterval: val})
+   function setInterval(arr) {
+      const finalOptions = {...myOptions, myInterval: arr}
+      setMyOptions({...updateMyNews(finalOptions)})
+   }
+
+   function browserSet() {
+      if (Object.keys(myOptions).length !== 0) {
+         lsTest()
+            ? window.localStorage.setItem('myNews', JSON.stringify(myOptions))
+            : alert("Please enable your web browser's local storage to use this app!")
+      }
    }
 }
