@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
 import {createRequests} from '../data/reqFactory'
+import {getResponses} from '../helpers/apiHandler'
 // import '../styles/news.css'
 
 export default function News() {
@@ -16,7 +17,9 @@ export default function News() {
       <React.Fragment>
          <Header />
          <div>Here is the news component: {JSON.stringify(myNews)}</div>
-         <div>Here is the dev.api return info:{JSON.stringify(myRequests)}</div>
+         <div>Here is the request array:{JSON.stringify(myRequests)}</div>
+         <div>Here is the response array:{JSON.stringify(getResponses(myRequests))}</div>
+
          <Footer />
       </React.Fragment>
    )

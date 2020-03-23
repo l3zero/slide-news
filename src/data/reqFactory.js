@@ -1,14 +1,7 @@
-import {devNews} from './devTO'
+import {devNews} from './devRequest'
 
 export function createRequests(options) {
    let reqArray = []
-   const init = {
-      method: 'GET',
-      headers: new Headers({
-         Accept: 'application/json'
-      }),
-      mode: 'cors'
-   }
 
    options.mySources.map((source) => {
       let sourceReqs = apiDecider(source.apiId)(options)
