@@ -1,21 +1,24 @@
-import fetch from 'node-fetch'
+import fetch, {Request} from 'node-fetch'
 import nodeCache from 'node-cache'
 // const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
 export function getResponses(requests) {
-   const promises = requests.map((req) => fetch(new Request(req.query, req.init)))
-   let results = []
+   // const promises = requests.map((req) => fetch(new Request(req.query, req.init)))
+   let rez = (async () => {
+      try {
+         const responses = await fetch(new Request(requests[0].query, requests[0].init))
+         const jsonData = await responses.json()
+         return jsonData
+      } catch (error) {
+         console.log(error)
+      }
+   })()
 
-   Promise.all(promises)
-      .then((responses) => {
-         return responses.map((res) => res.json())
-      })
-      .then((data) => {
-         results = data
-         console.log(data)
-      })
-      .catch((error) => console.log(error))
-
+   let results = (async () => {
+      const data = await rez
+      return data
+   })()
+   console.log(results)
    return results
 }
 
