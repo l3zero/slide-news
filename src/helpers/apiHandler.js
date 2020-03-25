@@ -1,100 +1,45 @@
-import fetch from 'node-fetch'
-import apiReq from '../data/reqFactory'
+import fetch, {Request} from 'node-fetch'
 import nodeCache from 'node-cache'
-const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
+// const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
-/*async function grabCurrentWeather(cityId, coords) {
-    let myRequest, response, jsonData, myData
-    if (coords === undefined) {
-        if (cache.has(cityId)) {
-            myData = cache.get(cityId)
-        } else {
-            myRequest = createCityRequest(cityId)
-            response = await fetch(myRequest).then(checkStatus)
-            jsonData = await response.json()
-            myData = data.convertCurrent(jsonData)
+export function getResponses(requests) {
+   const promises = requests.map((req) => fetch(new Request(req.query, req.init)))
+   //IIFE to grab results right away
+   let results = (async () => {
+      try {
+         const waiter = await Promise.all(promises).then(checkStatus)
+         const responses = await waiter.map((res) => res.json())
+         // console.log(await responses[0].then())
 
-            if (myData === undefined) {
-                let erz = new Error('MyData conversion failed. Please see dataUtility.js')
-                console.log(erz)
-                throw erz
-            } else {
-                cache.set(cityId, myData)
-            }
-        }
-    } else {
-        if (cache.has(`${cityId}_${coords}`)) {
-            myData = cache.get(`${cityId}${coords}`)
-        } else {
-            myRequest = createCoordsRequest(cityId, coords)
-            response = await fetch(myRequest).then(checkStatus)
-            jsonData = await response.json()
-            myData = data.convertCurrent(jsonData)
+         return responses
+      } catch (error) {
+         console.log(error)
+      }
+   })()
 
-            if (myData === undefined) {
-                let erz = new Error('MyData conversion failed. Please see dataUtility.js')
-                console.log(erz)
-                throw erz
-            } else {
-                cache.set(`${cityId}_${coords}`, myData)
-            }
-        }
-    }
-    return myData
+   return results
 }
 
-async function grabFivedayWeather(cityId, coords) {
-    let myRequest, response, jsonData, myData
-    if (coords === undefined) {
-        if (cache.has(cityId)) {
-            myData = cache.get(cityId)
-        } else {
-            myRequest = createFivedayCityRequest(cityId)
-            response = await fetch(myRequest).then(checkStatus)
-            jsonData = await response.json()
-            myData = data.convertFiveday(jsonData)
-
-            if (myData === undefined) {
-                let erz = new Error('MyData conversion failed. Please see dataUtility.js')
-                console.log(erz)
-                throw erz
-            } else {
-                cache.set(cityId, myData)
-            }
-        }
-    } else {
-        if (cache.has(`${cityId}_${coords}`)) {
-            myData = cache.get(`${cityId}${coords}`)
-        } else {
-            myRequest = createFivedayCoordsRequest(cityId, coords)
-            response = await fetch(myRequest).then(checkStatus)
-            jsonData = await response.json()
-            myData = data.convertFiveday(jsonData)
-
-            if (myData === undefined) {
-                let erz = new Error('MyData conversion failed. Please see dataUtility.js')
-                console.log(erz)
-                throw erz
-            } else {
-                cache.set(`${cityId}_${coords}`, myData)
-            }
-        }
-    }
-    return myData
+function checkStatus(resArray) {
+   return resArray.map((r) => {
+      if (r.ok) {
+         return r
+      } else {
+         throw new Error(r.statusText)
+      }
+   })
 }
 
-function checkStatus(res) {
-    if (res.ok) {
-        return res
-    } else {
-        let erz = new Error(res.statusText)
-        console.log(erz)
-        throw erz
-    }
-}
+function responseDecider(id) {
+   switch (id) {
+      case 1:
+         return 'devResponse' //This will be an api
+         break
+      case 2:
+         return 'hackerNews' //This will be an api
+         break
 
-function createCityRequest(cityId) {
-    return new Request(apiReq.cityUrl(cityId), apiReq.getInit())
+      default:
+         break
+   }
 }
-
-export { grabCurrentWeather, grabFivedayWeather }*/
