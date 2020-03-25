@@ -4,7 +4,7 @@ export function createRequests(options) {
    let reqArray = []
 
    options.mySources.map((source) => {
-      let sourceReqs = apiDecider(source.apiId)(options)
+      let sourceReqs = apiDecider(source.api_id)(options)
       reqArray = reqArray.concat(sourceReqs)
    })
 

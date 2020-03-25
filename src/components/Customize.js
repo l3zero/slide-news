@@ -36,7 +36,11 @@ export default function Customize(props) {
       setMyOptions({...myOptions, mySources: arr})
    }
    function setInterval(arr) {
-      const finalOptions = {...myOptions, myInterval: arr}
+      const finalOptions = {
+         ...myOptions,
+         num_reqs: myOptions.myTopics.length * myOptions.mySources.length,
+         myInterval: arr
+      }
       setMyOptions({...updateMyNews(finalOptions)})
    }
 

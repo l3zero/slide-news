@@ -6,6 +6,7 @@ export function updateMyNews(options) {
    options.expire = moment()
       .add(options.myInterval[0].value, 'days')
       .format('l')
+
    return options
 }
 

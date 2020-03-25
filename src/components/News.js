@@ -12,15 +12,35 @@ export default function News() {
    })
 
    const [myRequests, setMyRequests] = useState(createRequests(myNews))
-   // const [myResponses, setMyResponses] = useState(getResponses(myRequests))
+   const [myResponses, setMyResponses] = useState(new Array())
 
-   return (
-      <React.Fragment>
-         <Header />
-         <div>Here is the news component: {JSON.stringify(myNews)}</div>
-         <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-         <div>Here is the response array: {JSON.stringify(getResponses(myRequests))}</div>
-         <Footer />
-      </React.Fragment>
-   )
+   useEffect(() => {
+      //Grab API responses once requests are loaded
+      async function fetcher() {
+         let result = []
+         const promiseArray = await getResponses(myRequests)
+         promiseArray.map(async (data) => {
+            let temp = await data
+            result = result.concat(temp)
+            setMyResponses(result)
+         })
+      }
+
+      fetcher()
+   }, [myRequests])
+
+   let newsScreen =
+      myResponses.length === 0 ? (
+         <div id='loading-widget'>Loading...</div>
+      ) : (
+         <React.Fragment>
+            <Header />
+            <div>Here is the news component: {JSON.stringify(myNews)}</div>
+            <div>Here is the request array:{JSON.stringify(myRequests)}</div>
+            <div>{console.log(myResponses)}</div>
+            <Footer />
+         </React.Fragment>
+      )
+
+   return newsScreen
 }
