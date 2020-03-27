@@ -18,7 +18,8 @@ export default function News() {
       //Grab API responses once requests are loaded
       async function fetcher() {
          let result = []
-         const promiseArray = await getResponses(myRequests)
+         const promiseArray = await getResponses(myRequests)[0]
+
          promiseArray.map(async (data) => {
             let temp = await data
             result = result.concat(temp)
@@ -27,7 +28,7 @@ export default function News() {
       }
 
       fetcher()
-   }, [myRequests])
+   }, [])
 
    let newsScreen =
       myResponses.length === 0 ? (

@@ -1,7 +1,7 @@
 import {devNews} from './devRequest'
 
 export function createRequests(options) {
-   let reqArray = []
+   let reqArray = new Array()
 
    options.mySources.map((source) => {
       let sourceReqs = apiDecider(source.api_id)(options)

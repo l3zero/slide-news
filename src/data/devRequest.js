@@ -3,6 +3,8 @@ export const devNews = (options) => {
    let devArray = []
    options.myTopics.map((topic) => {
       devArray.push({
+         api_id: id,
+         total_reqs: options.num_reqs,
          query: `https://dev.to/api/articles?tag=${topic}&top=${options.myInterval[0].value}&per_page=5`,
          init: {
             method: 'GET',
@@ -10,8 +12,7 @@ export const devNews = (options) => {
                Accept: 'application/json'
             }),
             mode: 'cors'
-         },
-         api_id: id
+         }
       })
    })
    return devArray
