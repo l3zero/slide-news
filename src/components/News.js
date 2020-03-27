@@ -12,19 +12,15 @@ export default function News() {
    })
 
    const [myRequests, setMyRequests] = useState(createRequests(myNews))
-   const [myResponses, setMyResponses] = useState(new Array())
+   const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
       //Grab API responses once requests are loaded
       async function fetcher() {
-         let result = []
-         const promiseArray = await getResponses(myRequests)[0]
-
-         promiseArray.map(async (data) => {
-            let temp = await data
-            result = result.concat(temp)
-            setMyResponses(result)
-         })
+         const results = await getResponses(myRequests)[0]
+         //Not sure why this is happening, but length of array is 0 even though there are 10 items in it..need to debug@@
+         results.unshift({})
+         setMyResponses(results)
       }
 
       fetcher()
@@ -38,7 +34,7 @@ export default function News() {
             <Header />
             <div>Here is the news component: {JSON.stringify(myNews)}</div>
             <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-            <div>{console.log(myResponses)}</div>
+            <div>Here is the responses: {console.log(myResponses)}</div>
             <Footer />
          </React.Fragment>
       )
