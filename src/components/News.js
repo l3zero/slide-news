@@ -7,23 +7,23 @@ import {getResponses} from '../helpers/apiHandler'
 // import '../styles/news.css'
 
 export default function News() {
-   const [myNews, setMyNews] = useState({
+   const [myNews] = useState({
       ...JSON.parse(window.localStorage.getItem('myNews'))
    })
 
-   const [myRequests, setMyRequests] = useState(createRequests(myNews))
+   const [myRequests] = useState(createRequests(myNews))
    const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
       //Grab API responses once requests are loaded
-      async function fetcher() {
-         const results = await getResponses(myRequests)[0]
-         //Not sure why this is happening, but length of array is 0 even though there are 10 items in it..need to debug@@
-         results.unshift({})
-         setMyResponses(results)
-      }
-
-      fetcher()
+      let temp = []
+      const promResponses = getResponses(myRequests)
+      promResponses.map((p) =>
+         p.then((result) => {
+            temp = temp.concat(result)
+            setMyResponses(temp)
+         })
+      )
    }, [])
 
    let newsScreen =
@@ -34,7 +34,7 @@ export default function News() {
             <Header />
             <div>Here is the news component: {JSON.stringify(myNews)}</div>
             <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-            <div>Here is the responses: {console.log(myResponses)}</div>
+            <div>Here is the responses: </div>
             <Footer />
          </React.Fragment>
       )
