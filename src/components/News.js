@@ -7,27 +7,24 @@ import {getResponses} from '../helpers/apiHandler'
 // import '../styles/news.css'
 
 export default function News() {
-   const [myNews, setMyNews] = useState({
+   const [myNews] = useState({
       ...JSON.parse(window.localStorage.getItem('myNews'))
    })
 
-   const [myRequests, setMyRequests] = useState(createRequests(myNews))
-   const [myResponses, setMyResponses] = useState(new Array())
+   const [myRequests] = useState(createRequests(myNews))
+   const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
       //Grab API responses once requests are loaded
-      async function fetcher() {
-         let result = []
-         const promiseArray = await getResponses(myRequests)
-         promiseArray.map(async (data) => {
-            let temp = await data
-            result = result.concat(temp)
-            setMyResponses(result)
+      let temp = []
+      const promResponses = getResponses(myRequests)
+      promResponses.map((p) =>
+         p.then((result) => {
+            temp = temp.concat(result)
+            setMyResponses(temp)
          })
-      }
-
-      fetcher()
-   }, [myRequests])
+      )
+   }, [])
 
    let newsScreen =
       myResponses.length === 0 ? (
@@ -37,7 +34,7 @@ export default function News() {
             <Header />
             <div>Here is the news component: {JSON.stringify(myNews)}</div>
             <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-            <div>{console.log(myResponses)}</div>
+            <div>Here is the responses: </div>
             <Footer />
          </React.Fragment>
       )

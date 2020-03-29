@@ -1,14 +1,14 @@
 import {formData} from './constData'
 
-export const devReqs = (options) => {
-   const id = formData.SOURCES.find((source) => source.name === 'Dev.to').internal_id
-   const queryUrl = formData.SOURCES.find((source) => source.name === 'Dev.to').url
+export const hackReqs = (options) => {
+   const id = formData.SOURCES.find((source) => source.name === 'Hacker News').internal_id
+   const queryUrl = formData.SOURCES.find((source) => source.name === 'Hacker News').url
    const numArticles = 5
    let devArray = []
    options.myTopics.map((topic) => {
       devArray.push({
          api_id: id,
-         query: `${queryUrl}?tag=${topic}&top=${options.myInterval[0].value}&per_page=${numArticles}`,
+         query: `https://dev.to/api/articles?tag=${topic}&top=${options.myInterval[0].value}&per_page=${numArticles}`,
          init: {
             method: 'GET',
             headers: new Headers({
