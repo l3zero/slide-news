@@ -6,8 +6,9 @@ import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
 import {initMyNews} from '../data/myNews.js'
-import {lsTest} from '../helpers/storageCheck.js'
 // const moment = require('moment')
+
+//@TO-DO Make sure to change final validation check against DB, specifically for allowing access to customize and news. Should NOT be based on local storage
 
 class MainApp extends Component {
    constructor(props) {

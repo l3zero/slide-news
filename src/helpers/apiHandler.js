@@ -1,4 +1,5 @@
 import {getDevResponses} from '../data/devResponse'
+import {formData} from '../data/constData'
 import nodeCache from 'node-cache'
 // const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
@@ -6,7 +7,7 @@ export function getResponses(requests) {
    let resArray = []
    let idArray = [1, 2, 3]
 
-   for (let index = 0; index < requests[0].total_reqs; index++) {
+   for (let index = 0; index < requests.length; index++) {
       let currentId = requests[index].api_id
 
       //Limit API calls to one per api ID

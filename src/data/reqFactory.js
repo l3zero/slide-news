@@ -1,10 +1,11 @@
 import {devReqs} from './devRequest'
+import {hackReqs} from './hackerNewsRequest'
 
 export function createRequests(options) {
    let reqArray = []
 
    options.mySources.map((source) => {
-      let sourceReqs = apiDecider(source.api_id)(options)
+      let sourceReqs = apiDecider(source.internal_id)(options)
       reqArray = reqArray.concat(sourceReqs)
    })
    return reqArray
@@ -14,10 +15,8 @@ function apiDecider(id) {
    switch (id) {
       case 1:
          return devReqs
-         break
       case 2:
-         return 'hackerNews' //This will be an api
-         break
+         return hackReqs
 
       default:
          break
