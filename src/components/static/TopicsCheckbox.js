@@ -1,5 +1,5 @@
 import React from 'react'
-import {formData} from '../../data/constData.js'
+import {formData} from '../../data/formData.js'
 
 export default function TopicsCheckbox(props) {
    return (

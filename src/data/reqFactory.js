@@ -17,7 +17,6 @@ function apiDecider(id) {
          return devReqs
       case 2:
          return hackReqs
-
       default:
          break
    }
