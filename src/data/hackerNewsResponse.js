@@ -1,21 +1,21 @@
 import fetch, {Request} from 'node-fetch'
 import {checkStatus} from '../helpers/httpStatusCheck'
 
-export function getDevResponses(requests) {
-   //Grab dev.TO requests only
-   const devPromises = requests.map((req) => {
-      if (req.api_id === 1) {
-         return fetch(new Request(req.query, req.init))
-      }
-   })
+export function getHackResponses(requests) {
+   //Grab hackerNews data only
+   const hackerReq = requests.find((req) => req.api_id === 2)
+   const topStoriesPromise = fetch(new Request(hackerReq.topStoriesUrl, hackerReq.init))
+   const newStoriesPromise = fetch(new Request(hackerReq.newStoriesUrl, hackerReq.init))
 
    //IIFE to grab results right away
    let results = (() => {
       try {
-         const responses = (() => devPromises.map((p) => p.then(checkStatus).then((res) => res.json())))()
+         const responses = (() =>
+            [topStoriesPromise, newStoriesPromise].map((p) => p.then(checkStatus).then((res) => res.json())))()
 
          const sanitizedResponses = convertArticles(responses)
-         return sanitizedResponses
+
+         return responses
       } catch (error) {
          console.log(error)
       }

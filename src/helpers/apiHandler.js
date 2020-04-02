@@ -1,5 +1,6 @@
 import {getDevResponses} from '../data/devResponse'
-import {formData} from '../data/constData'
+import {getHackResponses} from '../data/hackerNewsResponse'
+import {formData} from '../data/formData'
 import nodeCache from 'node-cache'
 // const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
@@ -23,8 +24,7 @@ function responseDecider(id) {
       case 1:
          return getDevResponses
       case 2:
-         return 'hackerNews' //This will be an api
-
+         return getHackResponses
       default:
          break
    }
