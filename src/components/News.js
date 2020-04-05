@@ -20,27 +20,28 @@ export default function News() {
       //Grab API responses once requests are loaded
       let temp = []
       const promResponses = getResponses(myRequests)
-      promResponses.map((p) =>
-         p.then((result) => {
-            temp = temp.concat(result)
-            setMyResponses(temp)
-         })
-      )
+      // promResponses.map((p) =>
+      //    p.then((result) => {
+      //       console.log(result)
+      //       temp = temp.concat(result)
+      //       setMyResponses(temp)
+      //    })
+      // )
+      // setMyResponses(promResponses)
    }, [])
 
-   let newsScreen = (
-      // myResponses.length === 0 ? (
-      //    <div id='loading-widget'>Loading...</div>
-      // ) : (
-      <React.Fragment>
-         <Header />
-         <div>Here is the news component: {JSON.stringify(myNews)}</div>
-         <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-         <div>Here is the responses: </div>
-         <Footer />
-      </React.Fragment>
-   )
-   // )
+   let newsScreen =
+      myResponses.length === 0 ? (
+         <div id='loading-widget'>Loading...</div>
+      ) : (
+         <React.Fragment>
+            <Header />
+            <div>Here is the news component: {JSON.stringify(myNews)}</div>
+            <div>Here is the request array:{JSON.stringify(myRequests)}</div>
+            <div>Here is the responses: </div>
+            <Footer />
+         </React.Fragment>
+      )
 
    return newsScreen
 }
