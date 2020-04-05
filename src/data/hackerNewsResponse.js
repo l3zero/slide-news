@@ -11,29 +11,20 @@ export function getHackResponses(requests) {
    //IIFE to grab results right away
    let results = (() => {
       try {
-         const topStoryResponses = (() =>
-            [topStoriesPromise].map((p) =>
-               p
-                  .then(checkStatus)
-                  .then((res) => res.json())
-                  .then((arr) =>
-                     arr.map((id) => {
-                        const val = hackerNewsWorker(id)
-                        if (val !== null) {
-                           return val
-                        } else {
-                        }
-                     })
-                  )
-            ))()
-         // console.log(topStoryResponses)
+         const topStoryResponses = topStoriesPromise
+            .then(checkStatus)
+            .then((res) => res.json())
+            .then((arr) =>
+               arr.map((id) => {
+                  const val = hackerNewsWorker(id)
+                  if (val !== null) {
+                     const jawn = val.then((data) => data)
+                     return jawn
+                  }
+               })
+            )
 
-         // const newStoryResponses = (() =>
-         //    [newStoriesPromise].map((p) => p.then(checkStatus).then((res) => res.json())))()
-
-         // const validatedResponses = hackerNewsWorker(topStoryResponses)
-
-         return topStoryResponses
+         return [topStoryResponses]
       } catch (error) {
          console.log(error)
       }
@@ -62,16 +53,20 @@ export function getHackResponses(requests) {
 @return true if validation is passed
 */
 function hackerNewsValidator(item) {
-   const passedDelete = item.hasOwnProperty('deleted') ? item.deleted : true
-   const passedType = item.hasOwnProperty('type') ? (item.type === 'story' ? true : false) : false
-   const passedDead = item.hasOwnProperty('dead') ? (item.dead === true ? false : true) : true
+   const passed = item.then((obj) => {
+      const passedDelete = obj.hasOwnProperty('deleted') ? obj.deleted : true
+      const passedType = obj.hasOwnProperty('type') ? (obj.type === 'story' ? true : false) : false
+      const passedDead = obj.hasOwnProperty('dead') ? (obj.dead === true ? false : true) : true
 
-   return passedDelete && passedType && passedDead
+      return passedDelete && passedType && passedDead
+   })
+
+   return passed
 }
 
 //Fetches individual article and validates
-async function hackerNewsWorker(itemId) {
-   const response = await fetch(
+function hackerNewsWorker(itemId) {
+   const response = fetch(
       new Request(`${hackerItemUrl}/${itemId}.json`, {
          method: 'GET',
          headers: new Headers({
@@ -81,7 +76,7 @@ async function hackerNewsWorker(itemId) {
       })
    )
 
-   const jayson = await response.json()
+   const jayson = response.then((data) => data.json())
 
    if (hackerNewsValidator(jayson)) {
       return jayson
