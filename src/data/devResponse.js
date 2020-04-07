@@ -24,6 +24,7 @@ export function getDevResponses(requests) {
    return results
 }
 
+//This returns a promise instead of the direct object so that all promises from different sources are handled uniformly in News.js
 function convertArticles(prom) {
    const noImg = '../img/no-img.jpg'
    const articles = prom.then((arr) =>
@@ -33,7 +34,7 @@ function convertArticles(prom) {
          article.title = res.title
          article.imageUrl = res.cover_image === null ? noImg : res.cover_image
          article.reactions = res.positive_reactions_count
-         return article
+         return new Promise((resolve) => resolve(article))
       })
    )
    return articles

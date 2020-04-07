@@ -11,17 +11,20 @@ export function getHackResponses(requests) {
    //IIFE to grab results right away
    let results = (() => {
       try {
-         const topStoryResponses = topStoriesPromise
-            .then(checkStatus)
-            .then((res) => res.json())
-            .then((arr) =>
-               arr.map((id) => {
-                  const val = hackerNewsWorker(id)
-                  if (val !== null) {
-                     return val
-                  }
-               })
-            )
+         const topStoryResponses = (async () => {
+            const res = await topStoriesPromise
+            const data = await checkStatus(res)
+            const arr = await data.json()
+
+            return arr.map((id) => {
+               const val = hackerNewsWorker(id)
+               if (val !== null) {
+                  return val
+               } else {
+                  return null
+               }
+            })
+         })()
 
          return topStoryResponses
       } catch (error) {
@@ -35,7 +38,7 @@ export function getHackResponses(requests) {
 function hackerNewsWorker(itemId) {
    const noImg = '../img/no-img.jpg'
 
-   const response = fetch(
+   const prom = fetch(
       new Request(`${hackerItemUrl}/${itemId}.json`, {
          method: 'GET',
          headers: new Headers({
@@ -45,24 +48,21 @@ function hackerNewsWorker(itemId) {
       })
    )
 
-   const result = (() => {
-      const article = response
-         .then((data) => data)
-         .then((d) => {
-            let json = d.json()
+   const result = (async () => {
+      const res = await prom
+      const json = await res.json()
 
-            if (hackerNewsValidator(json)) {
-               return {
-                  url: json.url,
-                  id: json.id,
-                  timePublished: json.time, //@TO-DO Need to convert this from Unix
-                  title: json.title,
-                  imageUrl: noImg
-               }
-            } else {
-               return null
-            }
-         })
+      if (hackerNewsValidator(json)) {
+         return {
+            url: json.url,
+            id: json.id,
+            timePublished: json.time,
+            title: json.title,
+            imageUrl: noImg
+         }
+      } else {
+         return null
+      }
    })()
 
    return result
@@ -76,7 +76,6 @@ function hackerNewsValidator(item) {
       const passedDelete = item.hasOwnProperty('deleted') ? item.deleted : true
       const passedType = item.hasOwnProperty('type') ? (item.type === 'story' ? true : false) : false
       const passedDead = item.hasOwnProperty('dead') ? (item.dead === true ? false : true) : true
-
       return passedDelete && passedType && passedDead
    }
 

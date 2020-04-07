@@ -16,6 +16,7 @@ export function getResponses(requests) {
       resArray = currentResponses === null ? resArray : resArray.concat(currentResponses)
       idArray.splice(idArray.indexOf(currentId), 1)
    }
+
    return resArray
 }
 
