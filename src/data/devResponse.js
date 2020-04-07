@@ -3,18 +3,19 @@ import {checkStatus} from '../helpers/httpStatusCheck'
 
 export function getDevResponses(requests) {
    //Grab dev.TO requests only
-   const devPromises = requests.map((req) => {
-      if (req.api_id === 1) {
-         return fetch(new Request(req.query, req.init))
-      }
-   })
+   const devReq = requests.find((req) => req.api_id === 1)
+   const devPromise = fetch(new Request(devReq.query, devReq.init))
 
    //IIFE to grab results right away
    let results = (() => {
       try {
-         const responses = (() => devPromises.map((p) => p.then(checkStatus).then((res) => res.json())))()
+         const responses = devPromise
+            .then(checkStatus)
+            .then((res) => res.json())
+            .then((arr) => arr.map((item) => item))
 
          const sanitizedResponses = convertArticles(responses)
+
          return sanitizedResponses
       } catch (error) {
          console.log(error)
@@ -23,19 +24,17 @@ export function getDevResponses(requests) {
    return results
 }
 
-function convertArticles(proms) {
+function convertArticles(prom) {
    const noImg = '../img/no-img.jpg'
-   const articles = proms.map((prom) => {
-      return prom.then((arr) => {
-         return arr.map((res) => {
-            let article = {}
-            article.url = res.url
-            article.title = res.title
-            article.imageUrl = res.cover_image === null ? noImg : res.cover_image
-            article.reactions = res.positive_reactions_count
-            return article
-         })
+   const articles = prom.then((arr) =>
+      arr.map((res) => {
+         let article = {}
+         article.url = res.url
+         article.title = res.title
+         article.imageUrl = res.cover_image === null ? noImg : res.cover_image
+         article.reactions = res.positive_reactions_count
+         return article
       })
-   })
+   )
    return articles
 }
