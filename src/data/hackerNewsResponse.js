@@ -17,12 +17,8 @@ export function getHackResponses(requests) {
             const arr = await data.json()
 
             return arr.map((id) => {
-               const val = hackerNewsWorker(id)
-               if (val !== null) {
-                  return val
-               } else {
-                  return null
-               }
+               const val = hackerNewsWorker(id, hackerReq.topics)
+               return val
             })
          })()
 
@@ -35,7 +31,7 @@ export function getHackResponses(requests) {
 }
 
 //IIFE Fetches individual article and validates
-function hackerNewsWorker(itemId) {
+function hackerNewsWorker(itemId, reqTopics) {
    const noImg = '../img/no-img.jpg'
 
    const prom = fetch(
@@ -52,7 +48,7 @@ function hackerNewsWorker(itemId) {
       const res = await prom
       const json = await res.json()
 
-      if (hackerNewsValidator(json)) {
+      if (hackerNewsValidator(json) && topicValidator(json.title, reqTopics)) {
          return {
             url: json.url,
             id: json.id,
@@ -61,7 +57,7 @@ function hackerNewsWorker(itemId) {
             imageUrl: noImg
          }
       } else {
-         return null
+         return undefined
       }
    })()
 
@@ -78,6 +74,14 @@ function hackerNewsValidator(item) {
       const passedDead = item.hasOwnProperty('dead') ? (item.dead === true ? false : true) : true
       return passedDelete && passedType && passedDead
    }
-
    return passed
+}
+
+function topicValidator(itemTitle, topics) {
+   const array = topics.map((topic) => itemTitle.includes(topic))
+   if (array.includes(true)) {
+      return true
+   } else {
+      return false
+   }
 }
