@@ -15,32 +15,36 @@ export default function News() {
    const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
-      //@TODO This will be changed to be based on 'myInterval'value. Should only run fresh fetch if the interval value + createDate is past the current date (use moment.js)
+      //@TODO This will be changed to be based on 'myInterval' value. Should only run fresh fetch if the interval value + createDate is past the current date (use moment.js)
 
       //Grab API responses once requests are loaded
       let temp = []
       const promResponses = getResponses(myRequests)
-      promResponses.map((p) =>
-         p.then((result) => {
-            temp = temp.concat(result)
-            setMyResponses(temp)
-         })
+      console.log(promResponses)
+      promResponses.map((source) =>
+         source.then((promArray) =>
+            promArray.map((p) =>
+               p.then((result) => {
+                  temp = result === undefined ? temp : temp.concat(result)
+                  setMyResponses(temp)
+               })
+            )
+         )
       )
    }, [])
 
-   let newsScreen = (
-      // myResponses.length === 0 ? (
-      //    <div id='loading-widget'>Loading...</div>
-      // ) : (
-      <React.Fragment>
-         <Header />
-         <div>Here is the news component: {JSON.stringify(myNews)}</div>
-         <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-         <div>Here is the responses: </div>
-         <Footer />
-      </React.Fragment>
-   )
-   // )
+   let newsScreen =
+      myResponses.length === 0 ? (
+         <div id='loading-widget'>Loading...</div>
+      ) : (
+         <React.Fragment>
+            <Header />
+            <div>Here is the news component: {JSON.stringify(myNews)}</div>
+            <div>Here is the request array:{JSON.stringify(myRequests)}</div>
+            <div>Here is the response titles:</div>
+            <Footer />
+         </React.Fragment>
+      )
 
    return newsScreen
 }
