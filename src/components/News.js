@@ -20,12 +20,11 @@ export default function News() {
       //Grab API responses once requests are loaded
       let temp = []
       const promResponses = getResponses(myRequests)
-      console.log(promResponses)
       promResponses.map((source) =>
          source.then((promArray) =>
             promArray.map((p) =>
                p.then((result) => {
-                  temp = result === undefined ? temp : temp.concat(result)
+                  temp = result === undefined || result.url === undefined ? temp : temp.concat(result)
                   setMyResponses(temp)
                })
             )

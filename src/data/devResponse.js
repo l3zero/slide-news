@@ -1,9 +1,7 @@
 import fetch, {Request} from 'node-fetch'
 import {checkStatus} from '../helpers/httpStatusCheck'
 
-export function getDevResponses(requests) {
-   //Grab dev.TO requests only
-   const devReq = requests.find((req) => req.api_id === 1)
+export function getDevResponses(devReq) {
    const devPromise = fetch(new Request(devReq.query, devReq.init))
 
    //IIFE to grab results right away
