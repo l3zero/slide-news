@@ -56,7 +56,7 @@ const Home = () => (
    </React.Fragment>
 )
 function localCheck() {
-   if (window.localStorage.getItem('myNews') === null) {
+   if (window.localStorage.getItem('myNewsOptions') === null) {
       return false
    }
    return true
