@@ -1,5 +1,9 @@
 import {devReqs} from './devRequest'
 import {hackReqs} from './hackerNewsRequest'
+//Testing db stuff here
+import {setup} from '../helpers/mongoDB'
+
+setup()
 
 export function createRequests(options) {
    let reqArray = []

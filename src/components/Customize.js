@@ -5,7 +5,7 @@ import Footer from './static/Footer.js'
 import TopicsCheckbox from './static/TopicsCheckbox.js'
 import SourcesCheckbox from './static/SourcesCheckbox.js'
 import RefreshIntervals from './static/RefreshIntervals.js'
-import {updateMyNews} from '../data/myNews.js'
+import {updateMyNews} from '../data/myNewsOptions.js'
 import {lsTest} from '../helpers/storageCheck.js'
 // import '../styles/customize.css'
 
@@ -46,7 +46,7 @@ export default function Customize(props) {
    function browserSet() {
       if (Object.keys(myOptions).length !== 0) {
          lsTest()
-            ? window.localStorage.setItem('myNews', JSON.stringify(myOptions))
+            ? window.localStorage.setItem('myNewsOptions', JSON.stringify(myOptions))
             : alert("Please enable your web browser's local storage to use this app!")
       }
    }

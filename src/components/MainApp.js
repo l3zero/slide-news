@@ -5,7 +5,7 @@ import Footer from './static/Footer.js'
 import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
-import {initMyNews} from '../data/myNews.js'
+import {initMyNews} from '../data/myNewsOptions.js'
 // const moment = require('moment')
 
 //@TO-DO Make sure to change final validation check against DB, specifically for allowing access to customize and news. Should NOT be based on local storage
