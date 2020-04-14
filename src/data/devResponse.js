@@ -31,7 +31,7 @@ function convertArticles(prom) {
          article.url = res.url
          article.title = res.title
          article.imageUrl = res.cover_image === null ? noImg : res.cover_image
-         article.reactions = res.positive_reactions_count
+         // article.reactions = res.positive_reactions_count //Taking reactions out for now
          return new Promise((resolve) => resolve(article))
       })
    )

@@ -1,5 +1,6 @@
 // import mongoose from 'mongoose'
 const mongoose = require('mongoose')
+mongoose.set('autoIndex', false)
 // mongoose.set('bufferCommands', false)
 // mongoose.set('autoCreate', false)
 const userName = process.env['MONGODB_USER']

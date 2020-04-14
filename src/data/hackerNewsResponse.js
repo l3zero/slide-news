@@ -60,10 +60,10 @@ function hackerNewsWorker(itemId, reqTopics) {
       if (json !== null && json !== undefined) {
          if (hackerNewsValidator(json) && topicValidator(json.title, reqTopics)) {
             return {
-               url: json.url,
                id: json.id,
-               timePublished: json.time,
+               url: json.url,
                title: json.title,
+               timePublished: json.time,
                imageUrl: noImg
             }
          } else {
