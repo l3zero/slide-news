@@ -7,11 +7,11 @@ import {getResponses} from '../helpers/apiHandler'
 // import '../styles/news.css'
 
 export default function News() {
-   const [myNews] = useState({
-      ...JSON.parse(window.localStorage.getItem('myNews'))
+   const [myNewsOptions] = useState({
+      ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
 
-   const [myRequests] = useState(createRequests(myNews))
+   const [myRequests] = useState(createRequests(myNewsOptions))
    const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
@@ -20,12 +20,11 @@ export default function News() {
       //Grab API responses once requests are loaded
       let temp = []
       const promResponses = getResponses(myRequests)
-      console.log(promResponses)
       promResponses.map((source) =>
          source.then((promArray) =>
             promArray.map((p) =>
                p.then((result) => {
-                  temp = result === undefined ? temp : temp.concat(result)
+                  temp = result === undefined || result.url === undefined ? temp : temp.concat(result)
                   setMyResponses(temp)
                })
             )
@@ -39,7 +38,7 @@ export default function News() {
       ) : (
          <React.Fragment>
             <Header />
-            <div>Here is the news component: {JSON.stringify(myNews)}</div>
+            <div>Here is the news options: {JSON.stringify(myNewsOptions)}</div>
             <div>Here is the request array:{JSON.stringify(myRequests)}</div>
             <div>Here is the response titles:</div>
             <Footer />

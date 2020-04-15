@@ -6,15 +6,12 @@ import nodeCache from 'node-cache'
 
 export function getResponses(requests) {
    let resArray = []
-   let idArray = [1, 2, 3]
+   const idArray = [1, 2, 3]
 
    for (let index = 0; index < requests.length; index++) {
       let currentId = requests[index].api_id
-
-      //Limit API calls to one per api ID
-      let currentResponses = idArray.includes(currentId) ? responseDecider(currentId)(requests) : null
-      resArray = currentResponses === null ? resArray : resArray.concat(currentResponses)
-      idArray.splice(idArray.indexOf(currentId), 1)
+      let currentResponses = responseDecider(currentId)(requests[index])
+      resArray = resArray.concat(currentResponses)
    }
 
    return resArray

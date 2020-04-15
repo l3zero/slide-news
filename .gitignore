@@ -1,4 +1,5 @@
 .DS_Store
+.env
 /*.env
 .env.local
 .env.development.local
@@ -12,3 +13,4 @@ yarn-error.log*
 # production
 /build
 /node_modules
+client/node_modules
