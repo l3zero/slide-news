@@ -1,6 +1,6 @@
 const NewsCollection = require('../model/newsMongoCollection.js')
 
-uploadNews = (req, res) => {
+const uploadNews = (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -22,7 +22,7 @@ uploadNews = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: newsObject._id,
-                message: 'News object created!',
+                message: 'News object created!'
             })
         })
         .catch(error => {
@@ -33,8 +33,8 @@ uploadNews = (req, res) => {
         })
 }
 
-getNews = async (req, res) => {
-    await NewsCollection.findOne({ _id: req.params.id }, (err, news) => {
+const getNews = async (req, res) => {
+    await NewsCollection.findOne({ newsId: req.params.id }, (err, news) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -48,7 +48,7 @@ getNews = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-/*getAllNews = async (req, res) => {
+const getAllNews = async (req, res) => {
     await NewsCollection.find({}, (err, news) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -60,7 +60,7 @@ getNews = async (req, res) => {
         }
         return res.status(200).json({ success: true, data: news })
     }).catch(err => console.log(err))
-}*/
+}
 
 /*deleteNews = async (req, res) => {
     await NewsCollection.findOneAndDelete({ _id: req.params.id }, (err, news) => {
@@ -80,5 +80,6 @@ getNews = async (req, res) => {
 
 module.exports = {
     uploadNews,
-    getNews
+    getNews,
+    getAllNews
 }
