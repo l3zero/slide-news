@@ -1,7 +1,7 @@
 const NewsCollection = require('../model/newsMongoCollection.js')
 
 const uploadNews = (req, res) => {
-    const body = req.body
+    const body = JSON.parse(req.body)
 
     if (!body) {
         return res.status(400).json({
@@ -48,7 +48,7 @@ const getNews = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-const getAllNews = async (req, res) => {
+/*const getAllNews = async (req, res) => {
     await NewsCollection.find({}, (err, news) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -60,7 +60,7 @@ const getAllNews = async (req, res) => {
         }
         return res.status(200).json({ success: true, data: news })
     }).catch(err => console.log(err))
-}
+}*/
 
 /*deleteNews = async (req, res) => {
     await NewsCollection.findOneAndDelete({ _id: req.params.id }, (err, news) => {
@@ -80,6 +80,5 @@ const getAllNews = async (req, res) => {
 
 module.exports = {
     uploadNews,
-    getNews,
-    getAllNews
+    getNews
 }

@@ -6,23 +6,13 @@ import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
 import {initMyNews} from '../data/myNewsOptions.js'
-// const moment = require('moment')
 
-//@TO-DO Make sure to change final validation check against DB, specifically for allowing access to customize and news. Should NOT be based on local storage
+//@TO-DO make redirects carry a message about why it's being redirected
 
 class MainApp extends Component {
    constructor(props) {
       super(props)
       this.state = {myNewsInit: initMyNews()}
-   }
-
-   //Will need to update this to use the DB instead
-   componentDidMount() {
-      // if (lsTest() && localCheck()) {
-      //    this.setState({
-      //       newUser: false
-      //    })
-      // }
    }
 
    render() {
@@ -55,8 +45,10 @@ const Home = () => (
       <Footer />
    </React.Fragment>
 )
+
 function localCheck() {
-   if (window.localStorage.getItem('myNewsOptions') === null) {
+   const localOptions = JSON.parse(window.localStorage.getItem('myNewsOptions'))
+   if (localOptions === null || localOptions.id === null) {
       return false
    }
    return true

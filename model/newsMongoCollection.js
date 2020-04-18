@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const NewsCollection = new Schema({
    newsId: String,
-   created: Date,
-   expiration: Date,
+   created: String,
+   expiration: String,
    articles: [{title: String, url: String, imageUrl: String}]
 })
 
