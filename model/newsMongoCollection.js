@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const NewsCollection = new Schema({
    newsId: String,
    created: String,
-   expiration: String,
+   expires: String,
    articles: [{title: String, url: String, imageUrl: String}]
 })
 

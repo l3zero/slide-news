@@ -1,7 +1,7 @@
 const NewsCollection = require('../model/newsMongoCollection.js')
 
 const uploadNews = (req, res) => {
-    const body = JSON.parse(req.body)
+    const body = req.body
 
     if (!body) {
         return res.status(400).json({
@@ -22,7 +22,8 @@ const uploadNews = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: newsObject._id,
-                message: 'News object created!'
+                message: 'News object created!',
+                myNews: newsObject
             })
         })
         .catch(error => {

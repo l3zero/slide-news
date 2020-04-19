@@ -12,65 +12,75 @@ export default function News() {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
-   const [isExpired] = useState(expirationCheck(myNewsOptions.expires))
+   const [isExpired, setIsExpired] = useState(null)
 
    const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState([])
 
    useEffect(() => {
-      //@TODO This will be changed to be based on 'myInterval' value. Should only run fresh fetch if the interval value + createDate is past the current date (use moment.js)
-
-      if (isExpired) {
+      if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
+         // console.log('expired flag')
+         setIsExpired(true)
          setMyRequests(createRequests(myNewsOptions))
+      } else {
+         // console.log('not expired flag')
+         setIsExpired(false)
       }
-
-      //Grab API responses once requests are loaded
-      let articles = []
-      const promResponses = getResponses(myRequests)
-      promResponses.map((source) =>
-         source.then((promArray) =>
-            promArray.map((p) =>
-               p.then((result) => {
-                  articles = result === undefined || result.url === undefined ? articles : articles.concat(result)
-                  // setMyResponses(temp)
-               })
-            )
-         )
-      )
-      //Send articles to DB here
-      fetch(
-         new Request('http://localhost:9000/mynews/upload', {
-            method: 'POST',
-            headers: new Headers({
-               Accept: 'application/json'
-            }),
-            body: JSON.stringify(articles)
-         })
-      )
    }, [])
 
-   let newsScreen =
-      myResponses.length === 0 ? (
+   useEffect(() => {
+      if (isExpired) {
+         // console.log('entering isExpired land')
+         //Grab API responses once requests are loaded
+         let articles = []
+         const promResponses = getResponses(myRequests)
+         // console.log(promResponses)
+         promResponses.map((source) =>
+            source.then((promArray) =>
+               promArray.map((p) =>
+                  p.then((result) => {
+                     articles = result === undefined || result.url === undefined ? articles : articles.concat(result)
+                     setMyResponses(articles)
+                  })
+               )
+            )
+         )
+         //Send articles to DB here
+         fetch(
+            new Request('http://localhost:9000/mynews/upload', {
+               method: 'POST',
+               headers: new Headers({
+                  Accept: 'application/json'
+               }),
+               body: JSON.stringify({
+                  newsId: JSON.stringify(myRequests.id),
+                  created: JSON.stringify(myRequests.created),
+                  expires: JSON.stringify(myRequests.expires)
+                  // articles: myResponses
+               })
+            })
+         )
+      }
+   }, [isExpired])
+
+   let newsScreen = (
+      /*myResponses.length === 0 ? (
          <div id='loading-widget'>Loading...</div>
-      ) : (
-         <React.Fragment>
-            <Header />
-            <div>Here is the news options: {JSON.stringify(myNewsOptions)}</div>
-            <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-            <div>Here is the response titles:</div>
-            <Footer />
-         </React.Fragment>
-      )
+      ) : */ <React.Fragment>
+         <Header />
+         <div>Check console for now</div>
+         <Footer />
+      </React.Fragment>
+   )
 
    return newsScreen
 }
 
 function expirationCheck(expireDate) {
-   if (
-      moment()
-         .format('l')
-         .diff(moment(expireDate)) < 1
-   ) {
+   const now = moment()
+   const exp = moment(expireDate)
+
+   if (exp.diff(now, 'days') < 1) {
       return true
    } else {
       return false
