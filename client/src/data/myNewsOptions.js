@@ -3,7 +3,7 @@ const moment = require('moment')
 
 export function updateMyNews(options) {
    options.id = hash(combiner(options))
-   options.expire = moment()
+   options.expires = moment(options.created)
       .add(options.myInterval[0].value, 'days')
       .format('l')
 
@@ -12,10 +12,9 @@ export function updateMyNews(options) {
 
 export function initMyNews() {
    const myNewsInit = {
-      id: '',
-      dateCreated: moment().format('l'),
-      timeCreated: moment().format('LTS'),
-      expire: ''
+      id: null,
+      created: moment().format('l'),
+      expires: null
    }
    return myNewsInit
 }

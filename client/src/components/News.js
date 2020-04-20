@@ -3,44 +3,62 @@ import React, {useState, useEffect} from 'react'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
 import {createRequests} from '../data/reqFactory'
-import {getResponses} from '../helpers/apiHandler'
+import {expirationCheck} from '../helpers/expirationCheck'
+import {fetchArticles} from '../helpers/fetchNewArticles'
+import fetch, {Request} from 'node-fetch'
 // import '../styles/news.css'
 
 export default function News() {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
-
-   const [myRequests] = useState(createRequests(myNewsOptions))
+   const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState([])
+   const [isExpired, setIsExpired] = useState(null)
+   const [dbObject, setDbObject] = useState(null)
 
    useEffect(() => {
-      //@TODO This will be changed to be based on 'myInterval' value. Should only run fresh fetch if the interval value + createDate is past the current date (use moment.js)
-
-      //Grab API responses once requests are loaded
-      let temp = []
-      const promResponses = getResponses(myRequests)
-      promResponses.map((source) =>
-         source.then((promArray) =>
-            promArray.map((p) =>
-               p.then((result) => {
-                  temp = result === undefined || result.url === undefined ? temp : temp.concat(result)
-                  setMyResponses(temp)
-               })
-            )
-         )
-      )
+      if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
+         setIsExpired(true)
+         setMyRequests(createRequests(myNewsOptions))
+      } else {
+         setIsExpired(false)
+      }
    }, [])
 
-   let newsScreen =
+   useEffect(() => {
+      if (isExpired) {
+         const articles = fetchArticles(myRequests)
+         articles.then((data) => {
+            setMyResponses(data)
+            setDbObject({
+               method: 'POST',
+               headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json'
+               }),
+               body: JSON.stringify({
+                  newsId: myNewsOptions.id,
+                  articles: data
+               })
+            })
+         })
+      }
+   }, [isExpired])
+
+   useEffect(() => {
+      if (dbObject !== null && myResponses.length !== 0) {
+         fetch(new Request('http://localhost:9000/mynews/upload', dbObject))
+      }
+   }, [dbObject])
+
+   const newsScreen =
       myResponses.length === 0 ? (
          <div id='loading-widget'>Loading...</div>
       ) : (
          <React.Fragment>
             <Header />
-            <div>Here is the news options: {JSON.stringify(myNewsOptions)}</div>
-            <div>Here is the request array:{JSON.stringify(myRequests)}</div>
-            <div>Here is the response titles:</div>
+            <div>Check console for now</div>
             <Footer />
          </React.Fragment>
       )

@@ -1,28 +1,37 @@
 const NewsCollection = require('../model/newsMongoCollection.js')
 
-const uploadNews = (req, res) => {
-    const body = req.body
+const uploadNews = (req, res, next) => {
+   if (!req.body.newsId) {
+      return res.status(400).json({
+         success: false,
+         error: 'You must provide a news object with an associated newsId',
+      })
+   } else {
+      NewsCollection.create(req.body)
+         .then((data) => res.json(data))
+         .then(() => {
+            return res.status(201).json({
+               success: true,
+               message: 'News object created!',
+            })
+         })
+         .catch(next)
+   }
 
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a news object',
-        })
-    }
+   //const newsObject = new NewsCollection(body)
 
-    const newsObject = new NewsCollection(body)
-
-    if (!newsObject) {
+   /*if (!newsObject) {
         return res.status(400).json({ success: false, error: err })
-    }
+    }*/
 
-    newsObject
+   /*newsObject
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: newsObject._id,
-                message: 'News object created!'
+                id: newsObject.newsId,
+                message: 'News object created!',
+                myNews: newsObject
             })
         })
         .catch(error => {
@@ -30,25 +39,23 @@ const uploadNews = (req, res) => {
                 error,
                 message: 'News object not created!',
             })
-        })
+        })*/
 }
 
 const getNews = async (req, res) => {
-    await NewsCollection.findOne({ newsId: req.params.id }, (err, news) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+   await NewsCollection.findOne({newsId: req.params.id}, (err, news) => {
+      if (err) {
+         return res.status(400).json({success: false, error: err})
+      }
 
-        if (!news) {
-            return res
-                .status(404)
-                .json({ success: false, error: `News object not found` })
-        }
-        return res.status(200).json({ success: true, data: news })
-    }).catch(err => console.log(err))
+      if (!news) {
+         return res.status(404).json({success: false, error: `News object not found`})
+      }
+      return res.status(200).json({success: true, data: news})
+   }).catch((err) => console.log(err))
 }
 
-const getAllNews = async (req, res) => {
+/*const getAllNews = async (req, res) => {
     await NewsCollection.find({}, (err, news) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -60,7 +67,7 @@ const getAllNews = async (req, res) => {
         }
         return res.status(200).json({ success: true, data: news })
     }).catch(err => console.log(err))
-}
+}*/
 
 /*deleteNews = async (req, res) => {
     await NewsCollection.findOneAndDelete({ _id: req.params.id }, (err, news) => {
@@ -79,7 +86,6 @@ const getAllNews = async (req, res) => {
 }*/
 
 module.exports = {
-    uploadNews,
-    getNews,
-    getAllNews
+   uploadNews,
+   getNews,
 }
