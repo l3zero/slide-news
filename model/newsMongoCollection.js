@@ -3,8 +3,6 @@ const Schema = mongoose.Schema
 
 const NewsSchema = new Schema({
    newsId: String,
-   created: String,
-   expires: String,
    articles: [{title: String, url: String, imageUrl: String}]
 })
 

@@ -4,12 +4,8 @@ const moment = require('moment')
 export function updateMyNews(options) {
    options.id = hash(combiner(options))
    options.expires = moment(options.created)
-      .subtract(1, 'days')
-      .format('l')
-
-   /*moment(options.created)
       .add(options.myInterval[0].value, 'days')
-      .format('l')*/
+      .format('l')
 
    return options
 }
