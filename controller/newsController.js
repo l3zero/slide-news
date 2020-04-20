@@ -1,27 +1,37 @@
 const NewsCollection = require('../model/newsMongoCollection.js')
 
-const uploadNews = (req, res) => {
-    const body = req.body
+const uploadNews = (req, res, next) => {
+    //const articles = JSON.parse(req.body.articles)
+    //const body = req.body
+console.log(req.body)
 
-    if (!body) {
+    if (!req.body.newsId) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a news object',
+            error: 'You must provide a news object with an associated newsId',
         })
-    }
+    } else {
 
-    const newsObject = new NewsCollection(body)
+      NewsCollection.create(req.body).then(data => res.json(data)).then(() => {
+            return res.status(201).json({
+                success: true,
+                message: 'News object created!'
+            })
+        }).catch(next)
+  }
 
-    if (!newsObject) {
+    //const newsObject = new NewsCollection(body)
+
+    /*if (!newsObject) {
         return res.status(400).json({ success: false, error: err })
-    }
+    }*/
 
-    newsObject
+    /*newsObject
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: newsObject._id,
+                id: newsObject.newsId,
                 message: 'News object created!',
                 myNews: newsObject
             })
@@ -31,7 +41,7 @@ const uploadNews = (req, res) => {
                 error,
                 message: 'News object not created!',
             })
-        })
+        })*/
 }
 
 const getNews = async (req, res) => {

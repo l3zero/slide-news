@@ -13,9 +13,9 @@ export default function News() {
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
    const [isExpired, setIsExpired] = useState(null)
-
    const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState([])
+   const [dbObject, setDbObject] = useState(null)
 
    useEffect(() => {
       if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
@@ -32,36 +32,43 @@ export default function News() {
       if (isExpired) {
          // console.log('entering isExpired land')
          //Grab API responses once requests are loaded
-         let articles = []
+         let myArticles = []
          const promResponses = getResponses(myRequests)
          // console.log(promResponses)
          promResponses.map((source) =>
             source.then((promArray) =>
                promArray.map((p) =>
                   p.then((result) => {
-                     articles = result === undefined || result.url === undefined ? articles : articles.concat(result)
-                     setMyResponses(articles)
+                     myArticles =
+                        result === undefined || result.url === undefined ? myArticles : myArticles.concat(result)
+                     setMyResponses(myArticles)
+                     setDbObject({
+                        method: 'POST',
+                        headers: new Headers({
+                           Accept: 'application/json',
+                           'Content-Type': 'application/json'
+                        }),
+                        body: JSON.stringify({
+                           newsId: myNewsOptions.id,
+                           created: myNewsOptions.created,
+                           expires: myNewsOptions.expires,
+                           articles: myArticles
+                        })
+                     })
                   })
                )
             )
          )
-         //Send articles to DB here
-         fetch(
-            new Request('http://localhost:9000/mynews/upload', {
-               method: 'POST',
-               headers: new Headers({
-                  Accept: 'application/json'
-               }),
-               body: JSON.stringify({
-                  newsId: JSON.stringify(myRequests.id),
-                  created: JSON.stringify(myRequests.created),
-                  expires: JSON.stringify(myRequests.expires)
-                  // articles: myResponses
-               })
-            })
-         )
       }
    }, [isExpired])
+
+   useEffect(() => {
+      //Send articles to DB here
+      //Testing here to see how many objects are pushed
+      if (dbObject !== null && myResponses.length !== 0) {
+         fetch(new Request('http://localhost:9000/mynews/upload', dbObject))
+      }
+   }, [myResponses])
 
    let newsScreen = (
       /*myResponses.length === 0 ? (
