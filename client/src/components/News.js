@@ -5,17 +5,28 @@ import Footer from './static/Footer.js'
 import {createRequests} from '../data/reqFactory'
 import {expirationCheck} from '../helpers/expirationCheck'
 import {fetchArticles} from '../helpers/fetchNewArticles'
+import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
 // import '../styles/news.css'
+
+/*TODO Fix error for Patch request: 'Cast to ObjectId failed for value "{ newsId: \'asdf\' }" at path "_id" for model "newsdumps"',
+  name: 'CastError',
+  messageFormat: undefined,
+  stringValue: '"{ newsId: \'asdf\' }"',
+  kind: undefined,
+  value: { newsId: 'asdf' },
+  path: '_id',
+*/
 
 export default function News() {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
    const [myRequests, setMyRequests] = useState([])
-   const [myResponses, setMyResponses] = useState([])
+   const [myResponses, setMyResponses] = useState(null)
    const [isExpired, setIsExpired] = useState(null)
-   const [dbObject, setDbObject] = useState(null)
+   const [dbUpdateObj, setDbUpdateObj] = useState(null)
+   const [dbCreateObj, setDbCreateObj] = useState(null)
 
    useEffect(() => {
       if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
@@ -24,6 +35,9 @@ export default function News() {
       } else {
          setIsExpired(false)
       }
+      return () => {
+         setIsExpired(null)
+      }
    }, [])
 
    useEffect(() => {
@@ -31,26 +45,22 @@ export default function News() {
          const articles = fetchArticles(myRequests)
          articles.then((data) => {
             setMyResponses(data)
-            setDbObject({
-               method: 'POST',
-               headers: new Headers({
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json'
-               }),
-               body: JSON.stringify({
-                  newsId: myNewsOptions.id,
-                  articles: data
-               })
-            })
+            setDbUpdateObj(httpInits(data).UPDATE)
          })
       }
+      /*return () => {
+         setMyResponses(null)
+      }*/
    }, [isExpired])
 
    useEffect(() => {
-      if (dbObject !== null && myResponses.length !== 0) {
-         fetch(new Request('http://localhost:9000/mynews/upload', dbObject))
+      if (dbUpdateObj !== null && myResponses.length !== 0) {
+         fetch(new Request(`http://localhost:9000/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
       }
-   }, [dbObject])
+      return () => {
+         setDbUpdateObj(null)
+      }
+   }, [dbUpdateObj])
 
    const newsScreen =
       myResponses.length === 0 ? (
