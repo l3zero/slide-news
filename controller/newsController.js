@@ -40,7 +40,7 @@ const getNews = async (req, res) => {
 }
 
 const updateNews = async (req, res) => {
-   await NewsCollection.findByIdAndUpdate({newsId: req.params.newsId}, {articles: req.body.articles}, (err, news) => {
+   await NewsCollection.findOneAndUpdate({newsId: req.params.newsId}, {articles: req.body.articles}, (err, news) => {
       if (err) {
          return res.status(400).json({success: false, error: err})
       }

@@ -14,28 +14,34 @@ export function initMyNews() {
    const myNewsInit = {
       id: null,
       created: moment().format('l'),
+      timeCreated: moment().format('LTS'),
       expires: null
    }
    return myNewsInit
 }
 
 function combiner(obj) {
-   let topics = new Array(obj.myTopics)
+   const topics = new Array(obj.myTopics)
       .join('')
       .trim()
       .toLowerCase()
       .replace(',', '')
 
-   let sources = new Array(obj.mySources)
+   const sources = new Array(obj.mySources)
       .join('')
       .trim()
       .toLowerCase()
       .replace(',', '')
 
-   let interval = new Array(obj.myInterval)
+   const interval = new Array(obj.myInterval)
       .join('')
       .trim()
       .toLowerCase()
 
-   return topics + sources + interval
+   const time = options.timeCreated
+      .trim()
+      .toLowerCase()
+      .replace(':', '')
+
+   return topics + sources + interval + time
 }

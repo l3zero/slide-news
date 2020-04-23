@@ -9,37 +9,38 @@ import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
 // import '../styles/news.css'
 
-/*TODO Fix error for Patch request: 'Cast to ObjectId failed for value "{ newsId: \'asdf\' }" at path "_id" for model "newsdumps"',
-  name: 'CastError',
-  messageFormat: undefined,
-  stringValue: '"{ newsId: \'asdf\' }"',
-  kind: undefined,
-  value: { newsId: 'asdf' },
-  path: '_id',
-*/
-
-export default function News() {
+export default function News(props) {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
    const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState(null)
-   const [isExpired, setIsExpired] = useState(null)
+
+   const [isExpired, setIsExpired] = useState(false)
+   const [firstTime, setFirstTime] = useState(null)
    const [dbUpdateObj, setDbUpdateObj] = useState(null)
    const [dbCreateObj, setDbCreateObj] = useState(null)
+   const [dbReadObj, setDbReadObj] = useState(null)
 
+   //Initial checks for grabbing updated news
    useEffect(() => {
-      if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
-         setIsExpired(true)
+      if (props.firstTime) {
+         setFirstTime(true)
          setMyRequests(createRequests(myNewsOptions))
       } else {
-         setIsExpired(false)
+         if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
+            setIsExpired(true)
+            setMyRequests(createRequests(myNewsOptions))
+         }
       }
+
       return () => {
-         setIsExpired(null)
+         setIsExpired(false)
+         setFirstTime(null)
       }
    }, [])
 
+   //Checking for expired articles
    useEffect(() => {
       if (isExpired) {
          const articles = fetchArticles(myRequests)
@@ -53,6 +54,23 @@ export default function News() {
       }*/
    }, [isExpired])
 
+   //Checking for first time fetching
+   useEffect(() => {
+      if (firstTime) {
+         const articles = fetchArticles(myRequests)
+         articles.then((data) => {
+            setMyResponses(data)
+            setDbCreateObj(httpInits(data).CREATE)
+         })
+      } else if (!firstTime && !isExpired) {
+         setDbReadObj(httpInits().READ)
+      }
+      /*return () => {
+         setMyResponses(null)
+      }*/
+   }, [firstTime])
+
+   //Updating DB object
    useEffect(() => {
       if (dbUpdateObj !== null && myResponses.length !== 0) {
          fetch(new Request(`http://localhost:9000/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
@@ -62,8 +80,30 @@ export default function News() {
       }
    }, [dbUpdateObj])
 
+   //Creating DB object
+   useEffect(() => {
+      if (dbCreateObj !== null && myResponses.length !== 0) {
+         fetch(new Request(`http://localhost:9000/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
+      }
+      return () => {
+         setDbCreateObj(null)
+      }
+   }, [dbCreateObj])
+
+   //Fetching existing DB object & updating local state
+   useEffect(() => {
+      if (dbReadObj !== null) {
+         fetch(new Request(`http://localhost:9000/mynews/id/${myNewsOptions.id}`, dbReadObj)).then((data) => {
+            setMyResponses(data.articles) //@TO-DO Need to test this
+         })
+      }
+      return () => {
+         setDbReadObj(null)
+      }
+   }, [dbReadObj])
+
    const newsScreen =
-      myResponses.length === 0 ? (
+      myResponses === null || myResponses.length === 0 ? (
          <div id='loading-widget'>Loading...</div>
       ) : (
          <React.Fragment>
