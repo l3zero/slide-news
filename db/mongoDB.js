@@ -30,7 +30,7 @@ const db = mongoose.connection
 
 module.exports = db
 
-// export function closeDB(db) {
+//export function closeDB(db) {
 //    db.close(() => {
 //       console.log('Closing the database connection...')
 //    })
