@@ -5,12 +5,12 @@ import Footer from './static/Footer.js'
 import TopicsCheckbox from './static/TopicsCheckbox.js'
 import SourcesCheckbox from './static/SourcesCheckbox.js'
 import RefreshIntervals from './static/RefreshIntervals.js'
-import {updateMyNews} from '../data/myNewsOptions.js'
+import {updateMyNews, initMyNews} from '../data/myNewsOptions.js'
 import {lsTest} from '../helpers/storageCheck.js'
 // import '../styles/customize.css'
 
 export default function Customize(props) {
-   const [myOptions, setMyOptions] = useState({...props.initNews})
+   const [myOptions, setMyOptions] = useState(initMyNews())
 
    useEffect(() => {
       browserSet()
@@ -22,7 +22,7 @@ export default function Customize(props) {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
-         <Link to='/news' firstTime={true}>
+         <Link to='/news'>
             <button className='go'> GO </button>
          </Link>
          <Footer />
@@ -49,5 +49,9 @@ export default function Customize(props) {
             ? window.localStorage.setItem('myNewsOptions', JSON.stringify(myOptions))
             : alert("Please enable your web browser's local storage to use this app!")
       }
+
+      lsTest()
+         ? window.localStorage.setItem('firstTime', JSON.stringify(true))
+         : alert("Please enable your web browser's local storage to use this app!")
    }
 }

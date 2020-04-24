@@ -35,7 +35,7 @@ const getNews = async (req, res) => {
       if (!news) {
          return res.status(404).json({success: false, error: `News object not found`})
       }
-      return res.status(200).json({success: true, data: news})
+      return res.status(200).json({success: true, data: news.articles})
    }).catch((err) => console.log(err))
 }
 
