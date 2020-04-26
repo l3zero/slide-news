@@ -21,7 +21,7 @@ export function initMyNews() {
 }
 
 function combiner(obj) {
-   const topics = new Array(obj.myTopics)
+   /*const topics = new Array(obj.myTopics)
       .join('')
       .trim()
       .toLowerCase()
@@ -36,12 +36,17 @@ function combiner(obj) {
    const interval = new Array(obj.myInterval)
       .join('')
       .trim()
-      .toLowerCase()
+      .toLowerCase()*/
 
    const time = obj.timeCreated
       .trim()
       .toLowerCase()
       .replace(':', '')
 
-   return topics + sources + interval + time
+   const day = obj.created
+      .trim()
+      .toLowerCase()
+      .replace('/', '')
+
+   return day + time
 }
