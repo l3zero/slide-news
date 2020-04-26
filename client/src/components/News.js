@@ -17,62 +17,89 @@ export default function News(props) {
    const [myResponses, setMyResponses] = useState(null)
 
    const [isExpired, setIsExpired] = useState(false)
-   const [firstTime, setFirstTime] = useState(null)
+   const [firstTime, setFirstTime] = useState(JSON.parse(window.localStorage.getItem('firstTime')))
+
    const [dbUpdateObj, setDbUpdateObj] = useState(null)
    const [dbCreateObj, setDbCreateObj] = useState(null)
    const [dbReadObj, setDbReadObj] = useState(null)
 
    //Initial checks for grabbing updated news
    useEffect(() => {
-      if (props.firstTime) {
-         setFirstTime(true)
-         setMyRequests(createRequests(myNewsOptions))
+      const reqs = createRequests(myNewsOptions)
+      const articles = fetchArticles(reqs)
+      console.log(firstTime)
+      if (firstTime) {
+         console.log('1st time Fetching -> Setting state -> sending to DB -> setting 1st time to false')
+         // setFirstTime(true)
+         articles.then((data) => {
+            console.log('setting db create obj')
+            setMyResponses(data)
+            setDbCreateObj(httpInits(data).CREATE)
+         })
+         setMyRequests(reqs)
+         window.localStorage.setItem('firstTime', JSON.stringify(false))
       } else {
          if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
-            setIsExpired(true)
-            setMyRequests(createRequests(myNewsOptions))
+            console.log(
+               'Expired confirmed -> fetching -> setting state -> sending updated news to DB -> setting expired to false -> updating local and state with new expiration date'
+            )
+            articles.then((data) => {
+               console.log('setting db update obj')
+               setMyResponses(data)
+               setDbUpdateObj(httpInits(data).UPDATE)
+            })
+            setIsExpired(false)
+            setMyRequests(reqs)
+         } else {
+            console.log('not first time, not expired, setting db read obj')
+            setDbReadObj(httpInits().READ)
          }
       }
 
       return () => {
          setIsExpired(false)
          setFirstTime(null)
+         setMyResponses(null)
       }
    }, [])
 
    //Checking for expired articles
-   useEffect(() => {
-      if (isExpired) {
-         const articles = fetchArticles(myRequests)
-         articles.then((data) => {
-            setMyResponses(data)
-            setDbUpdateObj(httpInits(data).UPDATE)
-         })
-      }
-      /*return () => {
-         setMyResponses(null)
-      }*/
-   }, [isExpired])
+   // useEffect(() => {
+   //    if (isExpired && !firstTime) {
+   //       const articles = fetchArticles(myRequests)
+   //       articles.then((data) => {
+   //          setMyResponses(data)
+   //          console.log('setting db update obj')
+   //          setDbUpdateObj(httpInits(data).UPDATE)
+   //       })
+   //    }
+   //    return () => {
+   //       setMyResponses(null)
+   //    }
+   // }, [isExpired])
 
    //Checking for first time fetching
-   useEffect(() => {
-      if (firstTime) {
-         const articles = fetchArticles(myRequests)
-         articles.then((data) => {
-            setMyResponses(data)
-            setDbCreateObj(httpInits(data).CREATE)
-         })
-      } else if (!firstTime && !isExpired) {
-         setDbReadObj(httpInits().READ)
-      }
-      /*return () => {
-         setMyResponses(null)
-      }*/
-   }, [firstTime])
+   // useEffect(() => {
+   //    if (firstTime) {
+   //       const articles = fetchArticles(myRequests)
+   //       articles.then((data) => {
+   //          setMyResponses(data)
+   //          console.log('setting db create obj')
+   //          setDbCreateObj(httpInits(data).CREATE)
+   //       })
+   //    } else if (!firstTime && !isExpired) {
+   //       console.log('not first time, not expired, setting db read obj')
+   //       setDbReadObj(httpInits().READ)
+   //    }
+   //    return () => {
+   //       setMyResponses(null)
+   //    }
+   // }, [firstTime])
 
    //Updating DB object
    useEffect(() => {
-      if (dbUpdateObj !== null && myResponses.length !== 0) {
+      if (dbUpdateObj !== null && myResponses !== null) {
+         console.log('sending updated news to DB')
          fetch(new Request(`http://localhost:9000/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
       }
       return () => {
@@ -82,7 +109,8 @@ export default function News(props) {
 
    //Creating DB object
    useEffect(() => {
-      if (dbCreateObj !== null && myResponses.length !== 0) {
+      if (dbCreateObj !== null && myResponses !== null) {
+         console.log('sending new news to DB')
          fetch(new Request(`http://localhost:9000/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
       }
       return () => {
@@ -93,9 +121,12 @@ export default function News(props) {
    //Fetching existing DB object & updating local state
    useEffect(() => {
       if (dbReadObj !== null) {
-         fetch(new Request(`http://localhost:9000/mynews/id/${myNewsOptions.id}`, dbReadObj)).then((data) => {
-            setMyResponses(data.articles) //@TO-DO Need to test this
-         })
+         console.log('grabbing existing news from DB')
+         fetch(new Request(`http://localhost:9000/mynews/id/${myNewsOptions.id}`, dbReadObj))
+            .then((raw) => raw.json())
+            .then((json) => {
+               setMyResponses(json.data) //@TO-DO Need to test this
+            })
       }
       return () => {
          setDbReadObj(null)
@@ -103,7 +134,7 @@ export default function News(props) {
    }, [dbReadObj])
 
    const newsScreen =
-      myResponses === null || myResponses.length === 0 ? (
+      myResponses === null || myResponses === undefined ? (
          <div id='loading-widget'>Loading...</div>
       ) : (
          <React.Fragment>

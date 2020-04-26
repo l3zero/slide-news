@@ -5,16 +5,10 @@ import Footer from './static/Footer.js'
 import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
-import {initMyNews} from '../data/myNewsOptions.js'
 
 //@TO-DO make redirects carry a message about why it's being redirected
 
 class MainApp extends Component {
-   constructor(props) {
-      super(props)
-      this.state = {myNewsInit: initMyNews()}
-   }
-
    render() {
       return (
          <Router forceRefresh={true}>
@@ -22,16 +16,8 @@ class MainApp extends Component {
                <Route exact path='/'>
                   {localCheck() ? <Redirect exact from='/' to='/news' /> : <Home />}
                </Route>
-               <Route exact path='/customize'>
-                  {localCheck() ? (
-                     <Redirect exact from='/customize' to='/news' />
-                  ) : (
-                     <Customize initNews={this.state.myNewsInit} />
-                  )}
-               </Route>
-               <Route exact path='/news'>
-                  {localCheck() ? <News /> : <Redirect exact from='/news' to='/' />}
-               </Route>
+               <Route exact path='/customize' component={Customize} />
+               <Route exact path='/news' component={News} />
             </Switch>
          </Router>
       )

@@ -38,7 +38,7 @@ function combiner(obj) {
       .trim()
       .toLowerCase()
 
-   const time = options.timeCreated
+   const time = obj.timeCreated
       .trim()
       .toLowerCase()
       .replace(':', '')
