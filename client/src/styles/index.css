@@ -5,5 +5,7 @@ html {
   min-height: 100%; }
 
 body {
-  margin: 0;
-  background-color: white; }
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: stretch;
+  margin: 0; }

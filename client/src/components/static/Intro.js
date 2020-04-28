@@ -4,8 +4,8 @@ import '../../styles/intro.css'
 
 export default function Intro() {
    return (
-      <div>
-         <Link to='/customize'>Customize your news...</Link>
+      <div id='slide-hero'>
+         <Link to='/customize'>Let's Slide</Link>
       </div>
    )
 }

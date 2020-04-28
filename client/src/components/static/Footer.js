@@ -6,7 +6,7 @@ export default function Footer() {
       <footer>
          <div id='about-row'>
             <a className='footer-link'>About</a>
-            <a href='https://github.com/kRyM1337/slide-news' target='_blank' rel='noopener noreferer'>
+            <a href='https://github.com/kRyM1337/slide-news' rel='noopener noreferer'>
                Github
             </a>
             <a className='footer-link'>Contact</a>
