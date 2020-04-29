@@ -1,13 +1,14 @@
-@use 'colors';
+@use 'partials/colors' as colors;
+@use 'partials/fonts' as fonts;
+
 header {
-    background-color: colors.$base;
-    // h1 {
-    //   border: 1px solid green;
-    //   font-size: 100px;
-    //   a,
-    //   a:visited {
-    //     color: black;
-    //     text-decoration: none;
-    //   }
-    // }
+    h1 {
+      border: 1px solid green;
+      @include fonts.font-size(100px);
+      a,
+      a:visited {
+      color: colors.$light-blue;
+        text-decoration: none;
+      }
+    }
 }

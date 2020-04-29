@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "animejs": "^3.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "node-cache": "^5.1.0",
     "node-fetch": "^2.6.0",
-    "node-sass": "^4.14.0",
     "object-hash": "^2.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -27,7 +27,7 @@
     "postBuild": "mv build ./server/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scss": "node-sass -w src/scss -o src/styles"
+    "scss": "sass --watch src/scss:src/styles"
   },
   "browserslist": {
     "production": [
@@ -50,7 +50,8 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-security": "^1.4.0",
     "mongoose": "^5.9.10",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "sass": "^1.26.5"
   },
   "proxy": "http://localhost:9000"
 }

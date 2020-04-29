@@ -1,3 +1,12 @@
-@use 'colors';
-header {
-  background-color: base; }
+header h1 {
+  border: 1px solid green;
+  font-size: 100px;
+  font-size: 6.25rem;
+}
+header h1 a,
+header h1 a:visited {
+  color: #61a1c1;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=header.css.map */

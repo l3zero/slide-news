@@ -1,3 +1,5 @@
+@use 'partials/colors' as colors;
+
 * {
   box-sizing: border-box;
 }
@@ -7,6 +9,8 @@ html {
 }
 
 body {
+  background-color: colors.$dark-blue;
+  color: colors.$base;
   display: grid;
   grid-template-columns: 1fr;
   // grid-template-areas: "headicon . nav" "middle middle middle";
