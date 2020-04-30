@@ -6,7 +6,7 @@ export default function Footer() {
       <footer>
          <div id='about-row'>
             <a className='footer-link'>About</a>
-            <a href='https://github.com/kRyM1337/slide-news' target='_blank' rel='noopener noreferer'>
+            <a href='https://github.com/kRyM1337/slide-news' rel='noopener noreferer'>
                Github
             </a>
             <a className='footer-link'>Contact</a>
@@ -16,6 +16,16 @@ export default function Footer() {
             Powered by <div>Insert icons here</div>
          </div>
          <div id='version-row'>Version 1.0</div>
+         <div id='icons-attribution'>
+            Icons made by{' '}
+            <a href='https://www.flaticon.com/authors/freepik' title='Freepik'>
+               Freepik
+            </a>{' '}
+            from{' '}
+            <a href='https://www.flaticon.com/' title='Flaticon'>
+               www.flaticon.com
+            </a>
+         </div>
       </footer>
    )
 }

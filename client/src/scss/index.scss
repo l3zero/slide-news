@@ -1,6 +1,4 @@
-// Variables
-$primary-bg: white;
-// $primary-font:
+@use 'partials/colors' as colors;
 
 * {
   box-sizing: border-box;
@@ -11,6 +9,22 @@ html {
 }
 
 body {
+  background-color: colors.$dark-blue;
+  color: colors.$base;
   margin: 0;
-  background-color: $primary-bg;
+
+
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.6fr 0.2fr 0.2fr;
+  // grid-template-areas: "headicon . nav" "middle middle middle";
+  // grid-column-gap: 30px;
+  justify-items: center;
+  align-items: start;
+  // justify-content: center;
+  // align-content: center;
+  // grid-auto-rows: minmax(10px, auto);
 }

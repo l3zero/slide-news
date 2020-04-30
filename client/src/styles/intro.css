@@ -1,2 +1,16 @@
-div {
-  border: 1px solid purple; }
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
+#slide-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30px;
+  font-size: 1.875rem;
+  font-family: "Dancing Script", cursive;
+}
+#slide-hero a,
+#slide-hero a:visited {
+  color: #2485b5;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=intro.css.map */

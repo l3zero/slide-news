@@ -1,9 +1,23 @@
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 html {
-  min-height: 100%; }
+  min-height: 100%;
+}
 
 body {
+  background-color: #0b2736;
+  color: #2485b5;
   margin: 0;
-  background-color: white; }
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.6fr 0.2fr 0.2fr;
+  justify-items: center;
+  align-items: start;
+}
+
+/*# sourceMappingURL=index.css.map */
