@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "npm": ">=6.10.0",
-    "node": ">=10.13.0"
+    "node": ">=12.6.3"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",

@@ -16,6 +16,16 @@ export default function Footer() {
             Powered by <div>Insert icons here</div>
          </div>
          <div id='version-row'>Version 1.0</div>
+         <div id='icons-attribution'>
+            Icons made by{' '}
+            <a href='https://www.flaticon.com/authors/freepik' title='Freepik'>
+               Freepik
+            </a>{' '}
+            from{' '}
+            <a href='https://www.flaticon.com/' title='Flaticon'>
+               www.flaticon.com
+            </a>
+         </div>
       </footer>
    )
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap');
+
 @function calculateRem($size) {
     $remSize: $size / 16px;
     @return $remSize * 1rem;
@@ -8,19 +10,21 @@
     font-size: calculateRem($size);
 }
 
-//Provide your own font family into each mixin
-@mixin font-source($size: false, $colour: false, $weight: false, $lh: false) {
-    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    @if $size {
-        font-size: $size;
-    }
-    @if $colour {
-        color: $colour;
-    }
-    @if $weight {
-        font-weight: $weight;
-    }
-    @if $lh {
-        line-height: $lh;
-    }
+@mixin font-dancing() {
+    font-family: 'Dancing Script', cursive;
+}
+@mixin font-galada() {
+    font-family: 'Galada', cursive;
+}
+@mixin font-flower() {
+    font-family: 'Indie Flower', cursive;
+}
+@mixin font-acme() {
+    font-family: 'Acme', sans-serif;
+}
+@mixin font-satisfy() {
+    font-family: 'Satisfy', cursive;
+}
+@mixin font-marker() {
+    font-family: 'Permanent Marker', cursive;
 }

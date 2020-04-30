@@ -2,12 +2,42 @@
 @use 'partials/fonts' as fonts;
 
 header {
-    h1 {
-      border: 1px solid green;
-      @include fonts.font-size(100px);
+  // border: 1px solid green;
+
+    div {
+      @include fonts.font-size(150px);
+      letter-spacing: 5px;
+
+      #title-S {
+        @include fonts.font-size(200px);
+        @include fonts.font-dancing();
+      }
+      #title-l {
+        @include fonts.font-galada();
+      }
+      #title-i {
+        @include fonts.font-flower();
+      }
+      #title-d {
+        @include fonts.font-flower();
+      }
+      #title-e {
+        @include fonts.font-acme();
+      }
+      #title-N {
+        @include fonts.font-size(200px);
+        @include fonts.font-dancing();
+      }
+      #title-w {
+        @include fonts.font-satisfy();
+      }
+      #title-s {
+        @include fonts.font-marker();
+      }
+
       a,
       a:visited {
-      color: colors.$light-blue;
+        color: colors.$light-blue;
         text-decoration: none;
       }
     }
