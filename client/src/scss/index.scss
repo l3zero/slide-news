@@ -6,6 +6,7 @@
 
 html {
   min-height: 100%;
+
 }
 
 body {
@@ -13,18 +14,20 @@ body {
   color: colors.$base;
   margin: 0;
 
+  
 
 }
 
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.6fr 0.2fr 0.2fr;
-  // grid-template-areas: "headicon . nav" "middle middle middle";
-  // grid-column-gap: 30px;
+    // grid-auto-rows: minmax(10px, auto);
+  // grid-template-rows: 0.6fr 0.2fr 0.2fr;
+  // grid-template-areas: "head" "mid" "foot";
   justify-items: center;
   align-items: start;
+  // grid-column-gap: 30px;
   // justify-content: center;
-  // align-content: center;
-  // grid-auto-rows: minmax(10px, auto);
+  // align-content: end;
+  
 }

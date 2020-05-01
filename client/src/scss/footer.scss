@@ -1,3 +1,30 @@
+@use 'partials/colors' as colors;
+@use 'partials/fonts' as fonts;
+
 footer {
-  border: 1px solid yellow;
+  color: colors.$mid-blue;
+  align-self: end;
+  padding-top: 13%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+// border: 1px solid yellow;
+  @include fonts.font-size(15px);
+  @include fonts.font-marker();
+
+  a,
+  a:visited {
+    color: colors.$mid-blue;
+    text-decoration: none;
+  }
+  #about-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    a {
+      padding-right: 15px;
+    }
+  }
 }

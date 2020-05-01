@@ -7,7 +7,7 @@ import SourcesCheckbox from './static/SourcesCheckbox.js'
 import RefreshIntervals from './static/RefreshIntervals.js'
 import {updateMyNews, initMyNews} from '../data/myNewsOptions.js'
 import {lsTest} from '../helpers/storageCheck.js'
-// import '../styles/customize.css'
+import '../styles/customize.css'
 
 export default function Customize(props) {
    const [myOptions, setMyOptions] = useState(initMyNews())

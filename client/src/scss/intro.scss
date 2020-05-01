@@ -2,11 +2,14 @@
 @use 'partials/fonts' as fonts;
 
 #slide-hero {
+  padding-top: 30px;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
+  // align-content: center;
   // border: 1px solid purple;
-  @include fonts.font-size(30px);
+  @include fonts.font-size(50px);
   @include fonts.font-dancing();
   a,
       a:visited {
