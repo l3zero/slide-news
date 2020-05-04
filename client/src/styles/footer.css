@@ -1,5 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 footer {
-  border: 1px solid yellow;
+  color: #1a5f82;
+  align-self: end;
+  padding-top: 17%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  font-family: "Permanent Marker", cursive;
+}
+footer a,
+footer a:visited {
+  color: #1a5f82;
+  text-decoration: none;
+}
+footer #about-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+footer #about-row a {
+  padding-right: 15px;
 }
 
 /*# sourceMappingURL=footer.css.map */

@@ -1,18 +1,26 @@
 import React from 'react'
+import Checkbox from 'rc-checkbox'
 import {formData} from '../../data/formData.js'
+import '../../styles/checkbox.css'
 
 export default function SourcesCheckbox(props) {
    return (
-      <div className='checkbox'>
-         <h1>Choose your news sources</h1>
+      <div className='checkbox-container'>
+         <div>Choose your news sources</div>
          <form onSubmit={formHandler}>
             {formData.SOURCES.map((item) => (
                <label key={item.url}>
                   {item.name}
-                  <input type='checkbox' id={item.name.trim().toLowerCase()} name={item.name} value={item.name} />
+                  <Checkbox
+                     className='checkbox'
+                     id={item.name.trim().toLowerCase()}
+                     name={item}
+                     value={item}
+                     key={item}
+                  />
                </label>
             ))}
-            <input id='submitButton' type='submit' value='Submit' />
+            <input id='submit' type='submit' value='Submit' />
          </form>
       </div>
    )
