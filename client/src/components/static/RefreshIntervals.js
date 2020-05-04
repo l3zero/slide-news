@@ -19,7 +19,7 @@ export default function RefreshIntervals(props) {
                   />
                </label>
             ))}
-            <input id='submitButton' type='submit' value='Submit' />
+            <input id='submit' type='submit' value='Submit' />
          </form>
       </div>
    )

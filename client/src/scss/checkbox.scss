@@ -1,0 +1,37 @@
+@use 'partials/colors' as colors;
+@use 'partials/fonts' as fonts;
+
+.checkbox-container {
+    @include fonts.font-acme();
+
+    div {
+        @include fonts.font-size(90px);
+    }
+    form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        label {
+            display: block;
+            padding: 15px;
+            @include fonts.font-size(30px);
+            .checkbox {
+                padding-left: 10px;
+                margin: 0;
+                vertical-align: baseline;
+                top: -2px;
+            }
+        }
+        #submit {
+            margin-left: 30px;
+            border: 4px ridge colors.$light-blue;
+            border-radius: 15px;
+            background-color: colors.$mid-blue;
+            color: white;
+            @include fonts.font-size(20px);
+        }
+    }
+}

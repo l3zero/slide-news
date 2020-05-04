@@ -22,9 +22,9 @@ export default function Customize(props) {
          <TopicsCheckbox handler={setTopics} />
          <SourcesCheckbox handler={setSources} />
          <RefreshIntervals handler={setInterval} />
-         <Link to='/news'>
+         {/* <Link to='/news'>
             <button className='go'> GO </button>
-         </Link>
+         </Link> */}
          <Footer />
       </React.Fragment>
    )

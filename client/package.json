@@ -51,6 +51,8 @@
     "eslint-plugin-security": "^1.4.0",
     "mongoose": "^5.9.10",
     "prettier": "^1.19.1",
+    "rc-checkbox": "^2.2.0",
+    "react-radio-buttons": "^1.2.2",
     "sass": "^1.26.5"
   },
   "proxy": "http://localhost:9000"
