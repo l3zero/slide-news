@@ -1,3 +1,12 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
+#go {
+  margin-left: 30px;
+  border: 4px ridge #61a1c1;
+  border-radius: 15px;
+  background-color: #1a5f82;
+  color: white;
+  font-size: 20px;
+  font-size: 1.25rem;
+}
 
 /*# sourceMappingURL=customize.css.map */

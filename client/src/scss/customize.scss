@@ -1,0 +1,5 @@
+@use 'partials/submitButton' as sub;
+
+#go {
+    @include sub.submit();
+}

@@ -15,12 +15,12 @@ export default function SourcesCheckbox(props) {
                      className='checkbox'
                      id={item.name.trim().toLowerCase()}
                      name={item}
-                     value={item}
+                     value={item.name}
                      key={item}
                   />
                </label>
             ))}
-            <input id='submit' type='submit' value='Submit' />
+            <input className='submit' type='submit' value='Submit' />
          </form>
       </div>
    )
@@ -35,6 +35,6 @@ export default function SourcesCheckbox(props) {
          }
       })
       // eslint-disable-next-line react/prop-types
-      checkedArray.length === 0 ? alert('Please select some options!') : props.handler(checkedArray)
+      checkedArray.length === 0 ? alert('Please select a news source(s)!') : props.handler(checkedArray)
    }
 }
