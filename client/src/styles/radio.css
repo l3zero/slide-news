@@ -1,28 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
-.checkbox-container {
+.radio-container {
   font-family: "Acme", sans-serif;
-}
-.checkbox-container div {
   font-size: 90px;
   font-size: 5.625rem;
 }
-.checkbox-container form {
+.radio-container form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
-.checkbox-container form label {
+.radio-container form label {
   display: block;
   padding: 15px;
   font-size: 30px;
   font-size: 1.875rem;
 }
 
-.checkbox {
-  padding-left: 10px;
-  margin: 0;
+.radio-button {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
   vertical-align: baseline;
   top: -2px;
 }
@@ -37,4 +37,4 @@
   font-size: 1.25rem;
 }
 
-/*# sourceMappingURL=checkbox.css.map */
+/*# sourceMappingURL=radio.css.map */

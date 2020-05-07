@@ -1,0 +1,11 @@
+@use 'colors' as colors;
+@use 'fonts' as fonts;
+
+@mixin submit() {
+    margin-left: 30px;
+    border: 4px ridge colors.$light-blue;
+    border-radius: 15px;
+    background-color: colors.$mid-blue;
+    color: white;
+    @include fonts.font-size(20px);
+}

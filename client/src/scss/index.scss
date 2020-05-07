@@ -6,28 +6,25 @@
 
 html {
   min-height: 100%;
-
 }
 
 body {
   background-color: colors.$dark-blue;
   color: colors.$base;
   margin: 0;
-
-  
-
 }
 
 #root {
   display: grid;
   grid-template-columns: 1fr;
-    // grid-auto-rows: minmax(10px, auto);
-  grid-template-rows: 0.6fr 0.2fr 0.2fr;
+  // grid-auto-flow: row;
+  // grid-auto-rows: 100%;
+  // grid-auto-rows: minmax(10px, auto);
+  grid-template-rows: min-content 1fr min-content;
   // grid-template-areas: "head" "mid" "foot";
   justify-items: center;
   align-items: start;
   // grid-column-gap: 30px;
   // justify-content: center;
   // align-content: end;
-  
 }

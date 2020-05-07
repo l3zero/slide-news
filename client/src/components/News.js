@@ -9,6 +9,8 @@ import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
 // import '../styles/news.css'
 
+//@TO-DO Handle 404s from DB side
+
 export default function News(props) {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))

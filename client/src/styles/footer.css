@@ -17,12 +17,13 @@ footer a:visited {
   color: #1a5f82;
   text-decoration: none;
 }
-footer #about-row {
+
+#about-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-footer #about-row a {
+#about-row a {
   padding-right: 15px;
 }
 

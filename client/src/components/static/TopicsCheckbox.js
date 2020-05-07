@@ -6,7 +6,7 @@ import '../../styles/checkbox.css'
 
 export default function TopicsCheckbox(props) {
    return (
-      <div className='checkbox-container'>
+      <div className='checkbox-container' id='topics-container'>
          <div>Choose your topics</div>
          <form onSubmit={formHandler}>
             {formData.TOPICS.map((item) => (
@@ -15,7 +15,7 @@ export default function TopicsCheckbox(props) {
                   <Checkbox className='checkbox' id={item.trim().toLowerCase()} name={item} value={item} key={item} />
                </label>
             ))}
-            <input id='submit' type='submit' value='Submit' />
+            <input className='submit' type='submit' value='Submit' />
          </form>
       </div>
    )
@@ -30,6 +30,6 @@ export default function TopicsCheckbox(props) {
          }
       })
       // eslint-disable-next-line react/prop-types
-      checkedArray.length === 0 ? alert('Please select some options!') : props.handler(checkedArray)
+      checkedArray.length === 0 ? alert('Please select some topics!') : props.handler(checkedArray)
    }
 }

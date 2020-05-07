@@ -2,12 +2,10 @@
 @use 'partials/fonts' as fonts;
 @use 'partials/submitButton' as sub;
 
-.checkbox-container {
+.radio-container {
     @include fonts.font-acme();
+    @include fonts.font-size(90px);
 
-    div {
-        @include fonts.font-size(90px);
-    }
     form {
         display: flex;
         flex-direction: row;
@@ -22,9 +20,12 @@
         }
     }
 }
-.checkbox {
-    padding-left: 10px;
-    margin: 0;
+.radio-button {
+    cursor: pointer;
+    // padding-left: 10px;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
     vertical-align: baseline;
     top: -2px;
 }

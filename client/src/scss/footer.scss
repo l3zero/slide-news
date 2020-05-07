@@ -10,7 +10,6 @@ footer {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-// border: 1px solid yellow;
   @include fonts.font-size(15px);
   @include fonts.font-marker();
 
@@ -19,12 +18,12 @@ footer {
     color: colors.$mid-blue;
     text-decoration: none;
   }
-  #about-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    a {
-      padding-right: 15px;
-    }
+}
+#about-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  a {
+    padding-right: 15px;
   }
 }
