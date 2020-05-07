@@ -6,7 +6,7 @@ import '../../styles/checkbox.css'
 
 export default function TopicsCheckbox(props) {
    return (
-      <div className='checkbox-container'>
+      <div className='checkbox-container' id='topics-container'>
          <div>Choose your topics</div>
          <form onSubmit={formHandler}>
             {formData.TOPICS.map((item) => (

@@ -19,12 +19,20 @@ export default function Customize(props) {
    return (
       <React.Fragment>
          <Header />
-         <TopicsCheckbox handler={setTopics} />
-         <SourcesCheckbox handler={setSources} />
-         <RefreshIntervals handler={setInterval} />
-         <Link to='/news'>
-            <button id='go'> GO </button>
-         </Link>
+         <nav>
+            <a href='#topics-container'>Topics</a>
+            <a href='#sources-container'>Sources</a>
+            <a href='#interval-container'>Updates</a>
+            <a href='#go'>Go</a>
+         </nav>
+         <main>
+            <TopicsCheckbox handler={setTopics} />
+            <SourcesCheckbox handler={setSources} />
+            <RefreshIntervals handler={setInterval} />
+            <Link to='/news'>
+               <button id='go'> GO </button>
+            </Link>
+         </main>
          <Footer />
       </React.Fragment>
    )

@@ -5,7 +5,7 @@ import '../../styles/checkbox.css'
 
 export default function SourcesCheckbox(props) {
    return (
-      <div className='checkbox-container'>
+      <div className='checkbox-container' id='sources-container'>
          <div>Choose your news sources</div>
          <form onSubmit={formHandler}>
             {formData.SOURCES.map((item) => (

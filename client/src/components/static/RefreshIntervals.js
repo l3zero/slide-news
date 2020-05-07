@@ -4,7 +4,7 @@ import '../../styles/radio.css'
 
 export default function RefreshIntervals(props) {
    return (
-      <div className='radio-container'>
+      <div className='radio-container' id='interval-container'>
          <div>How often would you like new articles?</div>
          <form onSubmit={formHandler}>
             {formData.INTERVALS.map((item) => (
