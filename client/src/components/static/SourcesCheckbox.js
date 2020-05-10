@@ -17,10 +17,11 @@ export default function SourcesCheckbox(props) {
                      name={item}
                      value={item.name}
                      key={item}
+                     onClick={showSubmit}
                   />
                </label>
             ))}
-            <input className='submit' type='submit' value='Submit' />
+            <input className='submit' id='sources-submit' type='submit' value='➡️' />
          </form>
       </div>
    )
@@ -34,7 +35,18 @@ export default function SourcesCheckbox(props) {
             checkedArray.push(formData.SOURCES.find((source) => source.name === item.value))
          }
       })
-      // eslint-disable-next-line react/prop-types
-      checkedArray.length === 0 ? alert('Please select a news source(s)!') : props.handler(checkedArray)
+      if (checkedArray.length === 0) {
+         alert('Please select some news sources!')
+      } else {
+         const loc = document.location.toString().split('#')[0]
+         document.location = loc + '#' + 'interval-container'
+         props.handler(checkedArray)
+      }
+   }
+
+   function showSubmit(e) {
+      if (e.target.checked) {
+         document.getElementById('sources-submit').style.display = 'initial'
+      }
    }
 }

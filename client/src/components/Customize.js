@@ -19,12 +19,6 @@ export default function Customize(props) {
    return (
       <React.Fragment>
          <Header />
-         <nav>
-            <a href='#topics-container'>Topics</a>
-            <a href='#sources-container'>Sources</a>
-            <a href='#interval-container'>Updates</a>
-            <a href='#go'>Go</a>
-         </nav>
          <main>
             <TopicsCheckbox handler={setTopics} />
             <SourcesCheckbox handler={setSources} />

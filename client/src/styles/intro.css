@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 #slide-hero {
-  padding-top: 8%;
+  padding-top: 2%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

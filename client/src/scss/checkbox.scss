@@ -1,13 +1,11 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
-@use 'partials/submitButton' as sub;
+@use 'partials/submitButton' as buttons;
 
 .checkbox-container {
     @include fonts.font-acme();
+    @include fonts.font-size(70px);
 
-    div {
-        @include fonts.font-size(90px);
-    }
     form {
         display: flex;
         flex-direction: row;
@@ -17,17 +15,17 @@
 
         label {
             display: block;
-            padding: 15px;
-            @include fonts.font-size(30px);
+            padding: 10px;
+            @include fonts.font-size(25px);
+        }
+        .checkbox {
+            padding-left: 10px;
+            margin: 0;
+            vertical-align: baseline;
+            top: -2px;
+        }
+        .submit {
+            @include buttons.submit();
         }
     }
-}
-.checkbox {
-    padding-left: 10px;
-    margin: 0;
-    vertical-align: baseline;
-    top: -2px;
-}
-.submit {
-    @include sub.submit();
 }

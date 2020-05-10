@@ -2,10 +2,19 @@
 @use 'fonts' as fonts;
 
 @mixin submit() {
+    cursor: pointer;
+    display: none;
     margin-left: 30px;
+    border: 1px ridge colors.$dark-blue;
+    background-color: colors.$dark-blue;
+    @include fonts.font-size(20px);
+}
+
+@mixin go() {
+    // margin-left: 30px;
     border: 4px ridge colors.$light-blue;
     border-radius: 15px;
     background-color: colors.$mid-blue;
     color: white;
-    @include fonts.font-size(20px);
+    @include fonts.font-size(90px);
 }
