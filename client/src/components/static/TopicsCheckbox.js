@@ -12,10 +12,17 @@ export default function TopicsCheckbox(props) {
             {formData.TOPICS.map((item) => (
                <label key={item}>
                   {item}
-                  <Checkbox className='checkbox' id={item.trim().toLowerCase()} name={item} value={item} key={item} />
+                  <Checkbox
+                     className='checkbox'
+                     id={item.trim().toLowerCase()}
+                     name={item}
+                     value={item}
+                     key={item}
+                     onClick={showSubmit}
+                  />
                </label>
             ))}
-            <input className='submit' type='submit' value='Submit' />
+            <input className='submit' id='topics-submit' type='submit' value='➡️' />
          </form>
       </div>
    )
@@ -29,7 +36,18 @@ export default function TopicsCheckbox(props) {
             checkedArray.push(item.value)
          }
       })
-      // eslint-disable-next-line react/prop-types
-      checkedArray.length === 0 ? alert('Please select some topics!') : props.handler(checkedArray)
+      if (checkedArray.length === 0) {
+         alert('Please select some topics!')
+      } else {
+         const loc = document.location.toString().split('#')[0]
+         document.location = loc + '#' + 'sources-container'
+         props.handler(checkedArray)
+      }
+   }
+
+   function showSubmit(e) {
+      if (e.target.checked) {
+         document.getElementById('topics-submit').style.display = 'initial'
+      }
    }
 }

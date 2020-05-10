@@ -1,10 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 .checkbox-container {
   font-family: "Acme", sans-serif;
-}
-.checkbox-container div {
-  font-size: 90px;
-  font-size: 5.625rem;
+  font-size: 70px;
+  font-size: 4.375rem;
 }
 .checkbox-container form {
   display: flex;
@@ -15,24 +13,22 @@
 }
 .checkbox-container form label {
   display: block;
-  padding: 15px;
-  font-size: 30px;
-  font-size: 1.875rem;
+  padding: 10px;
+  font-size: 25px;
+  font-size: 1.5625rem;
 }
-
-.checkbox {
+.checkbox-container form .checkbox {
   padding-left: 10px;
   margin: 0;
   vertical-align: baseline;
   top: -2px;
 }
-
-.submit {
+.checkbox-container form .submit {
+  cursor: pointer;
+  display: none;
   margin-left: 30px;
-  border: 4px ridge #61a1c1;
-  border-radius: 15px;
-  background-color: #1a5f82;
-  color: white;
+  border: 1px ridge #0b2736;
+  background-color: #0b2736;
   font-size: 20px;
   font-size: 1.25rem;
 }

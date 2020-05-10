@@ -5,7 +5,7 @@ import '../../styles/radio.css'
 export default function RefreshIntervals(props) {
    return (
       <div className='radio-container' id='interval-container'>
-         <div>How often would you like new articles?</div>
+         <div>Choose your news interval</div>
          <form onSubmit={formHandler}>
             {formData.INTERVALS.map((item) => (
                <label key={item.name}>
@@ -17,19 +17,16 @@ export default function RefreshIntervals(props) {
                      key={item.name.trim().toLowerCase()}
                      name='intervals'
                      value={item.name}
-                     checked
+                     onClick={showSubmit}
                      readOnly
                   />
                </label>
             ))}
-            <input className='submit' type='submit' value='Submit' />
+            <input className='submit' id='interval-submit' type='submit' value='➡️' />
          </form>
       </div>
    )
-   function clicker(e) {
-      e.preventDefault()
-      console.log('clicker')
-   }
+
    function formHandler(e) {
       e.preventDefault()
       const eventArray = [...e.target]
@@ -39,7 +36,18 @@ export default function RefreshIntervals(props) {
             checkedArray.push(formData.INTERVALS.find((interval) => interval.name === item.value))
          }
       })
-      // eslint-disable-next-line react/prop-types
-      checkedArray.length === 0 ? alert('Please select an interval!') : props.handler(checkedArray)
+      if (checkedArray.length === 0) {
+         alert('Please select an interval!')
+      } else {
+         const loc = document.location.toString().split('#')[0]
+         document.location = loc + '#' + 'go'
+         props.handler(checkedArray)
+      }
+   }
+
+   function showSubmit(e) {
+      if (e.target.checked) {
+         document.getElementById('interval-submit').style.display = 'initial'
+      }
    }
 }
