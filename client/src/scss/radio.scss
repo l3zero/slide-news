@@ -5,16 +5,15 @@
 .radio-container {
     @include fonts.font-acme();
     @include fonts.font-size(70px);
-
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     form {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-
         label {
-            display: block;
+            display: span;
             padding: 10px;
             @include fonts.font-size(25px);
         }

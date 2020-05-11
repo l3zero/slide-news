@@ -9,12 +9,17 @@ main {
     align-items: center;
 
     overflow-x: hidden;
-    overscroll-behavior: smooth;
-    scroll-snap-type: x proximity;
+    overscroll-behavior: contain;
+    scroll-snap-type: x mandatory;
+
     div {
         scroll-snap-align: center;
     }
-    button {
+}
+
+a {
+    text-decoration: none;
+    #go {
         @include buttons.go();
     }
 }

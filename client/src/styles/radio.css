@@ -3,16 +3,15 @@
   font-family: "Acme", sans-serif;
   font-size: 70px;
   font-size: 4.375rem;
-}
-.radio-container form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .radio-container form label {
-  display: block;
+  display: span;
   padding: 10px;
   font-size: 25px;
   font-size: 1.5625rem;

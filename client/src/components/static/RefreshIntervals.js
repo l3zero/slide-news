@@ -5,7 +5,7 @@ import '../../styles/radio.css'
 export default function RefreshIntervals(props) {
    return (
       <div className='radio-container' id='interval-container'>
-         <div>Choose your news interval</div>
+         <div>Choose your update interval</div>
          <form onSubmit={formHandler}>
             {formData.INTERVALS.map((item) => (
                <label key={item.name}>
@@ -39,9 +39,8 @@ export default function RefreshIntervals(props) {
       if (checkedArray.length === 0) {
          alert('Please select an interval!')
       } else {
-         const loc = document.location.toString().split('#')[0]
-         document.location = loc + '#' + 'go'
          props.handler(checkedArray)
+         document.getElementById('go').style.display = 'initial'
       }
    }
 

@@ -7,19 +7,25 @@ main {
   justify-items: center;
   align-items: center;
   overflow-x: hidden;
-  overscroll-behavior: smooth;
-  scroll-snap-type: x proximity;
+  overscroll-behavior: contain;
+  scroll-snap-type: x mandatory;
 }
 main div {
   scroll-snap-align: center;
 }
-main button {
+
+a {
+  text-decoration: none;
+}
+a #go {
+  display: none;
+  letter-spacing: 1px;
   border: 4px ridge #61a1c1;
   border-radius: 15px;
   background-color: #1a5f82;
   color: white;
-  font-size: 90px;
-  font-size: 5.625rem;
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 /*# sourceMappingURL=customize.css.map */

@@ -20,13 +20,11 @@ body {
   // grid-auto-flow: row;
   // grid-auto-rows: 100%;
   // grid-auto-rows: minmax(10px, auto);
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  // grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content 1fr min-content;
   // grid-template-areas: "head" "mid" "foot";
   justify-items: center;
-  align-items: start;
+  align-items: center;
   // grid-column-gap: 30px;
   // justify-content: center;
-  // align-content: end;
+  // align-content: center;
 }
