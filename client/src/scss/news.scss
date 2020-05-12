@@ -1,0 +1,5 @@
+@use 'partials/scroll' as scroll;
+
+main {
+    @include scroll.scroller(x, hidden);
+}

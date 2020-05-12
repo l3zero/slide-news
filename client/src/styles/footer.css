@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 footer {
-  color: #1a5f82;
-  align-self: end;
-  padding-top: 10%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  align-self: end;
+  color: #1a5f82;
   font-size: 15px;
   font-size: 0.9375rem;
   font-family: "Permanent Marker", cursive;

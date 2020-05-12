@@ -2,14 +2,13 @@
 @use 'partials/fonts' as fonts;
 
 footer {
-  color: colors.$mid-blue;
-  align-self: end;
-  padding-top: 10%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  align-self: end;
+  color: colors.$mid-blue;
   @include fonts.font-size(15px);
   @include fonts.font-marker();
 

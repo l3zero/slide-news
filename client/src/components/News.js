@@ -7,9 +7,13 @@ import {expirationCheck} from '../helpers/expirationCheck'
 import {fetchArticles} from '../helpers/fetchNewArticles'
 import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
-// import '../styles/news.css'
+import '../styles/news.css'
 
 //@TO-DO Handle 404s from DB side
+//@TO-DO Update options obj with new expiration date
+//@TO-DO Update localhost:9000 with dynamic version - can't go live without this
+//@TO-DO Add -moz versions to css for /customize
+//@TO-DO Add route checking to /customize - CANNOT GO HERE IF ID already exists, should only go to /news
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -65,39 +69,6 @@ export default function News(props) {
       }
    }, [])
 
-   //Checking for expired articles
-   // useEffect(() => {
-   //    if (isExpired && !firstTime) {
-   //       const articles = fetchArticles(myRequests)
-   //       articles.then((data) => {
-   //          setMyResponses(data)
-   //          console.log('setting db update obj')
-   //          setDbUpdateObj(httpInits(data).UPDATE)
-   //       })
-   //    }
-   //    return () => {
-   //       setMyResponses(null)
-   //    }
-   // }, [isExpired])
-
-   //Checking for first time fetching
-   // useEffect(() => {
-   //    if (firstTime) {
-   //       const articles = fetchArticles(myRequests)
-   //       articles.then((data) => {
-   //          setMyResponses(data)
-   //          console.log('setting db create obj')
-   //          setDbCreateObj(httpInits(data).CREATE)
-   //       })
-   //    } else if (!firstTime && !isExpired) {
-   //       console.log('not first time, not expired, setting db read obj')
-   //       setDbReadObj(httpInits().READ)
-   //    }
-   //    return () => {
-   //       setMyResponses(null)
-   //    }
-   // }, [firstTime])
-
    //Updating DB object
    useEffect(() => {
       if (dbUpdateObj !== null && myResponses !== null) {
@@ -127,7 +98,7 @@ export default function News(props) {
          fetch(new Request(`http://localhost:9000/mynews/id/${myNewsOptions.id}`, dbReadObj))
             .then((raw) => raw.json())
             .then((json) => {
-               setMyResponses(json.data) //@TO-DO Need to test this
+               setMyResponses(json.data)
             })
       }
       return () => {
@@ -141,7 +112,9 @@ export default function News(props) {
       ) : (
          <React.Fragment>
             <Header />
-            <div>Check console for now</div>
+            <main>
+               <div className='article-container'>{myResponses.map((article) => article.url)}</div>
+            </main>
             <Footer />
          </React.Fragment>
       )

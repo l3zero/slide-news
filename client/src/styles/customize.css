@@ -7,8 +7,8 @@ main {
   justify-items: center;
   align-items: center;
   overflow-x: hidden;
-  overscroll-behavior: contain;
   scroll-snap-type: x mandatory;
+  overscroll-behavior: contain;
 }
 main div {
   scroll-snap-align: center;
