@@ -1,5 +1,7 @@
-@use 'partials/scroll' as scroll;
+@use 'partials/scroll' as scrl;
 
 main {
-    @include scroll.scroller(x, hidden);
+    width: 100%;
+    height: 100%;
+    @include scrl.scroller(x, hidden);
 }

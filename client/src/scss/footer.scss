@@ -11,6 +11,7 @@ footer {
   color: colors.$mid-blue;
   @include fonts.font-size(15px);
   @include fonts.font-marker();
+  padding-bottom: 10px;
 
   a,
   a:visited {

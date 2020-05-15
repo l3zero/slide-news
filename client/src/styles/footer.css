@@ -10,6 +10,7 @@ footer {
   font-size: 15px;
   font-size: 0.9375rem;
   font-family: "Permanent Marker", cursive;
+  padding-bottom: 10px;
 }
 footer a,
 footer a:visited {

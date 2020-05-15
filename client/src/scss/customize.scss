@@ -1,8 +1,8 @@
 @use 'partials/submitButton' as buttons;
-@use 'partials/scroll' as scroll;
+@use 'partials/scroll' as scrl;
 
 main {
-    @include scroll.scroller(x, hidden);
+    @include scrl.scroller(x, scroll);
 }
 
 a {

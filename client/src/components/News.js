@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
+import Article from './static/Article.js'
 import {createRequests} from '../data/reqFactory'
 import {expirationCheck} from '../helpers/expirationCheck'
 import {fetchArticles} from '../helpers/fetchNewArticles'
@@ -113,7 +114,9 @@ export default function News(props) {
          <React.Fragment>
             <Header />
             <main>
-               <div className='article-container'>{myResponses.map((article) => article.url)}</div>
+               {myResponses.map((article) => (
+                  <Article title={article.title} url={article.url} image={article.imageUrl} />
+               ))}
             </main>
             <Footer />
          </React.Fragment>
