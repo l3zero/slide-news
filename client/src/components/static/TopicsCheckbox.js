@@ -40,7 +40,7 @@ export default function TopicsCheckbox(props) {
          alert('Please select some topics!')
       } else {
          const loc = document.location.toString().split('#')[0]
-         document.location = loc + '#' + 'sources-container'
+         document.location = `${loc}#sources-container`
          props.handler(checkedArray)
       }
    }

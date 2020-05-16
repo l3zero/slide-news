@@ -39,7 +39,7 @@ export default function SourcesCheckbox(props) {
          alert('Please select some news sources!')
       } else {
          const loc = document.location.toString().split('#')[0]
-         document.location = loc + '#' + 'interval-container'
+         document.location = `${loc}#interval-container`
          props.handler(checkedArray)
       }
    }

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
-main {
+#customize-scroller {
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -7,19 +7,26 @@ main {
   justify-items: center;
   align-items: center;
   overflow-x: hidden;
-  overscroll-behavior: smooth;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior: contain;
 }
-main div {
+#customize-scroller div {
   scroll-snap-align: center;
 }
-main button {
+
+a {
+  text-decoration: none;
+}
+a #go {
+  display: none;
+  letter-spacing: 1px;
   border: 4px ridge #61a1c1;
   border-radius: 15px;
   background-color: #1a5f82;
   color: white;
-  font-size: 90px;
-  font-size: 5.625rem;
+  font-size: 25px;
+  font-size: 1.5625rem;
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=customize.css.map */
