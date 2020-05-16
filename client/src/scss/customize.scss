@@ -1,13 +1,14 @@
 @use 'partials/submitButton' as buttons;
 @use 'partials/scroll' as scrl;
 
-main {
-    @include scrl.scroller(x, scroll);
+#customize-scroller {
+    @include scrl.scroller(x, hidden);
 }
 
 a {
     text-decoration: none;
     #go {
         @include buttons.go();
+        margin-bottom: 30px;
     }
 }

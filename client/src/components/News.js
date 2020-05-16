@@ -107,15 +107,26 @@ export default function News(props) {
       }
    }, [dbReadObj])
 
+   //Setting timer for auto-scroll
+   useEffect(() => {
+      // const interval = setInterval
+   })
+
    const newsScreen =
       myResponses === null || myResponses === undefined ? (
          <div id='loading-widget'>Loading...</div>
       ) : (
          <React.Fragment>
             <Header />
-            <main>
+            <main id='news-scroller'>
                {myResponses.map((article) => (
-                  <Article title={article.title} url={article.url} image={article.imageUrl} />
+                  <Article
+                     title={article.title}
+                     url={article.url}
+                     image={article.imageUrl}
+                     key={urlToId(article.url)}
+                     id={urlToId(article.url)}
+                  />
                ))}
             </main>
             <Footer />
@@ -123,4 +134,17 @@ export default function News(props) {
       )
 
    return newsScreen
+
+   function urlToId(eyedee) {
+      const reg = /[\:\/\.\-]/gim
+      return eyedee
+         .trim()
+         .toLowerCase()
+         .replace(reg, '')
+   }
+
+   function scrollToNextArticle() {
+      const loc = document.location.toString().split('#')[0]
+      document.location = `${loc}#sources-container`
+   }
 }

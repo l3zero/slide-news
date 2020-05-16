@@ -19,7 +19,7 @@ export default function Customize(props) {
    return (
       <React.Fragment>
          <Header />
-         <main>
+         <main id='customize-scroller'>
             <TopicsCheckbox handler={setTopics} />
             <SourcesCheckbox handler={setSources} />
             <RefreshIntervals handler={setInterval} />
