@@ -16,6 +16,7 @@ import '../styles/news.css'
 //@TO-DO Update localhost:9000 with dynamic version - can't go live without this
 //@TO-DO Add -moz versions to css for /customize
 //@TO-DO Add route checking to /customize - CANNOT GO HERE IF ID already exists, should only go to /news
+//@TO-DO Figure out why HackerNews is not working with fetchArticles...articles are being loaded way after the return occurs.
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -31,14 +32,16 @@ export default function News(props) {
    const [dbCreateObj, setDbCreateObj] = useState(null)
    const [dbReadObj, setDbReadObj] = useState(null)
 
+   // const [numArticles, setNumArticles] = useState(0)
+   let intervalCounter = 0
+
    //Initial checks for grabbing updated news
    useEffect(() => {
       const reqs = createRequests(myNewsOptions)
-      const articles = fetchArticles(reqs)
-      console.log(firstTime)
       if (firstTime) {
          console.log('1st time Fetching -> Setting state -> sending to DB -> setting 1st time to false')
          // setFirstTime(true)
+         const articles = fetchArticles(reqs)
          articles.then((data) => {
             console.log('setting db create obj')
             setMyResponses(data)
@@ -51,6 +54,7 @@ export default function News(props) {
             console.log(
                'Expired confirmed -> fetching -> setting state -> sending updated news to DB -> setting expired to false -> updating local and state with new expiration date'
             )
+            const articles = fetchArticles(reqs)
             articles.then((data) => {
                console.log('setting db update obj')
                setMyResponses(data)
@@ -110,11 +114,12 @@ export default function News(props) {
 
    //Setting timer for auto-scroll
    useEffect(() => {
-      // const interval = setInterval
-   })
+      const interval = setInterval(scrollToNextArticle, 3000)
+      return () => clearInterval(interval)
+   }, [])
 
    const newsScreen =
-      myResponses === null || myResponses === undefined ? (
+      myResponses === null || myResponses === undefined || myResponses.length === 0 ? (
          <div id='loading-widget'>Loading...</div>
       ) : (
          <React.Fragment>
@@ -137,7 +142,15 @@ export default function News(props) {
    return newsScreen
 
    function scrollToNextArticle() {
+      const matches = document.querySelectorAll('div.article-container')
+      // let temp = intervalCounter
+      // setNumArticles(matches.length)
       const loc = document.location.toString().split('#')[0]
-      document.location = `${loc}#sources-container`
+      document.location = `${loc}#${matches[intervalCounter].id}`
+      if (intervalCounter < matches.length - 1) {
+         intervalCounter++
+      } else {
+         intervalCounter = 0
+      }
    }
 }

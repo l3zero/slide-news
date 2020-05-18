@@ -13,9 +13,9 @@ export const hackReqs = (options) => {
          newStoriesUrl: `${apiUrl}/newstories.json`,
          init: {
             method: 'GET',
-            headers: new Headers({
+            headers: {
                Accept: 'application/json'
-            }),
+            },
             mode: 'cors'
          }
       }

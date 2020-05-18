@@ -11,9 +11,9 @@ export const devReqs = (options) => {
          query: `${apiUrl}?tag=${topic}&top=${options.myInterval[0].value}&per_page=${numArticles}`,
          init: {
             method: 'GET',
-            headers: new Headers({
+            headers: {
                Accept: 'application/json'
-            }),
+            },
             mode: 'cors'
          }
       })
