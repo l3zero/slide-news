@@ -6,6 +6,7 @@ import Article from './static/Article.js'
 import {createRequests} from '../data/reqFactory'
 import {expirationCheck} from '../helpers/expirationCheck'
 import {fetchArticles} from '../helpers/fetchNewArticles'
+import {urlToId} from '../helpers/urlConverter'
 import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
 import '../styles/news.css'
@@ -134,14 +135,6 @@ export default function News(props) {
       )
 
    return newsScreen
-
-   function urlToId(eyedee) {
-      const reg = /[\:\/\.\-]/gim
-      return eyedee
-         .trim()
-         .toLowerCase()
-         .replace(reg, '')
-   }
 
    function scrollToNextArticle() {
       const loc = document.location.toString().split('#')[0]

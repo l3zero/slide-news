@@ -8,7 +8,12 @@ export function fetchArticles(requests) {
       source.then((promArray) =>
          promArray.map((p) =>
             p.then((result) => {
-               myArticles = result === undefined ? myArticles : myArticles.concat(result)
+               const duplicate = myArticles.find((item) => item.url === result.url)
+               if (!duplicate) {
+                  myArticles = myArticles.concat(result)
+               }
+
+               // myArticles = result === undefined ? myArticles : myArticles.concat(result)
                return myArticles
             })
          )

@@ -16,7 +16,7 @@ export function getDevResponses(devReq) {
 
          return sanitizedResponses
       } catch (error) {
-         console.log(error)
+         console.error(error)
       }
    })()
    return results

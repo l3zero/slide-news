@@ -33,7 +33,7 @@ export function getHackResponses(hackerReq) {
 
          return [topStoryResponses, newStoryResponses]
       } catch (error) {
-         console.log(error)
+         console.error(error)
       }
    })()
    return results
