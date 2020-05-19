@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 .radio-container {
   font-family: "Acme", sans-serif;
-  font-size: 70px;
-  font-size: 4.375rem;
+  font-size: 50px;
+  font-size: 3.125rem;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -13,8 +13,8 @@
 .radio-container form label {
   display: span;
   padding: 10px;
-  font-size: 25px;
-  font-size: 1.5625rem;
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 .radio-container form .radio-button {
   cursor: pointer;

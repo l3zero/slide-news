@@ -33,7 +33,7 @@ export function getHackResponses(hackerReq) {
 
          return [topStoryResponses, newStoryResponses]
       } catch (error) {
-         console.log(error)
+         console.error(error)
       }
    })()
    return results
@@ -46,9 +46,9 @@ function hackerNewsWorker(itemId, reqTopics) {
    const prom = fetch(
       new Request(`${hackerItemUrl}/${itemId}.json`, {
          method: 'GET',
-         headers: new Headers({
+         headers: {
             Accept: 'application/json'
-         }),
+         },
          mode: 'cors'
       })
    )

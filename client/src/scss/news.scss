@@ -3,5 +3,5 @@
 #news-scroller {
     width: 100%;
     height: 100%;
-    @include scrl.scroller(x, scroll);
+    @include scrl.scroller(x, hidden);
 }

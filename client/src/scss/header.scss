@@ -2,10 +2,9 @@
 @use 'partials/fonts' as fonts;
 
 header {
-  // border: 1px solid green;
-
   div {
-    @include fonts.font-size(150px);
+    // position: relative;
+    @include fonts.font-size(130px);
     letter-spacing: 5px;
 
     a,
@@ -14,8 +13,9 @@ header {
       text-decoration: none;
     }
   }
+
   #title-S {
-    @include fonts.font-size(200px);
+    @include fonts.font-size(150px);
     @include fonts.font-dancing();
   }
   #title-l {
@@ -31,7 +31,7 @@ header {
     @include fonts.font-acme();
   }
   #title-N {
-    @include fonts.font-size(200px);
+    @include fonts.font-size(150px);
     @include fonts.font-dancing();
   }
   #title-w {

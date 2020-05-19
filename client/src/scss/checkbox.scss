@@ -4,7 +4,7 @@
 
 .checkbox-container {
     @include fonts.font-acme();
-    @include fonts.font-size(70px);
+    @include fonts.font-size(50px);
 
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
         label {
             display: span;
             padding: 10px;
-            @include fonts.font-size(25px);
+            @include fonts.font-size(20px);
         }
         .checkbox {
             padding-left: 10px;

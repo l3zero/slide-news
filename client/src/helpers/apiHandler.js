@@ -13,7 +13,6 @@ export function getResponses(requests) {
       let currentResponses = responseDecider(currentId)(requests[index])
       resArray = resArray.concat(currentResponses)
    }
-
    return resArray
 }
 

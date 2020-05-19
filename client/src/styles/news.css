@@ -7,7 +7,7 @@
   grid-auto-columns: 100%;
   justify-items: center;
   align-items: center;
-  overflow-x: scroll;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   overscroll-behavior: contain;
 }

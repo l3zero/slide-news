@@ -13,5 +13,11 @@
   color: #2485b5;
   text-decoration: none;
 }
+#slide-hero img {
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
 
 /*# sourceMappingURL=intro.css.map */
