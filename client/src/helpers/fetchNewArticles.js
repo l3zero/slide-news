@@ -15,14 +15,14 @@ export function fetchArticles(requests) {
                   } else {
                      myArticles = myArticles
                   }
-                  return myArticles
                }
+               return myArticles
                // myArticles = result === undefined ? myArticles : myArticles.concat(result)
             })
          )
       )
    )
-
+   // return resolved
    return Promise.all(resolved).then(() => {
       return myArticles
    })

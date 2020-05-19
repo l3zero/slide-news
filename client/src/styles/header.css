@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 header div {
-  font-size: 150px;
-  font-size: 9.375rem;
+  font-size: 130px;
+  font-size: 8.125rem;
   letter-spacing: 5px;
 }
 header div a,
@@ -10,8 +10,8 @@ header div a:visited {
   text-decoration: none;
 }
 header #title-S {
-  font-size: 200px;
-  font-size: 12.5rem;
+  font-size: 150px;
+  font-size: 9.375rem;
   font-family: "Dancing Script", cursive;
 }
 header #title-l {
@@ -27,8 +27,8 @@ header #title-e {
   font-family: "Acme", sans-serif;
 }
 header #title-N {
-  font-size: 200px;
-  font-size: 12.5rem;
+  font-size: 150px;
+  font-size: 9.375rem;
   font-family: "Dancing Script", cursive;
 }
 header #title-w {

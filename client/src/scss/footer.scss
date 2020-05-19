@@ -12,6 +12,7 @@ footer {
   @include fonts.font-size(15px);
   @include fonts.font-marker();
   padding-bottom: 10px;
+  letter-spacing: 1px;
 
   a,
   a:visited {
@@ -25,5 +26,23 @@ footer {
   flex-wrap: nowrap;
   a {
     padding-right: 15px;
+  }
+}
+
+#powered-by {
+  // position: absolute;
+  // top: 75%;
+  // left: 40%;
+  // right: 0;
+  // bottom: 0;
+  // z-index: 10;
+  // transform: rotate(-5deg);
+  // @include fonts.font-size(13px);
+  // letter-spacing: 2px;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    vertical-align: middle;
   }
 }

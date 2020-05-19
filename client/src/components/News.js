@@ -22,7 +22,7 @@ export default function News(props) {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))
    })
-   const [myRequests, setMyRequests] = useState([])
+   // const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState(null)
 
    const [isExpired, setIsExpired] = useState(false)
@@ -32,8 +32,7 @@ export default function News(props) {
    const [dbCreateObj, setDbCreateObj] = useState(null)
    const [dbReadObj, setDbReadObj] = useState(null)
 
-   // const [numArticles, setNumArticles] = useState(0)
-   let intervalCounter = 0
+   let intervalCounter = 1
 
    //Initial checks for grabbing updated news
    useEffect(() => {
@@ -47,7 +46,7 @@ export default function News(props) {
             setMyResponses(data)
             setDbCreateObj(httpInits(data).CREATE)
          })
-         setMyRequests(reqs)
+         // setMyRequests(reqs)
          window.localStorage.setItem('firstTime', JSON.stringify(false))
       } else {
          if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
@@ -61,7 +60,7 @@ export default function News(props) {
                setDbUpdateObj(httpInits(data).UPDATE)
             })
             setIsExpired(false)
-            setMyRequests(reqs)
+            // setMyRequests(reqs)
          } else {
             console.log('not first time, not expired, setting db read obj')
             setDbReadObj(httpInits().READ)
@@ -88,7 +87,7 @@ export default function News(props) {
 
    //Creating DB object
    useEffect(() => {
-      if (dbCreateObj !== null && myResponses !== null) {
+      if (dbCreateObj !== null && myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
          console.log('sending new news to DB')
          fetch(new Request(`http://localhost:9000/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
       }
@@ -114,7 +113,10 @@ export default function News(props) {
 
    //Setting timer for auto-scroll
    useEffect(() => {
-      const interval = setInterval(scrollToNextArticle, 3000)
+      // const interval = 123
+      // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
+      const interval = setInterval(scrollToNextArticle, 4000)
+      // }
       return () => clearInterval(interval)
    }, [])
 
@@ -143,8 +145,6 @@ export default function News(props) {
 
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
-      // let temp = intervalCounter
-      // setNumArticles(matches.length)
       const loc = document.location.toString().split('#')[0]
       document.location = `${loc}#${matches[intervalCounter].id}`
       if (intervalCounter < matches.length - 1) {
