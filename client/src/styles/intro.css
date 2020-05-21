@@ -4,8 +4,9 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  font-size: 50px;
-  font-size: 3.125rem;
+  align-self: center;
+  font-size: 70px;
+  font-size: 4.375rem;
   font-family: "Dancing Script", cursive;
 }
 #slide-hero a,

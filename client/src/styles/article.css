@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 .article-container {
   display: flex;
   flex-direction: column;
@@ -6,11 +7,17 @@
   align-items: center;
   align-content: center;
   width: 100%;
+  font-family: "Acme", sans-serif;
+  font-size: 25px;
+  font-size: 1.5625rem;
 }
-.article-container img {
-  width: 100%;
-  height: 40vh;
+.article-container a img {
   border-radius: 15px;
+  width: 50vw;
+  height: 40vh;
+}
+.article-container div {
+  padding-bottom: 7px;
 }
 
 /*# sourceMappingURL=article.css.map */

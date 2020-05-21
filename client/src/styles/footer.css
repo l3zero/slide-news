@@ -6,7 +6,7 @@ footer {
   justify-content: center;
   align-items: center;
   align-self: end;
-  color: #1a5f82;
+  color: #0b2736;
   font-size: 15px;
   font-size: 0.9375rem;
   font-family: "Permanent Marker", cursive;
@@ -15,7 +15,7 @@ footer {
 }
 footer a,
 footer a:visited {
-  color: #1a5f82;
+  color: #0b2736;
   text-decoration: none;
 }
 

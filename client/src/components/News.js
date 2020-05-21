@@ -16,7 +16,6 @@ import '../styles/news.css'
 //@TO-DO Update localhost:9000 with dynamic version - can't go live without this
 //@TO-DO Add -moz versions to css for /customize
 //@TO-DO Add route checking to /customize - CANNOT GO HERE IF ID already exists, should only go to /news
-//@TO-DO Figure out why HackerNews is not working with fetchArticles...articles are being loaded way after the return occurs.
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -115,7 +114,7 @@ export default function News(props) {
    useEffect(() => {
       // const interval = 123
       // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-      const interval = setInterval(scrollToNextArticle, 4000)
+      const interval = setInterval(scrollToNextArticle, 5000)
       // }
       return () => clearInterval(interval)
    }, [])
@@ -146,11 +145,16 @@ export default function News(props) {
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
-      document.location = `${loc}#${matches[intervalCounter].id}`
-      if (intervalCounter < matches.length - 1) {
-         intervalCounter++
+      if (matches !== undefined) {
+         document.location = `${loc}#${matches[intervalCounter].id}`
+         if (intervalCounter < matches.length - 1) {
+            intervalCounter++
+         } else {
+            intervalCounter = 0
+         }
       } else {
-         intervalCounter = 0
+         // clearInterval(interval)
+         //@TO-DO Need action to cancel timer here
       }
    }
 }
