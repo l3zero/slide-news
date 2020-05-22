@@ -2,7 +2,8 @@
 @use 'partials/scroll' as scrl;
 
 #customize-scroller {
-    @include scrl.scroller(x, hidden);
+    @include scrl.scroller(both, hidden);
+    align-self: end;
 }
 
 a {

@@ -8,7 +8,7 @@ footer {
   justify-content: center;
   align-items: center;
   align-self: end;
-  color: colors.$mid-blue;
+  color: colors.$dark-blue;
   @include fonts.font-size(15px);
   @include fonts.font-marker();
   padding-bottom: 10px;
@@ -16,7 +16,7 @@ footer {
 
   a,
   a:visited {
-    color: colors.$mid-blue;
+    color: colors.$dark-blue;
     text-decoration: none;
   }
 }

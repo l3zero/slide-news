@@ -3,7 +3,7 @@ export function checkStatus(r) {
    if (r.ok) {
       return r
    } else {
-      throw new Error(r.statusText)
+      throw Error(r.statusText)
    }
    // })
 }

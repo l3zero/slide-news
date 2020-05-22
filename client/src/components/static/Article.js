@@ -4,12 +4,10 @@ import '../../styles/article.css'
 export default function Article(props) {
    return (
       <div className='article-container' id={props.id}>
-         <div id='article-title'>{props.title}</div>
-         {/* <div id='article-image'> */}
+         <div>{props.title}</div>
          <a href={props.url}>
             <img src={props.image} alt='' />
          </a>
-         {/* </div> */}
       </div>
    )
 }

@@ -1,3 +1,5 @@
+@use 'partials/fonts' as fonts;
+
 .article-container {
     display: flex;
     flex-direction: column;
@@ -6,9 +8,16 @@
     align-items: center;
     align-content: center;
     width: 100%;
-    img {
-        width: 100%;
-        height: 40vh;
-        border-radius: 15px;
+    @include fonts.font-acme();
+    @include fonts.font-size(25px);
+    a {
+        img {
+            border-radius: 15px;
+            width: 50vw;
+            height: 35vh;
+        }
+    }
+    div {
+        padding-bottom: 7px;
     }
 }

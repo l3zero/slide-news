@@ -6,9 +6,11 @@
   grid-auto-columns: 100%;
   justify-items: center;
   align-items: center;
+  overflow-y: hidden;
   overflow-x: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: both mandatory;
   overscroll-behavior: contain;
+  align-self: end;
 }
 #customize-scroller div {
   scroll-snap-align: center;
