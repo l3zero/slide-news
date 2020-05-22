@@ -14,7 +14,7 @@ body {
   background-image: url("../img/wave.svg");
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 100vw;
+  background-size: contain;
   background-clip: content-box;
   color: #2485b5;
   margin: 0;
@@ -23,11 +23,12 @@ body {
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content 1fr 1fr;
+  grid-template-rows: min-content 2fr 1fr;
   justify-items: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */
