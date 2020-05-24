@@ -1,7 +1,7 @@
 // const hash = require('object-hash')
 
 export const formData = {
-   TOPICS: ['Javascript', 'Node', 'React', 'Github'],
+   TOPICS: ['Javascript', 'Node', 'React', 'Git', 'Webdev', 'CSS'],
    SOURCES: [
       {name: 'Dev.to', url: 'https://dev.to/api/articles', internal_id: 1}
       // {name: 'Hacker News', url: 'https://hacker-news.firebaseio.com/v0', internal_id: 2}

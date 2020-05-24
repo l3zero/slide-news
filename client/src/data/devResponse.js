@@ -6,25 +6,18 @@ export function getDevResponses(devReq) {
 
    //IIFE to grab results right away
    let results = (() => {
-      // try {
       const responses = devPromise
          .then(checkStatus)
          .then((res) => res.json())
          .then((arr) => arr.map((item) => item))
-         .catch((error) => {
-            console.error(error)
-            return
+         .catch((err) => {
+            console.error(err)
+            return null
          })
 
       if (responses) {
          return convertArticles(responses)
-      } else {
-         return 'failed'
       }
-
-      // } catch (error) {
-      //    console.error(error)
-      // }
    })()
    return results
 }
@@ -38,7 +31,7 @@ function convertArticles(prom) {
          article.url = res.url
          article.title = res.title
          article.imageUrl = res.cover_image === null ? noImg : res.cover_image
-         // article.reactions = res.positive_reactions_count //Taking reactions out for now
+         article.reactions = res.positive_reactions_count
          return new Promise((resolve) => resolve(article))
       })
    )

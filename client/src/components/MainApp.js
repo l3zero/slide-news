@@ -16,8 +16,12 @@ class MainApp extends Component {
                <Route exact path='/'>
                   {localCheck() ? <Redirect exact from='/' to='/news' /> : <Home />}
                </Route>
-               <Route exact path='/customize' component={Customize} />
-               <Route exact path='/news' component={News} />
+               <Route exact path='/customize' component={Customize}>
+                  {localCheck() ? <Redirect exact from='/customize' to='/news' /> : <Customize />}
+               </Route>
+               <Route exact path='/news' component={News}>
+                  {!localCheck() ? <Redirect exact from='/news' to='/' /> : <News />}
+               </Route>
             </Switch>
          </Router>
       )
