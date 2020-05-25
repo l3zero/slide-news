@@ -15,7 +15,7 @@ body {
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
-  background-clip: content-box;
+  background-clip: padding-box;
   color: #2485b5;
   margin: 0;
 }

@@ -12,7 +12,7 @@ export function getDevResponses(devReq) {
          .then((arr) => arr.map((item) => item))
          .catch((err) => {
             console.error(err)
-            return null
+            return []
          })
 
       if (responses) {
@@ -24,7 +24,7 @@ export function getDevResponses(devReq) {
 
 //This returns a promise instead of the direct object so that all promises from different sources are handled uniformly in News.js
 function convertArticles(prom) {
-   const noImg = require('../img/no-img.jpg')
+   const noImg = require('../img/no-img2.jpg')
    const articles = prom.then((arr) =>
       arr.map((res) => {
          let article = {}

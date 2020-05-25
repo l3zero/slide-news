@@ -13,6 +13,8 @@ import fetch, {Request} from 'node-fetch'
 import '../styles/news.css'
 
 //@TO-DO Add -moz versions to css for /customize
+//@TO-DO Add bookmark button for each image
+//@TO-DO Add menu button with view articles, clear options, x
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -135,10 +137,10 @@ export default function News(props) {
    //Setting timer for auto-scroll
    useEffect(() => {
       // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-      const interval = setInterval(scrollToNextArticle, 5000)
+      const interval = setInterval(scrollToNextArticle, 6000)
       // }
       return () => clearInterval(interval)
-   }, [])
+   }, [myResponses])
 
    const newsScreen =
       myResponses === null || myResponses === undefined || myResponses.length === 0 ? (
@@ -146,6 +148,7 @@ export default function News(props) {
       ) : (
          <React.Fragment>
             <Header />
+            <img id='menu-slide' src={require('../img/slide.svg')} alt='' />
             <main id='news-scroller'>
                {myResponses.map((article) => (
                   <Article
@@ -168,14 +171,7 @@ export default function News(props) {
       const loc = document.location.toString().split('#')[0]
       if (matches !== undefined) {
          document.location = `${loc}#${matches[intervalCounter].id}`
-         if (intervalCounter < matches.length - 1) {
-            intervalCounter++
-         } else {
-            intervalCounter = 0
-         }
-      } else {
-         // clearInterval(interval)
-         //@TO-DO Need action to cancel timer here
+         intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
       }
    }
 }
