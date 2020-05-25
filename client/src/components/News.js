@@ -4,18 +4,17 @@ import Header from './static/Header.js'
 import Footer from './static/Footer.js'
 import Article from './static/Article.js'
 import {createRequests} from '../data/reqFactory'
-import {expirationCheck} from '../helpers/expirationCheck'
+import {expireCheck, expireUpdate} from '../helpers/expired'
+import {checkStatus} from '../helpers/httpStatusCheck'
 import {fetchArticles} from '../helpers/fetchNewArticles'
 import {urlToId} from '../helpers/urlConverter'
 import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
 import '../styles/news.css'
 
-//@TO-DO Handle 404s from DB side
-//@TO-DO Update options obj with new expiration date
-//@TO-DO Update localhost:9000 with dynamic version - can't go live without this
 //@TO-DO Add -moz versions to css for /customize
-//@TO-DO Add route checking to /customize - CANNOT GO HERE IF ID already exists, should only go to /news
+//@TO-DO Add bookmark button for each image
+//@TO-DO Add menu button with view articles, clear options, x
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -24,7 +23,7 @@ export default function News(props) {
    // const [myRequests, setMyRequests] = useState([])
    const [myResponses, setMyResponses] = useState(null)
 
-   const [isExpired, setIsExpired] = useState(false)
+   // const [isExpired, setIsExpired] = useState(false)
    const [firstTime, setFirstTime] = useState(JSON.parse(window.localStorage.getItem('firstTime')))
 
    const [dbUpdateObj, setDbUpdateObj] = useState(null)
@@ -37,17 +36,17 @@ export default function News(props) {
    useEffect(() => {
       const reqs = createRequests(myNewsOptions)
       if (firstTime) {
-         console.log('1st time Fetching -> Setting state -> sending to DB -> setting 1st time to false')
+         // console.log('1st time Fetching -> Setting state -> sending to DB -> setting 1st time to false')
          // setFirstTime(true)
          const articles = fetchArticles(reqs)
          articles.then((data) => {
             if (data.length === 0) {
                window.localStorage.removeItem('myNewsOptions')
                window.localStorage.removeItem('firstTime')
-               alert('There are no articles available with your criteria!')
-               document.location.replace('/')
+               alert('There are no articles available with your criteria! Please start a fresh search')
+               document.location.replace('/customize')
             } else {
-               console.log('setting db create obj')
+               // console.log('setting db create obj')
                setMyResponses(data)
                setDbCreateObj(httpInits(data).CREATE)
             }
@@ -55,34 +54,37 @@ export default function News(props) {
          // setMyRequests(reqs)
          window.localStorage.setItem('firstTime', JSON.stringify(false))
       } else {
-         if (expirationCheck(JSON.stringify(myNewsOptions.expires))) {
-            console.log(
-               'Expired confirmed -> fetching -> setting state -> sending updated news to DB -> setting expired to false -> updating local and state with new expiration date'
-            )
+         if (expireCheck(JSON.stringify(myNewsOptions.expires))) {
+            // console.log(
+            //    'Expired confirmed -> fetching -> setting state -> sending updated news to DB -> setting expired to false -> updating local and state with new expiration date'
+            // )
             const articles = fetchArticles(reqs)
             articles.then((data) => {
                if (data.length === 0) {
                   // window.localStorage.removeItem('myNewsOptions')
                   // window.localStorage.removeItem('firstTime')
-                  alert('There are no new articles available with your criteria!')
-                  //@TO-DO Need to update expiration here and load old articles from DB
-                  document.location.replace('/')
+                  JSON.parse(window.localStorage.getItem('myNewsOptions')).expires = expireUpdate(
+                     myNewsOptions.myInterval[0].value
+                  )
+                  setDbReadObj(httpInits().READ)
+                  alert('There are no new articles available with your criteria! Loading old articles..')
+                  document.location.reload()
                } else {
-                  console.log('setting db update obj')
+                  // console.log('setting db update obj')
                   setMyResponses(data)
                   setDbUpdateObj(httpInits(data).UPDATE)
                }
             })
-            setIsExpired(false)
+            // setIsExpired(false)
             // setMyRequests(reqs)
          } else {
-            console.log('not first time, not expired, setting db read obj')
+            // console.log('not first time, not expired, setting db read obj')
             setDbReadObj(httpInits().READ)
          }
       }
 
       return () => {
-         setIsExpired(false)
+         // setIsExpired(false)
          setFirstTime(null)
          setMyResponses(null)
       }
@@ -92,7 +94,7 @@ export default function News(props) {
    useEffect(() => {
       if (dbUpdateObj !== null && myResponses !== null) {
          console.log('sending updated news to DB')
-         fetch(new Request(`http://localhost:9000/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
+         fetch(new Request(`${window.location.origin}/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
       }
       return () => {
          setDbUpdateObj(null)
@@ -102,8 +104,8 @@ export default function News(props) {
    //Creating DB object
    useEffect(() => {
       if (dbCreateObj !== null && myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-         console.log('sending new news to DB')
-         fetch(new Request(`http://localhost:9000/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
+         console.log('sending fresh news to DB')
+         fetch(new Request(`${window.location.origin}/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
       }
       return () => {
          setDbCreateObj(null)
@@ -114,10 +116,17 @@ export default function News(props) {
    useEffect(() => {
       if (dbReadObj !== null) {
          console.log('grabbing existing news from DB')
-         fetch(new Request(`http://localhost:9000/mynews/id/${myNewsOptions.id}`, dbReadObj))
+         fetch(new Request(`${window.location.origin}/mynews/id/${myNewsOptions.id}`, dbReadObj))
+            .then(checkStatus)
             .then((raw) => raw.json())
             .then((json) => {
                setMyResponses(json.data)
+            })
+            .catch((err) => {
+               window.localStorage.removeItem('myNewsOptions')
+               window.localStorage.removeItem('firstTime')
+               alert('No articles exist in DB with your ID. Please start a fresh search.')
+               document.location.replace('/customize')
             })
       }
       return () => {
@@ -128,10 +137,10 @@ export default function News(props) {
    //Setting timer for auto-scroll
    useEffect(() => {
       // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-      const interval = setInterval(scrollToNextArticle, 5000)
+      const interval = setInterval(scrollToNextArticle, 6000)
       // }
       return () => clearInterval(interval)
-   }, [])
+   }, [myResponses])
 
    const newsScreen =
       myResponses === null || myResponses === undefined || myResponses.length === 0 ? (
@@ -139,6 +148,7 @@ export default function News(props) {
       ) : (
          <React.Fragment>
             <Header />
+            <img id='menu-slide' src={require('../img/slide.svg')} alt='' />
             <main id='news-scroller'>
                {myResponses.map((article) => (
                   <Article
@@ -161,14 +171,7 @@ export default function News(props) {
       const loc = document.location.toString().split('#')[0]
       if (matches !== undefined) {
          document.location = `${loc}#${matches[intervalCounter].id}`
-         if (intervalCounter < matches.length - 1) {
-            intervalCounter++
-         } else {
-            intervalCounter = 0
-         }
-      } else {
-         // clearInterval(interval)
-         //@TO-DO Need action to cancel timer here
+         intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
       }
    }
 }

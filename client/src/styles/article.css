@@ -13,11 +13,16 @@
 }
 .article-container a img {
   border-radius: 15px;
+  border: 5px solid #0b2736;
   width: 50vw;
-  height: 35vh;
+  max-width: 50vw;
+  max-height: 35vh;
+  filter: drop-shadow(6px 5px 4px #2485b5);
 }
 .article-container div {
   padding-bottom: 7px;
+  border-bottom: 5px groove #2485b5;
+  border-radius: 2px;
 }
 
 /*# sourceMappingURL=article.css.map */

@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-export function expirationCheck(expireDate) {
+export function expireCheck(expireDate) {
    const now = moment()
    const exp = moment(expireDate)
 
@@ -9,4 +9,10 @@ export function expirationCheck(expireDate) {
    } else {
       return false
    }
+}
+
+export function expireUpdate(interval) {
+   return moment()
+      .add(interval, 'days')
+      .format('l')
 }

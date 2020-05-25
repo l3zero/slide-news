@@ -6,39 +6,32 @@ export function getDevResponses(devReq) {
 
    //IIFE to grab results right away
    let results = (() => {
-      // try {
       const responses = devPromise
          .then(checkStatus)
          .then((res) => res.json())
          .then((arr) => arr.map((item) => item))
-         .catch((error) => {
-            console.error(error)
-            return
+         .catch((err) => {
+            console.error(err)
+            return []
          })
 
       if (responses) {
          return convertArticles(responses)
-      } else {
-         return 'failed'
       }
-
-      // } catch (error) {
-      //    console.error(error)
-      // }
    })()
    return results
 }
 
 //This returns a promise instead of the direct object so that all promises from different sources are handled uniformly in News.js
 function convertArticles(prom) {
-   const noImg = require('../img/no-img.jpg')
+   const noImg = require('../img/no-img2.jpg')
    const articles = prom.then((arr) =>
       arr.map((res) => {
          let article = {}
          article.url = res.url
          article.title = res.title
          article.imageUrl = res.cover_image === null ? noImg : res.cover_image
-         // article.reactions = res.positive_reactions_count //Taking reactions out for now
+         article.reactions = res.positive_reactions_count
          return new Promise((resolve) => resolve(article))
       })
    )
