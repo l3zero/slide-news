@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
+.menu-container {
+  position: fixed;
+  top: 10px;
+  bottom: 0;
+  left: 93%;
+  right: 0;
+  height: min-content;
+}
+.menu-container img {
+  width: 50px;
+  height: 50px;
+  transform: rotateY(180deg);
+  transition: 0.5s ease-in-out;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  left: 90%;
+  right: 0;
+  opacity: 0;
+  height: min-content;
+  transition: 0.5s ease;
+}
+.menu-content div {
+  cursor: pointer;
+  background-color: #61a1c1;
+  color: #0b2736;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  padding: 3px;
+  font-size: 16px;
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+.menu-container:hover .menu-content {
+  opacity: 1;
+}
+
+.menu-container:hover #menu-slide {
+  transform: rotateY(0deg);
+}
+
+/*# sourceMappingURL=miniview.css.map */

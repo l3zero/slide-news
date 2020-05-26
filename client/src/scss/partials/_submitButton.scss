@@ -19,3 +19,13 @@
     color: white;
     @include fonts.font-size(25px);
 }
+
+@mixin menuButton() {
+    cursor: pointer;
+    background-color: colors.$light-blue;
+    color: colors.$dark-blue;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    padding: 3px;
+    @include fonts.font-size(16px);
+}

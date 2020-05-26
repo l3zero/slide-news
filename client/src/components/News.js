@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import Header from './static/Header.js'
 import Footer from './static/Footer.js'
 import Article from './static/Article.js'
+import Miniview from './static/Miniview.js'
 import {createRequests} from '../data/reqFactory'
 import {expireCheck, expireUpdate} from '../helpers/expired'
 import {checkStatus} from '../helpers/httpStatusCheck'
@@ -14,7 +15,6 @@ import '../styles/news.css'
 
 //@TO-DO Add -moz versions to css for /customize
 //@TO-DO Add bookmark button for each image
-//@TO-DO Add menu button with view articles, clear options, x
 
 export default function News(props) {
    const [myNewsOptions] = useState({
@@ -148,7 +148,7 @@ export default function News(props) {
       ) : (
          <React.Fragment>
             <Header />
-            <img id='menu-slide' src={require('../img/slide.svg')} alt='' />
+            <Miniview articles={myResponses} />
             <main id='news-scroller'>
                {myResponses.map((article) => (
                   <Article
@@ -170,7 +170,7 @@ export default function News(props) {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
       if (matches !== undefined) {
-         document.location = `${loc}#${matches[intervalCounter].id}`
+         document.location.replace(`${loc}#${matches[intervalCounter].id}`)
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
       }
    }
