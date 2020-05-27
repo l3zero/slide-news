@@ -1,5 +1,6 @@
 @use 'partials/colors' as colors;
 @use 'partials/submitButton' as buttons;
+@use 'partials/fonts' as fonts;
 
 .menu-container {
     position: fixed;
@@ -45,4 +46,49 @@
 }
 .menu-container:hover #menu-slide {
     transform: rotateY(0deg);
+}
+.mini-article-list {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    // padding-top: 80px;
+    // margin-top: 100px;
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    bottom: 5%;
+    min-width: 90%;
+    min-height: 50%;
+    overflow-y: auto;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.83);
+    @include fonts.font-acme();
+    letter-spacing: 2px;
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .close:hover {
+        color: red;
+    }
+    a,
+    a:visited {
+        color: white;
+        text-decoration: none;
+    }
+    a:hover {
+        color: colors.$base;
+    }
 }

@@ -50,4 +50,46 @@
   transform: rotateY(0deg);
 }
 
+.mini-article-list {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 5%;
+  right: 5%;
+  top: 5%;
+  bottom: 5%;
+  min-width: 90%;
+  min-height: 50%;
+  overflow-y: auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.83);
+  font-family: "Acme", sans-serif;
+  letter-spacing: 2px;
+}
+.mini-article-list .close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.mini-article-list .close:hover {
+  color: red;
+}
+.mini-article-list a,
+.mini-article-list a:visited {
+  color: white;
+  text-decoration: none;
+}
+.mini-article-list a:hover {
+  color: #2485b5;
+}
+
 /*# sourceMappingURL=miniview.css.map */
