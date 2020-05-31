@@ -14,6 +14,14 @@
   transition: 0.5s ease-in-out;
 }
 
+.menu-container:hover .menu-content {
+  opacity: 1;
+}
+
+.menu-container:hover #menu-slide {
+  transform: rotateY(0deg);
+}
+
 .menu-content {
   display: flex;
   flex-direction: column;
@@ -42,34 +50,46 @@
   margin-top: 15px;
 }
 
-.menu-container:hover .menu-content {
-  opacity: 1;
-}
-
-.menu-container:hover #menu-slide {
-  transform: rotateY(0deg);
-}
-
-.mini-article-list {
+.options-warning {
   display: none;
   position: fixed;
   z-index: 10;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  bottom: 5%;
-  min-width: 90%;
-  min-height: 50%;
-  overflow-y: auto;
+  min-width: 100%;
+  min-height: 100%;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.83);
   font-family: "Acme", sans-serif;
+  font-size: 30px;
+  font-size: 1.875rem;
   letter-spacing: 2px;
 }
-.mini-article-list .close {
+.options-warning button {
+  cursor: pointer;
+  background-color: #61a1c1;
+  color: #0b2736;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  padding: 3px;
+  font-size: 16px;
+  font-size: 1rem;
+  color: white;
+  margin: 10px;
+}
+.options-warning button:hover {
+  font-size: 25px;
+  transition: 0.2s ease;
+}
+.options-warning #options-yes {
+  background-color: green;
+}
+.options-warning #options-no {
+  background-color: red;
+}
+
+.close {
   position: absolute;
   top: 15px;
   right: 35px;
@@ -80,16 +100,9 @@
   text-decoration: none;
   cursor: pointer;
 }
-.mini-article-list .close:hover {
+
+.close:hover {
   color: red;
-}
-.mini-article-list a,
-.mini-article-list a:visited {
-  color: white;
-  text-decoration: none;
-}
-.mini-article-list a:hover {
-  color: #2485b5;
 }
 
 /*# sourceMappingURL=miniview.css.map */
