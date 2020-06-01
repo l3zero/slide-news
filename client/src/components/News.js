@@ -15,6 +15,7 @@ import '../styles/news.css'
 
 //@TO-DO Add -moz versions to css for /customize
 //@TO-DO Add bookmark button for each image
+//@TO-DO Add blinking NEW element for a few seconds if update operation goes through
 
 export default function News(props) {
    const [myNewsOptions] = useState({

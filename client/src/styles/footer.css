@@ -17,6 +17,7 @@ footer a,
 footer a:visited {
   color: #0b2736;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #about-row {

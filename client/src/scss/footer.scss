@@ -18,6 +18,7 @@ footer {
   a:visited {
     color: colors.$dark-blue;
     text-decoration: none;
+    cursor: pointer;
   }
 }
 #about-row {
@@ -30,15 +31,6 @@ footer {
 }
 
 #powered-by {
-  // position: absolute;
-  // top: 75%;
-  // left: 40%;
-  // right: 0;
-  // bottom: 0;
-  // z-index: 10;
-  // transform: rotate(-5deg);
-  // @include fonts.font-size(13px);
-  // letter-spacing: 2px;
   img {
     width: 30px;
     height: 30px;
