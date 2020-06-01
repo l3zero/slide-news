@@ -1,6 +1,6 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
-@use 'partials/submitButton' as buttons;
+@use 'partials/buttons';
 
 .radio-container {
     @include fonts.font-acme();
@@ -11,6 +11,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 45px;
+
     form {
         label {
             display: span;

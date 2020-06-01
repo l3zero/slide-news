@@ -1,5 +1,5 @@
 @use 'partials/colors' as colors;
-@use 'partials/submitButton' as buttons;
+@use 'partials/buttons';
 @use 'partials/fonts' as fonts;
 
 .menu-container {
@@ -16,6 +16,12 @@
         transform: rotateY(180deg);
         transition: 0.5s ease-in-out;
     }
+}
+.menu-container:hover .menu-content {
+    opacity: 1;
+}
+.menu-container:hover #menu-slide {
+    transform: rotateY(0deg);
 }
 
 .menu-content {
@@ -41,54 +47,50 @@
         margin-top: 15px;
     }
 }
-.menu-container:hover .menu-content {
-    opacity: 1;
-}
-.menu-container:hover #menu-slide {
-    transform: rotateY(0deg);
-}
-.mini-article-list {
+
+.options-warning {
     display: none;
     position: fixed;
     z-index: 10;
-    // padding-top: 80px;
-    // margin-top: 100px;
-    left: 5%;
-    right: 5%;
-    top: 5%;
-    bottom: 5%;
-    min-width: 90%;
-    min-height: 50%;
-    overflow-y: auto;
+    min-width: 100%;
+    min-height: 100%;
 
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.83);
     @include fonts.font-acme();
+    @include fonts.font-size(30px);
     letter-spacing: 2px;
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    .close:hover {
-        color: red;
-    }
-    a,
-    a:visited {
+    button {
+        @include buttons.menuButton();
         color: white;
-        text-decoration: none;
+        margin: 10px;
     }
-    a:hover {
-        color: colors.$base;
+    button:hover {
+        font-size: 25px;
+        transition: 0.2s ease;
     }
+    #options-yes {
+        background-color: green;
+    }
+    #options-no {
+        background-color: red;
+    }
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close:hover {
+    color: red;
 }

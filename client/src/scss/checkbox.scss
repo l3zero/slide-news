@@ -1,6 +1,6 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
-@use 'partials/submitButton' as buttons;
+@use 'partials/buttons';
 
 .checkbox-container {
     @include fonts.font-acme();
@@ -11,6 +11,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    margin-bottom: 45px;
     form {
         label {
             display: span;
