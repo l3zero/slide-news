@@ -12,7 +12,7 @@ import {gsap} from 'gsap'
 class MainApp extends Component {
    componentDidMount() {
       let tl = gsap.timeline({
-         delay: 0.5,
+         // delay: 0.2,
          paused: false, // default is false
          repeat: 1, // number of repeats (-1 for infinite)
          // repeatDelay: 1, // seconds between repeats
@@ -20,8 +20,7 @@ class MainApp extends Component {
          yoyo: false, // if true > A-B-B-A, if false > A-B-A-B
          defaults: {
             // children inherit these defaults
-            duration: 0.3,
-            ease: 'none'
+            duration: 0.8
          },
          smoothChildTiming: true,
          autoRemoveChildren: true
@@ -32,11 +31,20 @@ class MainApp extends Component {
          // i.e. onUpdateParams (Array)
       })
 
-      tl.from('#title-S', {opacity: 0})
-         .from('#title-l', {opacity: 0, x: '-1px'})
-         .from('#title-i', {opacity: 0, x: '-1px'})
-         .from('#title-d', {opacity: 0, x: '-1px'})
-         .from('#title-e', {opacity: 0, x: '-1px'})
+      tl.from('header > div', {ease: 'bounce.out', opacity: 0, x: '-100%', delay: 0.3})
+         .from('body', {
+            backgroundImage: 'none',
+            // backgroundPositionY: '100%',
+            ease: 'power1.out',
+            duration: 1
+         })
+         .from('footer', {ease: 'power1', y: '1000%', rotate: '270deg'})
+         .from('#slide-hero > a', {
+            ease: 'power2',
+            opacity: 0,
+            x: '1000%'
+         })
+         .from('#slide-hero > img', {opacity: 0, rotate: '420deg'})
    }
    render() {
       return (

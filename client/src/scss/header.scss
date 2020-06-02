@@ -3,7 +3,6 @@
 
 header {
   div {
-    // position: relative;
     @include fonts.font-size(130px);
     letter-spacing: 5px;
 
