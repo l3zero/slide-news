@@ -17,7 +17,7 @@ export default function Footer() {
          <div id='powered-by'>
             Powered by <img src={require('../../img/devto.png')} /> V.1.0
          </div>
-         <div>
+         <div id='icons-by'>
             Icons by{' '}
             <a href='https://www.flaticon.com/authors/freepik' title='Freepik'>
                Freepik
