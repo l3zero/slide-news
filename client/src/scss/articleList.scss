@@ -5,8 +5,6 @@
     display: none;
     position: fixed;
     z-index: 10;
-    // padding-top: 80px;
-    // margin-top: 100px;
     left: 5%;
     right: 5%;
     top: 2%;
@@ -25,6 +23,7 @@
     border-radius: 3px;
     @include fonts.font-acme();
     @include fonts.font-size(20px);
+    transition: 0.5s ease;
 
     letter-spacing: 2px;
     a,

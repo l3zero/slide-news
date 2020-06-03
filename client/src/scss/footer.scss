@@ -8,7 +8,8 @@ footer {
   justify-content: center;
   align-items: center;
   align-self: end;
-  color: colors.$dark-blue;
+  color: colors.$light-blue;
+
   @include fonts.font-size(15px);
   @include fonts.font-marker();
   padding-bottom: 10px;
@@ -16,33 +17,42 @@ footer {
 
   a,
   a:visited {
-    color: colors.$dark-blue;
+    color: colors.$light-blue;
     text-decoration: none;
+    cursor: pointer;
   }
 }
 #about-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  a {
+  background-image: url("../img/wave.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10%;
+
+  a,
+  a:visited {
     padding-right: 15px;
+    // color: colors.$light-blue;
   }
 }
 
 #powered-by {
-  // position: absolute;
-  // top: 75%;
-  // left: 40%;
-  // right: 0;
-  // bottom: 0;
-  // z-index: 10;
-  // transform: rotate(-5deg);
-  // @include fonts.font-size(13px);
-  // letter-spacing: 2px;
   img {
     width: 30px;
     height: 30px;
     border-radius: 10px;
     vertical-align: middle;
   }
+  background-image: url("../img/wave.svg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 5%;
+}
+#icons-by {
+  background-image: url("../img/wave.svg");
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 15%;
 }

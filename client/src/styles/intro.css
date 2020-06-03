@@ -19,6 +19,7 @@
   height: 80px;
   margin-left: 20px;
   vertical-align: middle;
+  filter: hue-rotate(30deg);
 }
 
 /*# sourceMappingURL=intro.css.map */
