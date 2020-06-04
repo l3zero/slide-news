@@ -36,9 +36,9 @@ footer a:visited {
 
 #powered-by {
   background-image: url("../img/wave.svg");
-  background-repeat: repeat;
-  background-position: center;
-  background-size: 5%;
+  background-repeat: repeat-y;
+  background-position: 25%;
+  background-size: 20%;
 }
 #powered-by img {
   width: 30px;

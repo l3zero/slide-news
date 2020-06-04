@@ -7,6 +7,8 @@ import SourcesCheckbox from './static/SourcesCheckbox.js'
 import RefreshIntervals from './static/RefreshIntervals.js'
 import {updateMyNews, initMyNews} from '../data/myNewsOptions.js'
 import {lsTest} from '../helpers/storageCheck.js'
+import {gsap} from 'gsap'
+
 import '../styles/customize.css'
 
 export default function Customize(props) {
@@ -15,6 +17,12 @@ export default function Customize(props) {
    useEffect(() => {
       browserSet()
    }, [myOptions])
+   useEffect(() => {
+      let anim = gsap.from('#customize-scroller', {ease: 'elastic.out', opacity: 0, x: '-50%', duration: 1})
+      return () => {
+         anim.kill()
+      }
+   }, [])
 
    return (
       <React.Fragment>

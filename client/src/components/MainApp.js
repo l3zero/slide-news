@@ -5,21 +5,26 @@ import Footer from './static/Footer.js'
 import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
-import {createTimeline, editTimeline} from '../animation/introSequence.js'
+import {createTimeline, editIntro} from '../animation/animationController.js'
+import {checkIntro} from '../animation/animationValidator.js'
 //@TO-DO make redirects carry a message about why it's being redirected
-
 class MainApp extends Component {
    componentDidMount() {
-      let intro = createTimeline()
-      const elements = [
-         'header > div',
-         '#slide-hero > img',
-         '#slide-hero > a',
-         '#about-row',
-         '#powered-by',
-         '#icons-by'
-      ]
-      editTimeline(intro, elements)
+      window.localStorage.setItem('animateIntro', JSON.stringify(true))
+      if (checkIntro()) {
+         let intro = createTimeline()
+         const elements = [
+            'header > div',
+            '#slide-hero > img',
+            '#slide-hero > a',
+            '#about-row',
+            '#powered-by',
+            '#icons-by'
+         ]
+         editIntro(intro, elements)
+
+         window.localStorage.setItem('animateIntro', JSON.stringify(false))
+      }
    }
    render() {
       return (

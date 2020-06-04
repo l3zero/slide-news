@@ -13,8 +13,10 @@ export function createTimeline() {
          //  duration: 0.6
       },
       smoothChildTiming: true,
-      autoRemoveChildren: true
-      // onComplete: myFunc,
+      autoRemoveChildren: true,
+      onComplete: () => {
+         this.kill()
+      }
       // other callbacks:
       // onStart, onUpdate, onRepeat, onReverseComplete
       // Each callback has a params property as well
@@ -24,7 +26,7 @@ export function createTimeline() {
 
 /* @params tl and elements - Take timeline object and array of element selectors in the order you want to animate them. 
 Please note: this is basically boilerplate to reuse in future applications and keep it modular inside React. You have to tailor it to your specific use case and add any necessary gsap code here.*/
-export function editTimeline(tl, elements) {
+export function editIntro(tl, elements) {
    tl.from(elements[0], {ease: 'bounce.out', opacity: 0, x: '-100%', delay: 0.3, duration: 1.5})
       .from(elements[1], {
          ease: 'bounce.out',
@@ -35,11 +37,11 @@ export function editTimeline(tl, elements) {
          duration: 0.8
       })
       .from(elements[2], {
-         ease: 'power2',
+         ease: 'elastic.inOut',
          opacity: 0,
          x: '50%',
          delay: 0.3,
-         duration: 0.4
+         duration: 1
       })
       .from(elements[3], {x: '-100%', rotateY: '450deg', opacity: 0, duration: 0.3})
       .from(elements[4], {x: '-=20%', rotateY: '450deg', opacity: 0, duration: 0.3})
