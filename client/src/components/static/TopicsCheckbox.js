@@ -1,22 +1,17 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import 'rc-checkbox/assets/index.css'
 import Checkbox from 'rc-checkbox'
 import {formData} from '../../data/formData.js'
-import {gsap} from 'gsap'
+import {editSubmitArrow} from '../../animation/animationController.js'
+
 import '../../styles/checkbox.css'
 
 export default function TopicsCheckbox(props) {
-   let animCount = 0
+   const [animCount, setAnimCount] = useState(0)
+
    useEffect(() => {
       if (animCount === 1) {
-         gsap.from('#topics-submit', {
-            ease: 'elastic.out',
-            x: '-50%',
-            // rotateX: '720deg',
-            rotateY: '520deg',
-            // rotateZ: '720deg',
-            duration: 1
-         })
+         editSubmitArrow('#topics-submit')
       }
       return () => {
          // anim.kill()
@@ -57,14 +52,14 @@ export default function TopicsCheckbox(props) {
          alert('Please select some topics!')
       } else {
          const loc = document.location.toString().split('#')[0]
-         document.location = `${loc}#sources-container`
+         document.location = `${loc}#interval-container`
          props.handler(checkedArray)
       }
    }
 
    function showSubmit(e) {
       if (e.target.checked) {
-         animCount++
+         setAnimCount(animCount + 1)
          document.getElementById('topics-submit').style.display = 'initial'
       }
    }

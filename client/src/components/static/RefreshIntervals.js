@@ -1,8 +1,29 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {formData} from '../../data/formData.js'
+import {editSubmitArrow, editGoButton} from '../../animation/animationController.js'
 import '../../styles/radio.css'
 
 export default function RefreshIntervals(props) {
+   const [animCount, setAnimCount] = useState(0)
+   const [goCount, setGoCount] = useState(0)
+
+   useEffect(() => {
+      if (animCount === 1) {
+         editSubmitArrow('#interval-submit')
+      }
+      return () => {
+         // anim.kill()
+      }
+   }, [animCount])
+   useEffect(() => {
+      if (goCount === 1) {
+         editGoButton('#go')
+      }
+      return () => {
+         // anim.kill()
+      }
+   }, [goCount])
+
    return (
       <div className='radio-container' id='interval-container'>
          <div>Choose your update interval</div>
@@ -40,12 +61,14 @@ export default function RefreshIntervals(props) {
          alert('Please select an interval!')
       } else {
          props.handler(checkedArray)
+         setGoCount(1)
          document.getElementById('go').style.display = 'initial'
       }
    }
 
    function showSubmit(e) {
       if (e.target.checked) {
+         setAnimCount(animCount + 1)
          document.getElementById('interval-submit').style.display = 'initial'
       }
    }

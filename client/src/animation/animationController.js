@@ -48,3 +48,27 @@ export function editIntro(tl, elements) {
       .from(elements[5], {x: '-=10%', rotateX: '280deg', opacity: 0, duration: 0.3})
       .from(elements[1], {filter: 'hue-rotate(300deg)', duration: 2.5, repeat: -1, yoyo: true})
 }
+
+export function editCustomizePage(element) {
+   gsap.from(element, {ease: 'elastic.out', opacity: 0, x: '-50%', duration: 1.2})
+}
+export function editSubmitArrow(element) {
+   gsap.from(element, {
+      ease: 'elastic.out',
+      x: '-50%',
+      // rotateX: '720deg',
+      rotateY: '520deg',
+      // rotateZ: '720deg',
+      duration: 1
+   })
+}
+export function editGoButton(element) {
+   gsap.from(element, {
+      ease: 'elastic.out',
+      y: '1000%',
+      rotateX: '3600deg',
+      rotateY: '520deg',
+      // rotateZ: '720deg',
+      duration: 1.5
+   })
+}
