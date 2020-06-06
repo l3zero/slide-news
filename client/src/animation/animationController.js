@@ -66,8 +66,8 @@ export function editGoButton(element) {
    gsap.from(element, {
       ease: 'elastic.out',
       y: '1000%',
-      rotateX: '3600deg',
-      rotateY: '520deg',
+      rotateX: '720deg',
+      // rotateY: '520deg',
       // rotateZ: '720deg',
       duration: 1.5
    })

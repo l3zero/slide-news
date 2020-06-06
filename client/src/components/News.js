@@ -11,6 +11,8 @@ import {fetchArticles} from '../helpers/fetchNewArticles'
 import {urlToId} from '../helpers/urlConverter'
 import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
+import {gsap} from 'gsap'
+
 import '../styles/news.css'
 
 //@TO-DO Add -moz versions to css for /customize
@@ -170,8 +172,11 @@ export default function News(props) {
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
+      // gsap.from('div.article-container', {ease: 'bounce.out', x: '-100%', duration: 1})
+
       if (matches !== undefined) {
          document.location.replace(`${loc}#${matches[intervalCounter].id}`)
+
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
       }
    }

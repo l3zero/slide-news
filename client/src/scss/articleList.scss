@@ -5,12 +5,13 @@
     display: none;
     position: fixed;
     z-index: 10;
-    left: 5%;
-    right: 5%;
-    top: 2%;
-    bottom: 2%;
-    min-width: 90%;
-    min-height: 90%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    padding-top: 15px;
     overflow-y: auto;
 
     flex-direction: column;
@@ -18,8 +19,8 @@
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(1, 2, 63, 0.829);
-    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.83);
+    // border: 1px solid white;
     border-radius: 3px;
     @include fonts.font-acme();
     @include fonts.font-size(20px);

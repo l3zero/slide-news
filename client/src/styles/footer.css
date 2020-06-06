@@ -24,7 +24,7 @@ footer a:visited {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  background-image: url("../img/wave.svg");
+  background-image: url("../img/wave-footer.svg");
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 10%;
@@ -35,10 +35,10 @@ footer a:visited {
 }
 
 #powered-by {
-  background-image: url("../img/wave.svg");
-  background-repeat: repeat-y;
-  background-position: 25%;
-  background-size: 20%;
+  background-image: url("../img/wave-footer.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 12%;
 }
 #powered-by img {
   width: 30px;
@@ -48,10 +48,10 @@ footer a:visited {
 }
 
 #icons-by {
-  background-image: url("../img/wave.svg");
-  background-repeat: repeat-y;
-  background-position: center;
-  background-size: 15%;
+  background-image: url("../img/wave-footer.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 20%;
 }
 
 /*# sourceMappingURL=footer.css.map */
