@@ -43,9 +43,9 @@ export function editIntro(tl, elements) {
          delay: 0.3,
          duration: 1
       })
-      .from(elements[3], {x: '-100%', rotateY: '450deg', opacity: 0, duration: 0.3})
-      .from(elements[4], {x: '-=20%', rotateY: '450deg', opacity: 0, duration: 0.3})
-      .from(elements[5], {x: '-=10%', rotateX: '280deg', opacity: 0, duration: 0.3})
+      .from(elements[3], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
+      .from(elements[4], {opacity: 0, duration: 0.3, x: '1000%', color: 'black'})
+      .from(elements[5], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
       .from(elements[1], {filter: 'hue-rotate(300deg)', duration: 2.5, repeat: -1, yoyo: true})
 }
 
@@ -66,8 +66,8 @@ export function editGoButton(element) {
    gsap.from(element, {
       ease: 'elastic.out',
       y: '1000%',
-      rotateX: '720deg',
-      // rotateY: '520deg',
+      // rotateX: '720deg',
+      rotateY: '520deg',
       // rotateZ: '720deg',
       duration: 1.5
    })

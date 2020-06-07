@@ -53,5 +53,9 @@ footer a:visited {
   background-position: bottom;
   background-size: 20%;
 }
+#icons-by a,
+#icons-by a:visited {
+  color: #61a1c1;
+}
 
 /*# sourceMappingURL=footer.css.map */

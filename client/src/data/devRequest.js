@@ -7,7 +7,7 @@ export const devReqs = (options) => {
    options.myTopics.map((topic) => {
       devArray.push({
          api_id: id,
-         query: `${apiUrl}?tag=${topic}&top=7&per_page=10`,
+         query: `${apiUrl}?tag=${topic}&top=7&per_page=5`,
          init: {
             method: 'GET',
             headers: {

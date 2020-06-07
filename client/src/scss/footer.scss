@@ -34,7 +34,6 @@ footer {
   a,
   a:visited {
     padding-right: 15px;
-    // color: colors.$light-blue;
   }
 }
 
@@ -55,4 +54,8 @@ footer {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 20%;
+  a,
+  a:visited {
+    color: colors.$light-blue;
+  }
 }

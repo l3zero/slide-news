@@ -139,9 +139,12 @@ export default function News(props) {
 
    //Setting timer for auto-scroll
    useEffect(() => {
-      // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-      const interval = setInterval(scrollToNextArticle, 6000)
-      // }
+      let interval
+      if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
+         // document.querySelectorAll('.article-container')[0].style.opacity = 1
+         // document.querySelectorAll('.article-container')[0].classList.add('slide-animation')
+         interval = setInterval(scrollToNextArticle, 6000)
+      }
       return () => clearInterval(interval)
    }, [myResponses])
 
@@ -172,12 +175,20 @@ export default function News(props) {
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
-      // gsap.from('div.article-container', {ease: 'bounce.out', x: '-100%', duration: 1})
+      // matches[intervalCounter].style.opacity = 1
+      // matches[intervalCounter].classList.add('slide-animation')
 
       if (matches !== undefined) {
          document.location.replace(`${loc}#${matches[intervalCounter].id}`)
-
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
       }
+      // matches[intervalCounter].classList.remove('slide-animation')
+
+      // gsap.from(`#${matches[intervalCounter - 1].id}`, {
+      //    ease: 'power.in',
+      //    x: '-50%',
+      //    // opacity: 0,
+      //    duration: 1
+      // })
    }
 }
