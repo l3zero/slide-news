@@ -16,6 +16,14 @@ body {
   background-color: black;
   color: colors.$base;
   margin: 0;
+  canvas {
+    // border: 1px solid white;
+    position: fixed;
+    top: 5%;
+    left: 25%;
+    right: 0;
+    bottom: 0;
+  }
 }
 
 #root {

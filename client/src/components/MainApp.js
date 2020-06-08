@@ -6,6 +6,7 @@ import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
 import {createTimeline, editIntro} from '../animation/animationController.js'
+import {myp5} from '../animation/p5Fun.js'
 import {checkIntro} from '../animation/animationValidator.js'
 //@TO-DO make redirects carry a message about why it's being redirected
 class MainApp extends Component {
