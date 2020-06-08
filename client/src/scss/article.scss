@@ -9,6 +9,7 @@
     align-items: center;
     align-content: center;
     width: 100%;
+    opacity: 0;
     @include fonts.font-acme();
     @include fonts.font-size(25px);
     a {
@@ -28,4 +29,5 @@
         text-overflow: ellipsis;
         width: max-content;
     }
+    transition: all 1s ease;
 }

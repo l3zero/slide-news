@@ -7,9 +7,11 @@
   align-items: center;
   align-content: center;
   width: 100%;
+  opacity: 0;
   font-family: "Acme", sans-serif;
   font-size: 25px;
   font-size: 1.5625rem;
+  transition: all 1s ease;
 }
 .article-container a img {
   border-radius: 15px;

@@ -15,17 +15,17 @@ db.on('error', (err) => {
    console.error('connection error:', err)
 })
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 app.use(bodyParser.json())
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-  next()
+   res.header('Access-Control-Allow-Origin', '*')
+   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+   next()
 })
 app.use((err, req, res, next) => {
-  console.log(err);
-  next()
+   console.log(err)
+   next()
 })
 //app.use(express.static(path.join(__dirname, '../build')))
 app.use('/mynews', newsRouter)

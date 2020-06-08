@@ -1,10 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import 'rc-checkbox/assets/index.css'
 import Checkbox from 'rc-checkbox'
 import {formData} from '../../data/formData.js'
+import {editSubmitArrow} from '../../animation/animationController.js'
+
 import '../../styles/checkbox.css'
 
 export default function TopicsCheckbox(props) {
+   const [animCount, setAnimCount] = useState(0)
+
+   useEffect(() => {
+      if (animCount === 1) {
+         editSubmitArrow('#topics-submit')
+      }
+      return () => {
+         // anim.kill()
+      }
+   }, [animCount])
    return (
       <div className='checkbox-container' id='topics-container'>
          <div>Choose your topics</div>
@@ -40,13 +52,14 @@ export default function TopicsCheckbox(props) {
          alert('Please select some topics!')
       } else {
          const loc = document.location.toString().split('#')[0]
-         document.location = `${loc}#sources-container`
+         document.location = `${loc}#interval-container`
          props.handler(checkedArray)
       }
    }
 
    function showSubmit(e) {
       if (e.target.checked) {
+         setAnimCount(animCount + 1)
          document.getElementById('topics-submit').style.display = 'initial'
       }
    }

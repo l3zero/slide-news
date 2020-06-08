@@ -13,8 +13,10 @@ export function createTimeline() {
          //  duration: 0.6
       },
       smoothChildTiming: true,
-      autoRemoveChildren: true
-      // onComplete: myFunc,
+      autoRemoveChildren: true,
+      onComplete: () => {
+         this.kill()
+      }
       // other callbacks:
       // onStart, onUpdate, onRepeat, onReverseComplete
       // Each callback has a params property as well
@@ -24,7 +26,7 @@ export function createTimeline() {
 
 /* @params tl and elements - Take timeline object and array of element selectors in the order you want to animate them. 
 Please note: this is basically boilerplate to reuse in future applications and keep it modular inside React. You have to tailor it to your specific use case and add any necessary gsap code here.*/
-export function editTimeline(tl, elements) {
+export function editIntro(tl, elements) {
    tl.from(elements[0], {ease: 'bounce.out', opacity: 0, x: '-100%', delay: 0.3, duration: 1.5})
       .from(elements[1], {
          ease: 'bounce.out',
@@ -35,14 +37,46 @@ export function editTimeline(tl, elements) {
          duration: 0.8
       })
       .from(elements[2], {
-         ease: 'power2',
+         ease: 'elastic.inOut',
          opacity: 0,
          x: '50%',
          delay: 0.3,
-         duration: 0.4
+         duration: 1
       })
-      .from(elements[3], {x: '-100%', rotateY: '450deg', opacity: 0, duration: 0.3})
-      .from(elements[4], {x: '-=20%', rotateY: '450deg', opacity: 0, duration: 0.3})
-      .from(elements[5], {x: '-=10%', rotateX: '280deg', opacity: 0, duration: 0.3})
+      .from(elements[3], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
+      .from(elements[4], {opacity: 0, duration: 0.3, x: '1000%', color: 'black'})
+      .from(elements[5], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
       .from(elements[1], {filter: 'hue-rotate(300deg)', duration: 2.5, repeat: -1, yoyo: true})
+}
+
+export function editCustomizePage(element) {
+   gsap.from(element, {ease: 'elastic.out', opacity: 0, x: '-50%', duration: 1.2})
+}
+export function editSubmitArrow(element) {
+   gsap.from(element, {
+      ease: 'elastic.out',
+      x: '-50%',
+      // rotateX: '720deg',
+      rotateY: '520deg',
+      // rotateZ: '720deg',
+      duration: 1
+   })
+}
+export function editGoButton(element) {
+   gsap.from(element, {
+      ease: 'power2.out',
+      y: '-100%',
+      rotateX: '520deg',
+      // rotateY: '520deg',
+      // rotateZ: '720deg',
+      duration: 1.5
+   })
+}
+export function editMiniViewOpen(element) {
+   gsap.from(element, {
+      ease: 'power2.out',
+      duration: 1,
+      scaleY: 1.5,
+      skewX: 50
+   })
 }

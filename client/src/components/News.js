@@ -137,19 +137,24 @@ export default function News(props) {
 
    //Setting timer for auto-scroll
    useEffect(() => {
-      // if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-      const interval = setInterval(scrollToNextArticle, 6000)
-      // }
+      let interval
+      if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
+         document.querySelectorAll('div.article-container')[0].style.opacity = 1
+         interval = setInterval(scrollToNextArticle, 5000)
+      }
       return () => clearInterval(interval)
    }, [myResponses])
 
    const newsScreen =
       myResponses === null || myResponses === undefined || myResponses.length === 0 ? (
-         <div id='loading-widget'>Loading...</div>
+         <img id='loading-widget' src={require('../img/spinner-1.gif')} alt='' />
       ) : (
          <React.Fragment>
             <Header />
-            <Miniview articles={myResponses} />
+            <Miniview
+               articles={myResponses}
+               options={{text: `${myNewsOptions.myTopics} with an interval of ${myNewsOptions.myInterval[0].name}.`}}
+            />
             <main id='news-scroller'>
                {myResponses.map((article) => (
                   <Article
@@ -170,9 +175,19 @@ export default function News(props) {
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
+
       if (matches !== undefined) {
+         matches[intervalCounter].style.opacity = 1
          document.location.replace(`${loc}#${matches[intervalCounter].id}`)
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
+         matches[intervalCounter].style.opacity = 0
       }
+
+      // gsap.from(`#${matches[intervalCounter - 1].id}`, {
+      //    ease: 'power.in',
+      //    x: '-50%',
+      //    // opacity: 0,
+      //    duration: 1
+      // })
    }
 }

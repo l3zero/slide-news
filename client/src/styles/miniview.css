@@ -77,10 +77,10 @@
   font-size: 1rem;
   color: white;
   margin: 10px;
+  transition: 0.2s ease;
 }
 .options-warning button:hover {
   font-size: 25px;
-  transition: 0.2s ease;
 }
 .options-warning #options-yes {
   background-color: green;
@@ -88,11 +88,17 @@
 .options-warning #options-no {
   background-color: red;
 }
+.options-warning span:nth-child(3) {
+  color: #61a1c1;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-style: italic;
+}
 
 .close {
   position: absolute;
   top: 15px;
-  right: 35px;
+  right: 100px;
   color: #f1f1f1;
   font-size: 40px;
   font-weight: bold;
