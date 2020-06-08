@@ -9,8 +9,7 @@
     align-items: center;
     align-content: center;
     width: 100%;
-    // opacity: 0;
-    transform: translateX(200%);
+    opacity: 0;
     @include fonts.font-acme();
     @include fonts.font-size(25px);
     a {
@@ -31,16 +30,4 @@
         width: max-content;
     }
     transition: all 1s ease;
-}
-.slide-animation {
-    animation: example 1s ease-in-out 5s 1 forwards;
-
-    @keyframes example {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-100vw);
-        }
-    }
 }

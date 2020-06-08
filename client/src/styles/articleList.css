@@ -9,14 +9,12 @@
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  padding-top: 15px;
   overflow-y: auto;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: bottom;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.83);
-  border-radius: 3px;
   font-family: "Acme", sans-serif;
   font-size: 20px;
   font-size: 1.25rem;

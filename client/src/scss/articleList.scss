@@ -11,17 +11,17 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    padding-top: 15px;
+    // padding-top: 30%;
     overflow-y: auto;
 
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: bottom;
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.83);
     // border: 1px solid white;
-    border-radius: 3px;
+    // border-radius: 3px;
     @include fonts.font-acme();
     @include fonts.font-size(20px);
     transition: 0.5s ease;

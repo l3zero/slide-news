@@ -64,11 +64,19 @@ export function editSubmitArrow(element) {
 }
 export function editGoButton(element) {
    gsap.from(element, {
-      ease: 'elastic.out',
-      y: '1000%',
-      // rotateX: '720deg',
-      rotateY: '520deg',
+      ease: 'power2.out',
+      y: '-100%',
+      rotateX: '520deg',
+      // rotateY: '520deg',
       // rotateZ: '720deg',
       duration: 1.5
+   })
+}
+export function editMiniViewOpen(element) {
+   gsap.from(element, {
+      ease: 'power2.out',
+      duration: 1,
+      scaleY: 1.5,
+      skewX: 50
    })
 }

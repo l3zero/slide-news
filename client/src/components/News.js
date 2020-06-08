@@ -11,8 +11,6 @@ import {fetchArticles} from '../helpers/fetchNewArticles'
 import {urlToId} from '../helpers/urlConverter'
 import {httpInits} from '../data/mongoHttpObj'
 import fetch, {Request} from 'node-fetch'
-import {gsap} from 'gsap'
-
 import '../styles/news.css'
 
 //@TO-DO Add -moz versions to css for /customize
@@ -141,20 +139,22 @@ export default function News(props) {
    useEffect(() => {
       let interval
       if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-         // document.querySelectorAll('.article-container')[0].style.opacity = 1
-         // document.querySelectorAll('.article-container')[0].classList.add('slide-animation')
-         interval = setInterval(scrollToNextArticle, 6000)
+         document.querySelectorAll('div.article-container')[0].style.opacity = 1
+         interval = setInterval(scrollToNextArticle, 5000)
       }
       return () => clearInterval(interval)
    }, [myResponses])
 
    const newsScreen =
       myResponses === null || myResponses === undefined || myResponses.length === 0 ? (
-         <div id='loading-widget'>Loading...</div>
+         <img id='loading-widget' src={require('../img/spinner-1.gif')} alt='' />
       ) : (
          <React.Fragment>
             <Header />
-            <Miniview articles={myResponses} />
+            <Miniview
+               articles={myResponses}
+               options={{text: `${myNewsOptions.myTopics} with an interval of ${myNewsOptions.myInterval[0].name}.`}}
+            />
             <main id='news-scroller'>
                {myResponses.map((article) => (
                   <Article
@@ -175,14 +175,13 @@ export default function News(props) {
    function scrollToNextArticle() {
       const matches = document.querySelectorAll('div.article-container')
       const loc = document.location.toString().split('#')[0]
-      // matches[intervalCounter].style.opacity = 1
-      // matches[intervalCounter].classList.add('slide-animation')
 
       if (matches !== undefined) {
+         matches[intervalCounter].style.opacity = 1
          document.location.replace(`${loc}#${matches[intervalCounter].id}`)
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
+         matches[intervalCounter].style.opacity = 0
       }
-      // matches[intervalCounter].classList.remove('slide-animation')
 
       // gsap.from(`#${matches[intervalCounter - 1].id}`, {
       //    ease: 'power.in',

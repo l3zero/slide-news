@@ -3,6 +3,7 @@ import {httpInits} from '../data/mongoHttpObj'
 import ArticleList from './ArticleList.js'
 import fetch, {Request} from 'node-fetch'
 import {checkStatus} from '../helpers/httpStatusCheck'
+import {editMiniViewOpen} from '../animation/animationController.js'
 import '../styles/miniview.css'
 
 export default function Miniview(props) {
@@ -25,6 +26,7 @@ export default function Miniview(props) {
                &times;
             </span>
             <span>Delete your options and start fresh?</span>
+            <span>Your current topics are {props.options.text.toLowerCase()}</span>
             <div>
                <button id='options-yes' onClick={clearOptions}>
                   Yes
@@ -38,6 +40,7 @@ export default function Miniview(props) {
    )
 
    function viewArticleList(e) {
+      editMiniViewOpen('#my-articles > a')
       document.getElementById('my-articles').style.display = 'flex'
    }
    function showWarning(e) {

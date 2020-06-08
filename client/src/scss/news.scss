@@ -5,3 +5,11 @@
     height: 100%;
     @include scrl.scroller(x, hidden);
 }
+#loading-widget {
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    // right: 0;
+    // bottom: 0;
+}

@@ -7,7 +7,7 @@
   align-items: center;
   align-content: center;
   width: 100%;
-  transform: translateX(200%);
+  opacity: 0;
   font-family: "Acme", sans-serif;
   font-size: 25px;
   font-size: 1.5625rem;
@@ -27,18 +27,6 @@
   border-radius: 2px;
   text-overflow: ellipsis;
   width: max-content;
-}
-
-.slide-animation {
-  animation: example 1s ease-in-out 5s 1 forwards;
-}
-@keyframes example {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100vw);
-  }
 }
 
 /*# sourceMappingURL=article.css.map */
