@@ -13,13 +13,12 @@ html {
 body {
   width: 100%;
   height: 100%;
+  margin: 0;
+
   background-color: black;
   color: colors.$base;
-  margin: 0;
   canvas {
-    // border: 1px solid white;
-    // border-radius: 20px;
-    position: fixed;
+    position: absolute;
     top: 22%;
     left: 25%;
     right: 0;
@@ -28,6 +27,9 @@ body {
 }
 
 #root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   // grid-auto-flow: row;
@@ -40,7 +42,10 @@ body {
   // grid-column-gap: 30px;
   // justify-content: center;
   // align-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+}
+
+@media screen and (max-width: 1441px) {
+  canvas {
+    // left: 60%;
+  }
 }

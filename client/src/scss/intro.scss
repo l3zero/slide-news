@@ -1,14 +1,9 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
+@use "partials/helpers" as helper;
 
 #slide-hero {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-self: center;
-  // align-content: center;
-  // border: 1px solid purple;
+  @include helper.flex-row(center);
   @include fonts.font-size(70px);
   @include fonts.font-dancing();
   a,
