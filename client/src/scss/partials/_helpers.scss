@@ -47,3 +47,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+@mixin flex-row($position) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: $position;
+    align-self: $position;
+}
+@mixin flex-column($position) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: $position;
+    align-items: $position;
+}

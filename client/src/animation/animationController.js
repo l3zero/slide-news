@@ -1,4 +1,5 @@
 import {gsap} from 'gsap'
+import {startSlideAnimation} from './p5Fun.js'
 
 export function createTimeline() {
    return gsap.timeline({
@@ -46,6 +47,7 @@ export function editIntro(tl, elements) {
       .from(elements[3], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
       .from(elements[4], {opacity: 0, duration: 0.3, x: '1000%', color: 'black'})
       .from(elements[5], {opacity: 0, duration: 0.3, x: '-1000%', color: 'black'})
+      .from(elements[6], {opacity: 0, delay: 0.5, onComplete: startSlideAnimation})
       .from(elements[1], {filter: 'hue-rotate(300deg)', duration: 2.5, repeat: -1, yoyo: true})
 }
 

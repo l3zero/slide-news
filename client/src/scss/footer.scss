@@ -1,20 +1,15 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
+@use "partials/helpers" as helper;
 
 footer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  @include helper.flex-column(center);
   align-self: end;
-  color: colors.$light-blue;
-
   @include fonts.font-size(15px);
   @include fonts.font-marker();
+  color: colors.$light-blue;
   padding-bottom: 10px;
   letter-spacing: 1px;
-
   a,
   a:visited {
     color: colors.$light-blue;
@@ -57,5 +52,10 @@ footer {
   a,
   a:visited {
     color: colors.$light-blue;
+  }
+}
+@media only screen and (max-width: 425px) and (max-height: 850px) {
+  footer {
+    @include fonts.font-size(13px);
   }
 }

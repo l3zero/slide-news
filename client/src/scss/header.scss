@@ -40,3 +40,25 @@ header {
     @include fonts.font-marker();
   }
 }
+@media only screen and (max-width: 425px) and (max-height: 850px) {
+  header {
+    div {
+      @include fonts.font-size(60px);
+    }
+    #title-S,
+    #title-N {
+      @include fonts.font-size(70px);
+    }
+  }
+}
+@media only screen and (max-width: 320px) and (max-height: 850px) {
+  header {
+    div {
+      @include fonts.font-size(55px);
+    }
+    #title-S,
+    #title-N {
+      @include fonts.font-size(65px);
+    }
+  }
+}

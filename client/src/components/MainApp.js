@@ -19,7 +19,8 @@ class MainApp extends Component {
             '#slide-hero > a',
             '#about-row',
             '#powered-by',
-            '#icons-by'
+            '#icons-by',
+            'canvas'
          ]
          editIntro(intro, elements)
 
