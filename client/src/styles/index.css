@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -15,7 +16,7 @@ body {
   color: #2485b5;
 }
 body canvas {
-  position: absolute;
+  position: fixed;
   top: 22%;
   left: 25%;
   right: 0;
@@ -31,6 +32,41 @@ body canvas {
   grid-template-rows: min-content 2fr 1fr;
   justify-items: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 1440px) and (max-height: 850px) {
+  canvas {
+    margin-left: 2%;
+  }
+}
+@media only screen and (max-width: 1024px) and (max-height: 850px) {
+  canvas {
+    margin-left: -8%;
+    margin-top: 2%;
+  }
+}
+@media only screen and (max-width: 768px) and (max-height: 850px) {
+  canvas {
+    margin-left: -17%;
+  }
+}
+@media only screen and (max-width: 425px) and (max-height: 850px) {
+  canvas {
+    margin-left: -90%;
+    margin-top: -28%;
+  }
+}
+@media only screen and (max-width: 375px) and (max-height: 850px) {
+  canvas {
+    margin-left: -105%;
+    margin-top: -25%;
+  }
+}
+@media only screen and (max-width: 320px) and (max-height: 700px) {
+  canvas {
+    margin-left: -125%;
+    margin-top: -23%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
