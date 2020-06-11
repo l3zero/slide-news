@@ -27,19 +27,13 @@ footer a:visited {
   background-image: url("../img/wave-footer.svg");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: 10%;
+  background-size: 15%;
 }
 #about-row a,
 #about-row a:visited {
   padding-right: 15px;
 }
 
-#powered-by {
-  background-image: url("../img/wave-footer.svg");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 12%;
-}
 #powered-by img {
   width: 30px;
   height: 30px;

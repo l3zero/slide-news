@@ -36,29 +36,55 @@ body canvas {
 
 @media only screen and (max-width: 1440px) and (max-height: 850px) {
   canvas {
-    margin-left: 2%;
+    margin-left: 1%;
+    margin-top: 0%;
+  }
+}
+@media only screen and (max-width: 1440px) and (min-height: 1000px) {
+  canvas {
+    margin-left: 1%;
+    margin-top: -4%;
   }
 }
 @media only screen and (max-width: 1024px) and (max-height: 850px) {
   canvas {
     margin-left: -8%;
-    margin-top: 2%;
+    margin-top: 0%;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-height: 1200px) {
+  canvas {
+    margin-left: -8%;
+    margin-top: -10%;
   }
 }
 @media only screen and (max-width: 768px) and (max-height: 850px) {
   canvas {
     margin-left: -17%;
+    margin-top: 2%;
+  }
+}
+@media only screen and (max-width: 768px) and (min-height: 950px) {
+  canvas {
+    margin-left: -17%;
+    margin-top: -5%;
+  }
+}
+@media only screen and (max-width: 550px) and (min-height: 750px) {
+  canvas {
+    margin-left: -65%;
+    margin-top: -20%;
   }
 }
 @media only screen and (max-width: 425px) and (max-height: 850px) {
   canvas {
     margin-left: -90%;
-    margin-top: -28%;
+    margin-top: -20%;
   }
 }
 @media only screen and (max-width: 375px) and (max-height: 850px) {
   canvas {
-    margin-left: -105%;
+    margin-left: -107%;
     margin-top: -25%;
   }
 }

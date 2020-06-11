@@ -16,7 +16,7 @@
         label {
             display: span;
             padding: 10px;
-            @include fonts.font-size(20px);
+            @include fonts.font-size(25px);
         }
         .checkbox {
             padding-left: 10px;
@@ -26,6 +26,41 @@
         }
         .submit {
             @include buttons.submit();
+        }
+    }
+}
+@media only screen and (max-width: 768px) and (max-height: 850px) {
+    .checkbox-container {
+        margin-bottom: 0px;
+        @include fonts.font-size(45px);
+        form label {
+            @include fonts.font-size(20px);
+        }
+    }
+}
+@media only screen and (max-width: 425px) and (max-height: 850px) {
+    .checkbox-container {
+        @include fonts.font-size(35px);
+        form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            width: 100vw;
+            label {
+                @include fonts.font-size(16px);
+            }
+        }
+    }
+}
+@media only screen and (max-width: 375px) and (max-height: 850px) {
+    .checkbox-container {
+        // @include fonts.font-size(35px);
+        form {
+            flex-wrap: wrap;
+            label {
+                // @include fonts.font-size(18px);
+            }
         }
     }
 }
