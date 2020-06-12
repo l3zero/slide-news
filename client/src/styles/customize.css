@@ -22,13 +22,13 @@ a {
 a #go {
   display: none;
   letter-spacing: 1px;
-  border: 4px ridge #61a1c1;
+  border: 2px solid green;
   border-radius: 15px;
-  background-color: #1a5f82;
-  color: white;
+  background-color: green;
+  color: green;
   font-size: 25px;
   font-size: 1.5625rem;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=customize.css.map */

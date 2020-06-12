@@ -13,10 +13,10 @@ export default function Miniview(props) {
             <img id='menu-slide' src={require('../img/slide.svg')} alt='' />
             <div className='menu-content'>
                <div id='menu-articles' onClick={viewArticleList}>
-                  My Articles
+                  Articles
                </div>
                <div id='menu-clear' onClick={showWarning}>
-                  Clear Options
+                  Options
                </div>
             </div>
          </div>

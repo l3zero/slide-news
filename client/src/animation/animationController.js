@@ -57,21 +57,22 @@ export function editCustomizePage(element) {
 export function editSubmitArrow(element) {
    gsap.from(element, {
       ease: 'elastic.out',
-      x: '-50%',
+      // x: '-50%',
       // rotateX: '720deg',
-      rotateY: '520deg',
+      rotateX: '520deg',
       // rotateZ: '720deg',
-      duration: 1
+      duration: 1.5
    })
 }
 export function editGoButton(element) {
    gsap.from(element, {
-      ease: 'power2.out',
-      y: '-100%',
-      rotateX: '520deg',
+      ease: 'power2.in',
+      backgroundColor: 'white',
+      repeat: -1,
+      // rotateX: '520deg',
       // rotateY: '520deg',
       // rotateZ: '720deg',
-      duration: 1.5
+      duration: 2
    })
 }
 export function editMiniViewOpen(element) {

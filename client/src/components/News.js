@@ -182,12 +182,5 @@ export default function News(props) {
          intervalCounter < matches.length - 1 ? intervalCounter++ : (intervalCounter = 0)
          matches[intervalCounter].style.opacity = 0
       }
-
-      // gsap.from(`#${matches[intervalCounter - 1].id}`, {
-      //    ease: 'power.in',
-      //    x: '-50%',
-      //    // opacity: 0,
-      //    duration: 1
-      // })
    }
 }

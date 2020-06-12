@@ -11,8 +11,8 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    // padding-top: 30%;
     overflow-y: auto;
+    padding-top: 5%;
 
     flex-direction: column;
     flex-wrap: nowrap;
@@ -20,13 +20,10 @@
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.83);
-    // border: 1px solid white;
-    // border-radius: 3px;
     @include fonts.font-acme();
     @include fonts.font-size(20px);
-    transition: 0.5s ease;
-
     letter-spacing: 2px;
+    transition: 0.5s ease;
     a,
     a:visited {
         color: white;
@@ -34,5 +31,18 @@
     }
     a:hover {
         color: colors.$base;
+    }
+}
+@media only screen and (max-width: 768px) and (max-height: 850px) {
+    .mini-article-list {
+        @include fonts.font-size(15px);
+    }
+}
+@media only screen and (max-width: 425px) and (max-height: 850px) {
+    .mini-article-list {
+        @include fonts.font-size(12px);
+        align-items: start;
+        padding-left: 5%;
+        padding-top: 10%;
     }
 }

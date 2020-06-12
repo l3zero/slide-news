@@ -27,19 +27,13 @@ footer a:visited {
   background-image: url("../img/wave-footer.svg");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: 10%;
+  background-size: 15%;
 }
 #about-row a,
 #about-row a:visited {
   padding-right: 15px;
 }
 
-#powered-by {
-  background-image: url("../img/wave-footer.svg");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 12%;
-}
 #powered-by img {
   width: 30px;
   height: 30px;
@@ -58,10 +52,16 @@ footer a:visited {
   color: #61a1c1;
 }
 
+@media only screen and (max-width: 768px) and (max-height: 850px) {
+  footer {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+}
 @media only screen and (max-width: 425px) and (max-height: 850px) {
   footer {
-    font-size: 13px;
-    font-size: 0.8125rem;
+    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 
