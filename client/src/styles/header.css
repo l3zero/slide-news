@@ -38,6 +38,39 @@ header #title-s {
   font-family: "Permanent Marker", cursive;
 }
 
+@media only screen and (max-width: 1024px) and (max-height: 750px) {
+  header div {
+    font-size: 120px;
+    font-size: 7.5rem;
+  }
+  header #title-S,
+header #title-N {
+    font-size: 140px;
+    font-size: 8.75rem;
+  }
+}
+@media only screen and (max-width: 768px) and (max-height: 750px) {
+  header div {
+    font-size: 90px;
+    font-size: 5.625rem;
+  }
+  header #title-S,
+header #title-N {
+    font-size: 110px;
+    font-size: 6.875rem;
+  }
+}
+@media only screen and (max-width: 768px) and (min-height: 950px) {
+  header div {
+    font-size: 110px;
+    font-size: 6.875rem;
+  }
+  header #title-S,
+header #title-N {
+    font-size: 130px;
+    font-size: 8.125rem;
+  }
+}
 @media only screen and (max-width: 550px) and (min-height: 750px) {
   header div {
     font-size: 70px;
@@ -51,17 +84,6 @@ header #title-N {
 }
 @media only screen and (max-width: 425px) and (max-height: 850px) {
   header div {
-    font-size: 60px;
-    font-size: 3.75rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 70px;
-    font-size: 4.375rem;
-  }
-}
-@media only screen and (max-width: 320px) and (max-height: 850px) {
-  header div {
     font-size: 55px;
     font-size: 3.4375rem;
   }
@@ -69,6 +91,17 @@ header #title-N {
 header #title-N {
     font-size: 65px;
     font-size: 4.0625rem;
+  }
+}
+@media only screen and (max-width: 375px) and (max-height: 850px) {
+  header div {
+    font-size: 50px;
+    font-size: 3.125rem;
+  }
+  header #title-S,
+header #title-N {
+    font-size: 60px;
+    font-size: 3.75rem;
   }
 }
 

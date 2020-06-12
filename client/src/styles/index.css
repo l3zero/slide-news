@@ -29,7 +29,7 @@ body canvas {
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content 2fr 1fr;
+  grid-template-rows: min-content 3fr 1fr;
   justify-items: center;
   align-items: center;
 }
@@ -48,8 +48,8 @@ body canvas {
 }
 @media only screen and (max-width: 1024px) and (max-height: 850px) {
   canvas {
-    margin-left: -8%;
-    margin-top: 0%;
+    margin-left: -11%;
+    margin-top: -4%;
   }
 }
 @media only screen and (max-width: 1024px) and (min-height: 1200px) {
@@ -60,8 +60,8 @@ body canvas {
 }
 @media only screen and (max-width: 768px) and (max-height: 850px) {
   canvas {
-    margin-left: -17%;
-    margin-top: 2%;
+    margin-left: -22%;
+    margin-top: -3%;
   }
 }
 @media only screen and (max-width: 768px) and (min-height: 950px) {
@@ -79,13 +79,13 @@ body canvas {
 @media only screen and (max-width: 425px) and (max-height: 850px) {
   canvas {
     margin-left: -90%;
-    margin-top: -20%;
+    margin-top: -25%;
   }
 }
 @media only screen and (max-width: 375px) and (max-height: 850px) {
   canvas {
     margin-left: -107%;
-    margin-top: -25%;
+    margin-top: -30%;
   }
 }
 @media only screen and (max-width: 320px) and (max-height: 700px) {

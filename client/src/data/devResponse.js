@@ -29,7 +29,7 @@ function convertArticles(prom) {
       arr.map((res) => {
          let article = {}
          article.url = res.url
-         article.title = res.title
+         article.title = res.title.length > 90 ? res.title.split(res.title.charAt(-1), 90).join('') + '...' : res.title
          article.imageUrl = res.cover_image === null ? noImg : res.cover_image
          article.reactions = res.positive_reactions_count
          return new Promise((resolve) => resolve(article))
