@@ -1,5 +1,5 @@
 export function urlToId(eyedee) {
-   // const reg = /[\:\/\.\-]/gim
+   // eslint-disable-next-line no-useless-escape
    const reg = /[\https://\dev.to\.\-\/\_]/gim
    return eyedee
       .trim()

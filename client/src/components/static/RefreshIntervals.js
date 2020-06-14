@@ -52,6 +52,7 @@ export default function RefreshIntervals(props) {
       e.preventDefault()
       const eventArray = [...e.target]
       let checkedArray = []
+      // eslint-disable-next-line array-callback-return
       eventArray.map((item) => {
          if (item.checked) {
             checkedArray.push(formData.INTERVALS.find((interval) => interval.name === item.value))

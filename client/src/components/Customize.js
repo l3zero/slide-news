@@ -17,6 +17,7 @@ export default function Customize(props) {
 
    useEffect(() => {
       browserSet()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [myOptions])
    useEffect(() => {
       if (animCount < 2) {

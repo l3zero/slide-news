@@ -15,7 +15,7 @@ export default function Footer() {
          </div>
 
          <div id='powered-by'>
-            Powered by <img src={require('../../img/devto.png')} /> V.1.0
+            Powered by <img src={require('../../img/devto.png')} alt='' /> V.1.0
          </div>
          <div id='icons-by'>
             Icons by{' '}

@@ -12,12 +12,12 @@ export function fetchArticles(requests) {
                   const duplicate = myArticles.find((item) => item.url === result.url)
                   if (!duplicate) {
                      myArticles = myArticles.concat(result)
-                  } else {
-                     myArticles = myArticles
                   }
+                  // else {
+                  //    myArticles = myArticles
+                  // }
                }
                return myArticles
-               // myArticles = result === undefined ? myArticles : myArticles.concat(result)
             })
          )
       )

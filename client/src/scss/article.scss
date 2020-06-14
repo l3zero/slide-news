@@ -36,6 +36,12 @@
     }
     transition: all 1s ease;
 }
+@media only screen and (min-width: 2560px) and (min-height: 1500px) {
+    .article-container div {
+        @include fonts.font-size(35px);
+    }
+}
+
 @media only screen and (max-width: 768px) and (max-height: 850px) {
     .article-container div {
         @include fonts.font-size(20px);

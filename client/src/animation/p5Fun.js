@@ -32,5 +32,6 @@ export function startSlideAnimation() {
          }
       }
    }
+   // eslint-disable-next-line no-unused-vars
    const myp5 = new p5(slideAnimation, 'body')
 }

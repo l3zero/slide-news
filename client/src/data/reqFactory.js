@@ -3,7 +3,7 @@ import {hackReqs} from './hackerNewsRequest'
 
 export function createRequests(options) {
    let reqArray = []
-
+   // eslint-disable-next-line array-callback-return
    options.mySources.map((source) => {
       let sourceReqs = apiDecider(source.internal_id)(options)
       reqArray = reqArray.concat(sourceReqs)

@@ -34,6 +34,12 @@ body canvas {
   align-items: center;
 }
 
+@media only screen and (min-width: 2560px) and (min-height: 1500px) {
+  canvas {
+    margin-left: 10%;
+    margin-top: -8%;
+  }
+}
 @media only screen and (max-width: 1440px) and (max-height: 850px) {
   canvas {
     margin-left: 1%;

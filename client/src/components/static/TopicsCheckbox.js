@@ -43,6 +43,7 @@ export default function TopicsCheckbox(props) {
       e.preventDefault()
       const eventArray = [...e.target]
       let checkedArray = []
+      // eslint-disable-next-line array-callback-return
       eventArray.map((item) => {
          if (item.checked) {
             checkedArray.push(item.value)
