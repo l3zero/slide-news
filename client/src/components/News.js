@@ -33,8 +33,6 @@ export default function News(props) {
       const firstTime = JSON.parse(window.localStorage.getItem('firstTime'))
       const reqs = createRequests(myNewsOptions)
       if (firstTime) {
-         // console.log('1st time Fetching -> Setting state -> sending to DB -> setting 1st time to false')
-         // setFirstTime(true)
          const articles = fetchArticles(reqs)
          articles.then((data) => {
             if (data.length === 0) {
@@ -43,23 +41,16 @@ export default function News(props) {
                alert('There are no articles available with your criteria! Please start a fresh search')
                document.location.replace('/customize')
             } else {
-               // console.log('setting db create obj')
                setMyResponses(data)
                setDbCreateObj(httpInits(data).CREATE)
             }
          })
-         // setMyRequests(reqs)
          window.localStorage.setItem('firstTime', JSON.stringify(false))
       } else {
          if (expireCheck(JSON.stringify(myNewsOptions.expires))) {
-            // console.log(
-            //    'Expired confirmed -> fetching -> setting state -> sending updated news to DB -> setting expired to false -> updating local and state with new expiration date'
-            // )
             const articles = fetchArticles(reqs)
             articles.then((data) => {
                if (data.length === 0) {
-                  // window.localStorage.removeItem('myNewsOptions')
-                  // window.localStorage.removeItem('firstTime')
                   JSON.parse(window.localStorage.getItem('myNewsOptions')).expires = expireUpdate(
                      myNewsOptions.myInterval[0].value
                   )
@@ -67,22 +58,16 @@ export default function News(props) {
                   alert('There are no new articles available with your criteria! Loading old articles..')
                   document.location.reload()
                } else {
-                  // console.log('setting db update obj')
                   setMyResponses(data)
                   setDbUpdateObj(httpInits(data).UPDATE)
                }
             })
-            // setIsExpired(false)
-            // setMyRequests(reqs)
          } else {
-            // console.log('not first time, not expired, setting db read obj')
             setDbReadObj(httpInits().READ)
          }
       }
 
       return () => {
-         // setIsExpired(false)
-         // setFirstTime(null)
          setMyResponses(null)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -104,7 +89,6 @@ export default function News(props) {
    //Creating DB object
    useEffect(() => {
       if (dbCreateObj !== null && myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-         console.log('sending fresh news to DB')
          fetch(new Request(`${window.location.origin}/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
       }
       return () => {
@@ -116,7 +100,6 @@ export default function News(props) {
    //Fetching existing DB object & updating local state
    useEffect(() => {
       if (dbReadObj !== null) {
-         console.log('grabbing existing news from DB')
          fetch(new Request(`${window.location.origin}/mynews/id/${myNewsOptions.id}`, dbReadObj))
             .then(checkStatus)
             .then((raw) => raw.json())
