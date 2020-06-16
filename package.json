@@ -1,8 +1,7 @@
 {
   "name": "leo-news",
   "version": "1.0.0",
-  "description": "React SPA allowing you to get relevant, constantly updated news articles from multiple sources on one page. More info to come closer to release.<br><br> If you're curious about features list or project tasks, check out the 'Projects' tab above.",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
@@ -19,7 +18,9 @@
     "start": "node server.js",
     "db": "sudo systemctl start mongod",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run db && npm run start\" \"cd client && npm start\""
+    "dev": "concurrently \"npm run db && npm run start\" \"cd client && npm start\"",
+    "prod": "cd client && npm run build && npm run postBuild && cd ../ && npm run db && npm run start",
+    "clean": "rm -rf build && sudo systemctl stop mongod"
   },
   "repository": {
     "type": "git",

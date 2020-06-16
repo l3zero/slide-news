@@ -78,7 +78,7 @@ export default function News(props) {
       if (dbUpdateObj !== null && myResponses !== null) {
          console.log('sending updated news to DB')
          newFlash('#new-flash')
-         fetch(new Request(`${window.location.origin}/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
+         fetch(new Request(`/mynews/update/${myNewsOptions.id}`, dbUpdateObj))
       }
       return () => {
          setDbUpdateObj(null)
@@ -89,7 +89,7 @@ export default function News(props) {
    //Creating DB object
    useEffect(() => {
       if (dbCreateObj !== null && myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
-         fetch(new Request(`${window.location.origin}/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
+         fetch(new Request(`/mynews/upload/${myNewsOptions.id}`, dbCreateObj))
       }
       return () => {
          setDbCreateObj(null)
@@ -100,7 +100,7 @@ export default function News(props) {
    //Fetching existing DB object & updating local state
    useEffect(() => {
       if (dbReadObj !== null) {
-         fetch(new Request(`${window.location.origin}/mynews/id/${myNewsOptions.id}`, dbReadObj))
+         fetch(new Request(`/mynews/id/${myNewsOptions.id}`, dbReadObj))
             .then(checkStatus)
             .then((raw) => raw.json())
             .then((json) => {

@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postBuild": "mv build ./server/",
+    "postBuild": "mv build ../",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scss": "sass --watch src/scss:src/styles"
@@ -54,5 +54,6 @@
     "rc-checkbox": "^2.2.0",
     "sass": "^1.26.5"
   },
-  "proxy": "http://localhost:9000"
+  "proxy": "http://localhost:9000/"
+
 }

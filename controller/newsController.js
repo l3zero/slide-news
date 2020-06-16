@@ -6,24 +6,23 @@ const uploadNews = (req, res, next) => {
          success: false,
          error: 'You must provide a newsId!',
       })
-   } else if (!req.body) {
+   }
+   if (!req.body) {
       return res.status(400).json({
          success: false,
          error: 'You must provide data in your request body!',
       })
-   } else {
-      let fullBody = req.body
-      fullBody.newsId = req.params.newsId
-      NewsCollection.create(fullBody)
-         .then((data) => res.json(data))
-         .then(() => {
-            return res.status(201).json({
-               success: true,
-               message: 'News object created!',
-            })
-         })
-         .catch(next)
    }
+   let fullBody = req.body
+   fullBody.newsId = req.params.newsId
+   NewsCollection.create(fullBody)
+      .then(() => {
+         res.status(201).json({
+            success: true,
+            message: 'News object created!',
+         })
+      })
+      .catch(next)
 }
 
 const getNews = async (req, res) => {

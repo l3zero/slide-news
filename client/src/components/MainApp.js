@@ -5,6 +5,7 @@ import Footer from './static/Footer.js'
 import Intro from './static/Intro.js'
 import News from './News.js'
 import Customize from './Customize.js'
+import NotFound from './static/NotFound.js'
 import {createTimeline, editIntro} from '../animation/animationController.js'
 import {checkIntro} from '../animation/animationValidator.js'
 //@TO-DO make redirects carry a message about why it's being redirected
@@ -40,6 +41,7 @@ class MainApp extends Component {
                <Route exact path='/news' component={News}>
                   {!localCheck() ? <Redirect exact from='/news' to='/' /> : <News />}
                </Route>
+               <Route path='*' component={NotFound} />
             </Switch>
          </Router>
       )

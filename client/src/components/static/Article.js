@@ -6,7 +6,7 @@ export default function Article(props) {
       <div className='article-container' id={props.id}>
          <div>{props.title}</div>
          <a href={props.url}>
-            <img src={props.image} loading='lazy' alt='' />
+            <img src={props.image} alt='' />
          </a>
       </div>
    )
