@@ -1,5 +1,3 @@
-// const hash = require('object-hash')
-
 export const httpInits = (data) => {
    return {
       UPDATE: {

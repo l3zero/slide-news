@@ -8,7 +8,6 @@ import Customize from './Customize.js'
 import NotFound from './static/NotFound.js'
 import {createTimeline, editIntro} from '../animation/animationController.js'
 import {checkIntro} from '../animation/animationValidator.js'
-//@TO-DO make redirects carry a message about why it's being redirected
 class MainApp extends Component {
    componentDidMount() {
       window.localStorage.setItem('animateIntro', JSON.stringify(true))

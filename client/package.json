@@ -52,8 +52,7 @@
     "p5": "^1.0.0",
     "prettier": "^1.19.1",
     "rc-checkbox": "^2.2.0",
-    "sass": "^1.26.5"
+    "sass": "^1.26.8"
   },
   "proxy": "http://localhost:9000/"
-
 }

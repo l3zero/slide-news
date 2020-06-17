@@ -3,7 +3,7 @@ import p5 from 'p5'
 export function startSlideAnimation() {
    const slideAnimation = (p) => {
       //This controls how long animation runs
-      let counter = 4
+      let counter = 3
 
       p.setup = () => {
          p.createCanvas(650, 100, p.WEBGL)

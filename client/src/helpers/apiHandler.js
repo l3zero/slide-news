@@ -1,12 +1,8 @@
 import {getDevResponses} from '../data/devResponse'
 import {getHackResponses} from '../data/hackerNewsResponse'
-// import {formData} from '../data/formData'
-// import nodeCache from 'node-cache'
-// const cache = new nodeCache({stdTTL: 600, maxKeys: 1000000}) //In seconds
 
 export function getResponses(requests) {
    let resArray = []
-   // const idArray = [1, 2, 3]
 
    for (let index = 0; index < requests.length; index++) {
       let currentId = requests[index].api_id

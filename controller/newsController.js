@@ -46,7 +46,7 @@ const updateNews = async (req, res) => {
       if (!news) {
          return res.status(404).json({success: false, error: `News object not found`})
       }
-      return res.status(200).json({success: true, dataUpdated: news})
+      return res.status(200).json({success: true, message: 'News id was updated'})
    }).catch((err) => console.log(err))
 }
 
@@ -60,7 +60,7 @@ const deleteNews = async (req, res) => {
          return res.status(404).json({success: false, error: `News object not found`})
       }
 
-      return res.status(200).json({success: true, data: news})
+      return res.status(200).json({success: true, message: 'News id deleted from DB'})
    }).catch((err) => console.log(err))
 }
 

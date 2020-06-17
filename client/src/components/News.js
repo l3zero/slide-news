@@ -14,9 +14,6 @@ import {urlToId} from '../helpers/urlConverter'
 import {newFlash} from '../animation/animationController.js'
 import '../styles/news.css'
 
-//@TO-DO Add -moz versions to css for /customize
-//@TO-DO Add bookmark button for each image
-
 export default function News(props) {
    const [myNewsOptions] = useState({
       ...JSON.parse(window.localStorage.getItem('myNewsOptions'))

@@ -13,16 +13,12 @@ export function fetchArticles(requests) {
                   if (!duplicate) {
                      myArticles = myArticles.concat(result)
                   }
-                  // else {
-                  //    myArticles = myArticles
-                  // }
                }
                return myArticles
             })
          )
       )
    )
-   // return resolved
    return Promise.all(resolved).then(() => {
       return myArticles
    })

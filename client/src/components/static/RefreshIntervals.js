@@ -11,16 +11,10 @@ export default function RefreshIntervals(props) {
       if (animCount === 1) {
          editSubmitArrow('#interval-submit')
       }
-      return () => {
-         // anim.kill()
-      }
    }, [animCount])
    useEffect(() => {
       if (goCount === 1) {
          editGoButton('#go')
-      }
-      return () => {
-         // anim.kill()
       }
    }, [goCount])
 
