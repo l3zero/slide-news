@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import 'rc-checkbox/assets/index.css'
 import Checkbox from 'rc-checkbox'
 import {formData} from '../../data/formData.js'
 import {editSubmitArrow} from '../../animation/animationController.js'
-
+import 'rc-checkbox/assets/index.css'
 import '../../styles/checkbox.css'
 
 export default function TopicsCheckbox(props) {
@@ -12,9 +11,6 @@ export default function TopicsCheckbox(props) {
    useEffect(() => {
       if (animCount === 1) {
          editSubmitArrow('#topics-submit')
-      }
-      return () => {
-         // anim.kill()
       }
    }, [animCount])
    return (
@@ -43,6 +39,7 @@ export default function TopicsCheckbox(props) {
       e.preventDefault()
       const eventArray = [...e.target]
       let checkedArray = []
+      // eslint-disable-next-line array-callback-return
       eventArray.map((item) => {
          if (item.checked) {
             checkedArray.push(item.value)

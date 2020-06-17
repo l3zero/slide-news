@@ -3,7 +3,7 @@ import p5 from 'p5'
 export function startSlideAnimation() {
    const slideAnimation = (p) => {
       //This controls how long animation runs
-      let counter = 4
+      let counter = 3
 
       p.setup = () => {
          p.createCanvas(650, 100, p.WEBGL)
@@ -32,5 +32,6 @@ export function startSlideAnimation() {
          }
       }
    }
+   // eslint-disable-next-line no-unused-vars
    const myp5 = new p5(slideAnimation, 'body')
 }

@@ -27,7 +27,7 @@ footer a:visited {
   background-image: url("../img/wave-footer.svg");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: 15%;
+  background-size: 7%;
 }
 #about-row a,
 #about-row a:visited {
@@ -45,7 +45,7 @@ footer a:visited {
   background-image: url("../img/wave-footer.svg");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: 20%;
+  background-size: 10%;
 }
 #icons-by a,
 #icons-by a:visited {

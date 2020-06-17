@@ -9,6 +9,7 @@ export default function ArticleList(props) {
             &times;
          </span>
          {props.articles
+            // eslint-disable-next-line array-callback-return
             .sort((a, b) => {
                let titleA = a.title.toUpperCase()
                let titleB = b.title.toUpperCase()

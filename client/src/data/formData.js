@@ -7,8 +7,8 @@ export const formData = {
       // {name: 'Hacker News', url: 'https://hacker-news.firebaseio.com/v0', internal_id: 2}
    ],
    INTERVALS: [
-      {name: 'Every Day', value: 1},
       {name: 'Every 3 Days', value: 3},
+      {name: 'Every 5 Days', value: 5},
       {name: 'Once a Week', value: 7}
    ]
 }

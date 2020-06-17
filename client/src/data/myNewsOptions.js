@@ -21,23 +21,6 @@ export function initMyNews() {
 }
 
 function combiner(obj) {
-   /*const topics = new Array(obj.myTopics)
-      .join('')
-      .trim()
-      .toLowerCase()
-      .replace(',', '')
-
-   const sources = new Array(obj.mySources)
-      .join('')
-      .trim()
-      .toLowerCase()
-      .replace(',', '')
-
-   const interval = new Array(obj.myInterval)
-      .join('')
-      .trim()
-      .toLowerCase()*/
-
    const time = obj.timeCreated
       .trim()
       .toLowerCase()

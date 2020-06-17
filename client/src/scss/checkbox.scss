@@ -1,16 +1,12 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
 @use 'partials/buttons';
+@use 'partials/helpers';
 
 .checkbox-container {
     @include fonts.font-acme();
     @include fonts.font-size(50px);
-
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+    @include helpers.flex-column(center);
     margin-bottom: 45px;
     form {
         label {
@@ -31,7 +27,7 @@
 }
 @media only screen and (max-width: 768px) and (max-height: 850px) {
     .checkbox-container {
-        margin-bottom: 0px;
+        margin-bottom: 0;
         @include fonts.font-size(45px);
         form label {
             @include fonts.font-size(20px);
@@ -54,13 +50,7 @@
     }
 }
 @media only screen and (max-width: 375px) and (max-height: 850px) {
-    .checkbox-container {
-        // @include fonts.font-size(35px);
-        form {
-            flex-wrap: wrap;
-            label {
-                // @include fonts.font-size(18px);
-            }
-        }
+    .checkbox-container form {
+        flex-wrap: wrap;
     }
 }

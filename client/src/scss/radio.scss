@@ -1,15 +1,12 @@
 @use 'partials/colors' as colors;
 @use 'partials/fonts' as fonts;
 @use 'partials/buttons';
+@use 'partials/helpers';
 
 .radio-container {
     @include fonts.font-acme();
     @include fonts.font-size(50px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+    @include helpers.flex-column(center);
     width: 100%;
     margin-bottom: 45px;
 

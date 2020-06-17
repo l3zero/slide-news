@@ -6,24 +6,23 @@ const uploadNews = (req, res, next) => {
          success: false,
          error: 'You must provide a newsId!',
       })
-   } else if (!req.body) {
+   }
+   if (!req.body) {
       return res.status(400).json({
          success: false,
          error: 'You must provide data in your request body!',
       })
-   } else {
-      let fullBody = req.body
-      fullBody.newsId = req.params.newsId
-      NewsCollection.create(fullBody)
-         .then((data) => res.json(data))
-         .then(() => {
-            return res.status(201).json({
-               success: true,
-               message: 'News object created!',
-            })
-         })
-         .catch(next)
    }
+   let fullBody = req.body
+   fullBody.newsId = req.params.newsId
+   NewsCollection.create(fullBody)
+      .then(() => {
+         res.status(201).json({
+            success: true,
+            message: 'News object created!',
+         })
+      })
+      .catch(next)
 }
 
 const getNews = async (req, res) => {
@@ -47,7 +46,7 @@ const updateNews = async (req, res) => {
       if (!news) {
          return res.status(404).json({success: false, error: `News object not found`})
       }
-      return res.status(200).json({success: true, dataUpdated: news})
+      return res.status(200).json({success: true, message: 'News id was updated'})
    }).catch((err) => console.log(err))
 }
 
@@ -61,7 +60,7 @@ const deleteNews = async (req, res) => {
          return res.status(404).json({success: false, error: `News object not found`})
       }
 
-      return res.status(200).json({success: true, data: news})
+      return res.status(200).json({success: true, message: 'News id deleted from DB'})
    }).catch((err) => console.log(err))
 }
 

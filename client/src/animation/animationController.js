@@ -83,3 +83,6 @@ export function editMiniViewOpen(element) {
       skewX: 50
    })
 }
+export function newFlash(element) {
+   gsap.from(element, {color: 'red', opacity: 1, duration: 2, repeat: 10, yoyo: true})
+}
