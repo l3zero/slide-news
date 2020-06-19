@@ -20,6 +20,7 @@ jobs:
     - run: npm ci
     - run: npm audit
     - run: cd client
+    - run: rm -rf node_modules
     - run: npm ci
     - run: npm audit
     - run: cd ../
