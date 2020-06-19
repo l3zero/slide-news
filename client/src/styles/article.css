@@ -1,10 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 .article-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-line-pack: center;
   align-content: center;
   width: 100%;
   height: 100%;

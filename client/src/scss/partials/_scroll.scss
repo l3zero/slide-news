@@ -1,22 +1,30 @@
 @mixin scroller($scrollDirection, $visibility) {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-rows: 1fr;
     grid-template-rows: 1fr;
     grid-auto-flow: column;
     grid-auto-columns: 100%;
     justify-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
     @if $scrollDirection == "x" {
         overflow-x: $visibility;
+        -ms-scroll-snap-type: x mandatory;
         scroll-snap-type: x mandatory;
     } @else if $scrollDirection == "y" {
         overflow-y: $visibility;
+        -ms-scroll-snap-type: y mandatory;
         scroll-snap-type: y mandatory;
     } @else if $scrollDirection == "both" {
         overflow-y: $visibility;
         overflow-x: $visibility;
+        -ms-scroll-snap-type: both mandatory;
         scroll-snap-type: both mandatory;
     }
+    -ms-scroll-chaining: none;
     overscroll-behavior: contain;
 
     div {
