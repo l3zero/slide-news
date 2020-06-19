@@ -19,6 +19,7 @@ jobs:
         node-version: '12.x'
     - run: npm ci
     - run: npm audit
+    - run: cd client && npm ci && npm audit && cd ../
     - run: npm run testBuild --if-present
     - run: npm run test --if-present
     - run: npm run clean --if-present
