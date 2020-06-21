@@ -1,7 +1,7 @@
 {
   "short_name": "Slide News",
   "name": "Slide News",
-  "start_url": ".",
+  "start_url": "https://slide-news.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
