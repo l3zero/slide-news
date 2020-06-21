@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm run build && npm run postBuild",
+    "heroku-postbuild": "cd client && npm install && npm run build && npm run postBuild",
     "db": "sudo systemctl start mongod",
     "test": "echo \"Error: no test specified\"",
     "dev": "concurrently \"npm run db && npm run start\" \"cd client && npm start\"",
