@@ -55,6 +55,10 @@ export default function News(props) {
                   alert('There are no new articles available with your criteria! Loading old articles..')
                   document.location.reload()
                } else {
+                  JSON.parse(window.localStorage.getItem('myNewsOptions')).expires = expireUpdate(
+                     myNewsOptions.myInterval[0].value
+                  )
+
                   setMyResponses(data)
                   setDbUpdateObj(httpInits(data).UPDATE)
                }
