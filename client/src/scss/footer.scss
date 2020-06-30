@@ -8,7 +8,8 @@ footer {
   @include fonts.font-size(15px);
   @include fonts.font-marker();
   color: colors.$light-blue;
-  padding-bottom: 10px;
+  // padding-top: 10px;
+  // margin-top: 10px;
   letter-spacing: 1px;
   a,
   a:visited {

@@ -3,7 +3,7 @@
 @use "partials/helpers" as helper;
 
 #slide-hero {
-  @include helper.flex-row(center);
+  @include helper.flex-row(end);
   @include fonts.font-size(70px);
   @include fonts.font-dancing();
   a,

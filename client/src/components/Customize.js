@@ -35,7 +35,7 @@ export default function Customize(props) {
             <TopicsCheckbox handler={setTopics} />
             <RefreshIntervals handler={setInterval} />
          </main>
-         <Link to='/news'>
+         <Link id='news-link' to='/news'>
             <button id='go'> GO </button>
          </Link>
          <Footer />

@@ -2,20 +2,14 @@
 #news-scroller {
   width: 100%;
   height: 100%;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
   justify-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   overflow-x: hidden;
-  -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
-  -ms-scroll-chaining: none;
   overscroll-behavior: contain;
 }
 #news-scroller div {
@@ -24,9 +18,9 @@
 
 #loading-widget {
   border-radius: 5px;
-  position: fixed;
-  top: 50vh;
-  left: 50vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 #new-flash {
