@@ -6,10 +6,11 @@
     align-self: end;
 }
 
-a {
+#news-link {
+    display: none;
     text-decoration: none;
     #go {
         @include buttons.go();
-        margin-bottom: 15px;
+        // margin-bottom: 15px;
     }
 }

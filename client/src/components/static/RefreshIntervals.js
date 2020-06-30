@@ -57,6 +57,7 @@ export default function RefreshIntervals(props) {
       } else {
          props.handler(checkedArray)
          setGoCount(1)
+         document.getElementById('news-link').style.display = 'initial'
          document.getElementById('go').style.display = 'initial'
       }
    }

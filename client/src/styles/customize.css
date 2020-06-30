@@ -1,20 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 #customize-scroller {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
   justify-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   overflow-y: hidden;
   overflow-x: hidden;
-  -ms-scroll-snap-type: both mandatory;
   scroll-snap-type: both mandatory;
-  -ms-scroll-chaining: none;
   overscroll-behavior: contain;
   align-self: end;
 }
@@ -22,19 +16,19 @@
   scroll-snap-align: center;
 }
 
-a {
+#news-link {
+  display: none;
   text-decoration: none;
 }
-a #go {
+#news-link #go {
   display: none;
   letter-spacing: 1px;
   border: 2px solid green;
-  border-radius: 15px;
+  border-radius: 25px;
   background-color: green;
   color: green;
-  font-size: 25px;
-  font-size: 1.5625rem;
-  margin-bottom: 15px;
+  font-size: 35px;
+  font-size: 2.1875rem;
 }
 
 /*# sourceMappingURL=customize.css.map */

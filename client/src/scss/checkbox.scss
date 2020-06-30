@@ -11,11 +11,12 @@
     form {
         label {
             display: span;
-            padding: 10px;
+            padding-left: 10px;
+            padding-top: 10px;
             @include fonts.font-size(25px);
         }
         .checkbox {
-            padding-left: 10px;
+            padding-left: 5px;
             margin: 0;
             vertical-align: text-bottom;
             top: -2px;

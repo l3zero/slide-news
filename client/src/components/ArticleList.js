@@ -3,7 +3,9 @@ import {urlToId} from '../helpers/urlConverter'
 import '../styles/articleList.css'
 
 export default function ArticleList(props) {
+   let counter = 1
    return (
+      // <React.Fragment>
       <div className='mini-article-list' id='my-articles'>
          <span className='close' onClick={closeArticleList}>
             &times;
@@ -21,11 +23,16 @@ export default function ArticleList(props) {
                }
             })
             .map((article) => (
-               <a href={article.url} key={urlToId(article.url)}>
-                  {article.title}
-               </a>
+               <div>
+                  {counter++}){' '}
+                  <a href={article.url} key={urlToId(article.url)}>
+                     {article.title}
+                  </a>
+                  {'\n'}
+               </div>
             ))}
       </div>
+      // </React.Fragment>
    )
 
    function closeArticleList() {
