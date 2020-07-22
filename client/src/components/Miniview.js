@@ -40,7 +40,7 @@ export default function Miniview(props) {
    )
 
    function viewArticleList(e) {
-      editMiniViewOpen('#my-articles > a')
+      editMiniViewOpen('#my-articles > div > a')
       document.getElementById('my-articles').style.display = 'flex'
    }
    function showWarning(e) {

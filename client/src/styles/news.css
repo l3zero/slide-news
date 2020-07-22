@@ -32,19 +32,18 @@
   font-size: 35px;
   font-size: 2.1875rem;
   position: absolute;
-  top: 43vh;
-  left: 20vw;
+  top: 30vh;
+  left: 10vw;
 }
 
 @media only screen and (max-width: 1440px) and (max-height: 850px) {
   #new-flash {
-    top: 41vh;
+    top: 30vh;
   }
 }
 @media only screen and (max-width: 425) and (max-height: 850px) {
   #new-flash {
-    top: 0;
-    left: 10vw;
+    top: 15vh;
   }
 }
 
