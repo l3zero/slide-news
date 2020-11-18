@@ -10,7 +10,7 @@ footer {
   color: colors.$light-blue;
   // padding-top: 10px;
   // margin-top: 10px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   a,
   a:visited {
     color: colors.$light-blue;
@@ -22,10 +22,6 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  background-image: url("../img/wave-footer.svg");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 7%;
 
   a,
   a:visited {
@@ -33,24 +29,6 @@ footer {
   }
 }
 
-#powered-by {
-  img {
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    vertical-align: middle;
-  }
-}
-#icons-by {
-  background-image: url("../img/wave-footer.svg");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 10%;
-  a,
-  a:visited {
-    color: colors.$light-blue;
-  }
-}
 @media only screen and (max-width: 768px) and (max-height: 850px) {
   footer {
     @include fonts.font-size(14px);

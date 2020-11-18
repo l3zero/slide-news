@@ -16,7 +16,7 @@ export function createTimeline() {
       smoothChildTiming: true,
       autoRemoveChildren: true,
       onComplete: () => {
-         this.kill()
+         // this.kill() PUT THIS BACK AFTER DONE EDITING
       }
       // other callbacks:
       // onStart, onUpdate, onRepeat, onReverseComplete

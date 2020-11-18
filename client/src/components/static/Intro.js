@@ -5,8 +5,9 @@ import '../../styles/intro.css'
 export default function Intro() {
    return (
       <div id='slide-hero'>
-         <Link to='/customize'>Let's Slide</Link>
-         <img src={require('../../img/slide.svg')} alt='' />
+         <Link to='/customize'>
+            <img src={require('../../img/slide.svg')} alt='' />
+         </Link>
       </div>
    )
 }

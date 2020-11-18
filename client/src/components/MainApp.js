@@ -22,7 +22,7 @@ class MainApp extends Component {
             '#icons-by',
             'canvas'
          ]
-         editIntro(intro, elements)
+         // editIntro(intro, elements)
 
          window.localStorage.setItem('animateIntro', JSON.stringify(false))
       }

@@ -15,16 +15,6 @@ export default function Footer() {
                Contact
             </a>{' '}
          </div>
-
-         <div id='powered-by'>
-            Powered by <img src={require('../../img/devto.png')} alt='' /> V.1.0
-         </div>
-         <div id='icons-by'>
-            Icons by{' '}
-            <a href='https://www.flaticon.com/authors/freepik' title='Freepik' rel='noopener noreferer'>
-               Freepik
-            </a>{' '}
-         </div>
       </footer>
    )
 }
