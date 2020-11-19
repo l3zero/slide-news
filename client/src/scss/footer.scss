@@ -3,40 +3,17 @@
 @use "partials/helpers" as helper;
 
 footer {
-  @include helper.flex-column(center);
+  @include helper.flex-row(center);
   align-self: end;
   @include fonts.font-size(15px);
   @include fonts.font-marker();
   color: colors.$light-blue;
-  // padding-top: 10px;
-  // margin-top: 10px;
-  letter-spacing: 2px;
+  letter-spacing: 5px;
   a,
   a:visited {
     color: colors.$light-blue;
     text-decoration: none;
     cursor: pointer;
-  }
-}
-#about-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  a,
-  a:visited {
     padding-right: 15px;
-  }
-}
-
-@media only screen and (max-width: 768px) and (max-height: 850px) {
-  footer {
-    @include fonts.font-size(14px);
-  }
-}
-
-@media only screen and (max-width: 425px) and (max-height: 850px) {
-  footer {
-    @include fonts.font-size(12px);
   }
 }

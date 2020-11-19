@@ -29,8 +29,7 @@
   cursor: pointer;
   display: none;
   margin-left: 10px;
-  border: 1px solid black;
-  background-color: black;
+  border: 1px solid #e8eff0;
   font-size: 25px;
   font-size: 1.5625rem;
 }

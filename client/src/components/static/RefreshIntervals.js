@@ -20,7 +20,7 @@ export default function RefreshIntervals(props) {
 
    return (
       <div className='radio-container' id='interval-container'>
-         <div>Choose your update interval</div>
+         <div>Pick your interval!</div>
          <form onSubmit={formHandler}>
             {formData.INTERVALS.map((item) => (
                <label key={item.name}>

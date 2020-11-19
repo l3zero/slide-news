@@ -12,12 +12,12 @@
     height: 100%;
     opacity: 0;
     @include fonts.font-acme();
-    @include fonts.font-size(25px);
+    @include fonts.font-size(20px);
     .article-link {
         a {
             img {
-                width: 70vw;
-                height: 40vh;
+                width: 90vw;
+                height: 60vh;
                 border-radius: 10px;
                 // border: 3px solid colors.$dark-blue;
                 filter: drop-shadow(6px 5px 4px colors.$base);

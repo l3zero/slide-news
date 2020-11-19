@@ -10,13 +10,13 @@
   height: 100%;
   opacity: 0;
   font-family: "Acme", sans-serif;
-  font-size: 25px;
-  font-size: 1.5625rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   transition: all 1s ease;
 }
 .article-container .article-link a img {
-  width: 70vw;
-  height: 40vh;
+  width: 90vw;
+  height: 60vh;
   border-radius: 10px;
   filter: drop-shadow(6px 5px 4px #2485b5);
 }

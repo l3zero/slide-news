@@ -36,7 +36,7 @@ export default function Customize(props) {
             <RefreshIntervals handler={setInterval} />
          </main>
          <Link id='news-link' to='/news'>
-            <button id='go'> GO </button>
+            <button id='go'> Your news is ready! </button>
          </Link>
          <Footer />
       </React.Fragment>

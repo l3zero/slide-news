@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 #customize-scroller {
+  color: #61a1c1;
   display: grid;
   grid-template-rows: 1fr;
   grid-auto-flow: column;
@@ -23,10 +24,9 @@
 #news-link #go {
   display: none;
   letter-spacing: 1px;
-  border: 2px solid green;
-  border-radius: 25px;
-  background-color: green;
-  color: green;
+  border: none;
+  background-color: #1a5f82;
+  color: #2485b5;
   font-size: 35px;
   font-size: 2.1875rem;
 }
