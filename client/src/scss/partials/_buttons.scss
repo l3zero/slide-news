@@ -4,9 +4,7 @@
 @mixin submit() {
     cursor: pointer;
     display: none;
-    margin-left: 10px;
     border: 1px solid colors.$bg;
-    // background-color: white;
     @include fonts.font-size(25px);
 }
 
@@ -15,6 +13,8 @@
     letter-spacing: 1px;
     border: none;
     background-color: colors.$mid-blue;
+    border: 1px ridge colors.$bg;
+    border-radius: 5px;
     color: colors.$base;
     @include fonts.font-size(35px);
 }

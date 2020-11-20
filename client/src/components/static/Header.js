@@ -9,7 +9,7 @@ export default function Header() {
             <Link to='/'>
                <span id='title'>Slide</span>
             </Link>
-            {/* <span id='sub-title'>Web Dev News</span> */}
+            <span id='sub-title'>Web Dev News</span>
          </div>
       </header>
    )
