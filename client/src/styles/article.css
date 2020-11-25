@@ -31,4 +31,15 @@
   text-overflow: ellipsis;
 }
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Medium devices (landscape tablets, 768px and up) */
+/* Large devices (laptops/desktops, 992px and up) */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1440px) {
+  .article-container {
+    font-size: 18px;
+    font-size: 1.125rem;
+  }
+}
+
 /*# sourceMappingURL=article.css.map */

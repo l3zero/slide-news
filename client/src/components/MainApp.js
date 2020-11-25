@@ -13,16 +13,8 @@ class MainApp extends Component {
       window.localStorage.setItem('animateIntro', JSON.stringify(true))
       if (checkIntro()) {
          let intro = createTimeline()
-         const elements = [
-            'header > div',
-            '#slide-hero > img',
-            '#slide-hero > a',
-            '#about-row',
-            '#powered-by',
-            '#icons-by',
-            'canvas'
-         ]
-         // editIntro(intro, elements)
+         const elements = ['#title', '#sub-title', '#slide-hero', 'footer']
+         editIntro(intro, elements)
 
          window.localStorage.setItem('animateIntro', JSON.stringify(false))
       }
