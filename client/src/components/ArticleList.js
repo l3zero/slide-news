@@ -5,7 +5,6 @@ import '../styles/articleList.css'
 export default function ArticleList(props) {
    let counter = 1
    return (
-      // <React.Fragment>
       <div className='mini-article-list' id='my-articles'>
          <span className='close' onClick={closeArticleList}>
             &times;
@@ -23,7 +22,7 @@ export default function ArticleList(props) {
                }
             })
             .map((article) => (
-               <div>
+               <div key={urlToId(article.url)}>
                   {counter++}){' '}
                   <a href={article.url} key={urlToId(article.url)}>
                      {article.title}
@@ -32,7 +31,6 @@ export default function ArticleList(props) {
                </div>
             ))}
       </div>
-      // </React.Fragment>
    )
 
    function closeArticleList() {
