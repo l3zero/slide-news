@@ -20,7 +20,7 @@ export default function RefreshIntervals(props) {
 
    return (
       <div className='radio-container' id='interval-container'>
-         <div>Choose your update interval</div>
+         <div>Pick your interval!</div>
          <form onSubmit={formHandler}>
             {formData.INTERVALS.map((item) => (
                <label key={item.name}>
@@ -57,6 +57,7 @@ export default function RefreshIntervals(props) {
       } else {
          props.handler(checkedArray)
          setGoCount(1)
+         document.getElementById('interval-submit').style.display = 'none'
          document.getElementById('news-link').style.display = 'initial'
          document.getElementById('go').style.display = 'initial'
       }

@@ -15,7 +15,7 @@ export default function TopicsCheckbox(props) {
    }, [animCount])
    return (
       <div className='checkbox-container' id='topics-container'>
-         <div>Choose your topics</div>
+         <div>Pick some topics!</div>
          <form onSubmit={formHandler}>
             {formData.TOPICS.map((item) => (
                <label key={item}>

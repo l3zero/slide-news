@@ -20,13 +20,6 @@
     @include fonts.font-dancing();
     @include fonts.font-size(35px);
     position: absolute;
-    top: 30vh;
-    left: 10vw;
-}
-
-@media only screen and (max-width: 425) and (max-height: 850px) {
-    #new-flash {
-        top: 10vh;
-        left: 5vw;
-    }
+    top: 20%;
+    left: 10%;
 }

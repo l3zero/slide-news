@@ -1,108 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@700&family=Galada&family=Indie+Flower&family=Permanent+Marker&family=Satisfy&display=swap");
 header div {
-  font-size: 130px;
-  font-size: 8.125rem;
-  letter-spacing: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
-header div a,
-header div a:visited {
-  color: #61a1c1;
+header a,
+header a:visited {
+  color: #2485b5;
   text-decoration: none;
 }
-header #title-S {
-  font-size: 150px;
-  font-size: 9.375rem;
-  font-family: "Dancing Script", cursive;
-}
-header #title-l {
-  font-family: "Galada", cursive;
-}
-header #title-i {
-  font-family: "Indie Flower", cursive;
-}
-header #title-d {
-  font-family: "Indie Flower", cursive;
-}
-header #title-e {
-  font-family: "Acme", sans-serif;
-}
-header #title-N {
-  font-size: 150px;
-  font-size: 9.375rem;
-  font-family: "Dancing Script", cursive;
-}
-header #title-w {
-  font-family: "Satisfy", cursive;
-}
-header #title-s {
+header #title {
+  letter-spacing: 5px;
+  font-size: 70px;
+  font-size: 4.375rem;
   font-family: "Permanent Marker", cursive;
 }
+header #sub-title {
+  margin-left: 20%;
+  font-family: "Satisfy", cursive;
+  font-size: 20px;
+  font-size: 1.25rem;
+}
 
-@media only screen and (max-width: 1024px) and (max-height: 750px) {
-  header div {
-    font-size: 120px;
-    font-size: 7.5rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 140px;
-    font-size: 8.75rem;
-  }
-}
-@media only screen and (max-width: 768px) and (max-height: 750px) {
-  header div {
-    font-size: 90px;
-    font-size: 5.625rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 110px;
-    font-size: 6.875rem;
-  }
-}
-@media only screen and (max-width: 768px) and (min-height: 950px) {
-  header div {
-    font-size: 110px;
-    font-size: 6.875rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 130px;
-    font-size: 8.125rem;
-  }
-}
-@media only screen and (max-width: 550px) and (min-height: 750px) {
-  header div {
-    font-size: 70px;
-    font-size: 4.375rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 80px;
-    font-size: 5rem;
-  }
-}
-@media only screen and (max-width: 425px) and (max-height: 850px) {
-  header div {
-    font-size: 55px;
-    font-size: 3.4375rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 65px;
-    font-size: 4.0625rem;
-  }
-}
-@media only screen and (max-width: 375px) and (max-height: 850px) {
-  header div {
-    font-size: 50px;
-    font-size: 3.125rem;
-  }
-  header #title-S,
-header #title-N {
-    font-size: 60px;
-    font-size: 3.75rem;
-  }
-}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Medium devices (landscape tablets, 768px and up) */
+/* Large devices (laptops/desktops, 992px and up) */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
 
 /*# sourceMappingURL=header.css.map */

@@ -3,108 +3,39 @@
 
 header {
   div {
-    @include fonts.font-size(130px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  a,
+  a:visited {
+    color: colors.$base;
+    text-decoration: none;
+  }
+
+  #title {
     letter-spacing: 5px;
-
-    a,
-    a:visited {
-      color: colors.$light-blue;
-      text-decoration: none;
-    }
-  }
-
-  #title-S {
-    @include fonts.font-size(150px);
-    @include fonts.font-dancing();
-  }
-  #title-l {
-    @include fonts.font-galada();
-  }
-  #title-i {
-    @include fonts.font-flower();
-  }
-  #title-d {
-    @include fonts.font-flower();
-  }
-  #title-e {
-    @include fonts.font-acme();
-  }
-  #title-N {
-    @include fonts.font-size(150px);
-    @include fonts.font-dancing();
-  }
-  #title-w {
-    @include fonts.font-satisfy();
-  }
-  #title-s {
+    @include fonts.font-size(70px);
     @include fonts.font-marker();
   }
-}
-@media only screen and (max-width: 1024px) and (max-height: 750px) {
-  header {
-    div {
-      @include fonts.font-size(120px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(140px);
-    }
-  }
-}
-@media only screen and (max-width: 768px) and (max-height: 750px) {
-  header {
-    div {
-      @include fonts.font-size(90px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(110px);
-    }
-  }
-}
-@media only screen and (max-width: 768px) and (min-height: 950px) {
-  header {
-    div {
-      @include fonts.font-size(110px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(130px);
-    }
+  #sub-title {
+    margin-left: 20%;
+    @include fonts.font-satisfy();
+    @include fonts.font-size(20px);
   }
 }
 
-@media only screen and (max-width: 550px) and (min-height: 750px) {
-  header {
-    div {
-      @include fonts.font-size(70px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(80px);
-    }
-  }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
 }
-
-@media only screen and (max-width: 425px) and (max-height: 850px) {
-  header {
-    div {
-      @include fonts.font-size(55px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(65px);
-    }
-  }
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
 }
-@media only screen and (max-width: 375px) and (max-height: 850px) {
-  header {
-    div {
-      @include fonts.font-size(50px);
-    }
-    #title-S,
-    #title-N {
-      @include fonts.font-size(60px);
-    }
-  }
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1440px) {
+}
+@media only screen and (min-width: 2000px) {
 }

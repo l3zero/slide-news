@@ -1,9 +1,11 @@
 @use 'partials/buttons';
+@use 'partials/colors' as colors;
 @use 'partials/scroll' as scrl;
 
 #customize-scroller {
+    color: colors.$light-blue;
     @include scrl.scroller(both, hidden);
-    align-self: end;
+    align-self: start;
 }
 
 #news-link {
@@ -11,6 +13,7 @@
     text-decoration: none;
     #go {
         @include buttons.go();
-        // margin-bottom: 15px;
+        margin-bottom: 30%;
+        font-size: 25px;
     }
 }

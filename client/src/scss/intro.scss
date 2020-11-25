@@ -3,7 +3,7 @@
 @use "partials/helpers" as helper;
 
 #slide-hero {
-  @include helper.flex-row(end);
+  @include helper.flex-row(flex-end);
   @include fonts.font-size(70px);
   @include fonts.font-dancing();
   a,
@@ -17,14 +17,5 @@
     margin-left: 20px;
     vertical-align: middle;
     filter: hue-rotate(30deg);
-  }
-}
-@media only screen and (max-width: 425px) and (max-height: 850px) {
-  #slide-hero {
-    @include fonts.font-size(40px);
-    img {
-      width: 50px;
-      height: 50px;
-    }
   }
 }
