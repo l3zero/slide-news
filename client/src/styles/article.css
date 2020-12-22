@@ -15,8 +15,8 @@
   transition: all 1s ease;
 }
 .article-container .article-link a img {
-  width: 90vw;
-  height: 60vh;
+  width: 70vw;
+  height: 45vh;
   border-radius: 10px;
   filter: drop-shadow(6px 5px 4px #2485b5);
 }
