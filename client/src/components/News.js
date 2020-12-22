@@ -31,6 +31,7 @@ export default function News(props) {
       const reqs = createRequests(myNewsOptions)
       if (firstTime) {
          const articles = fetchArticles(reqs)
+
          articles.then((data) => {
             if (data.length === 0) {
                window.localStorage.removeItem('myNewsOptions')
