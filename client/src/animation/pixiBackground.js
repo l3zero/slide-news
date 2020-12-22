@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 const app = new PIXI.Application()
-document.body.appendChild(app.view)
+document.querySelector('#root').appendChild(app.view)
 
 // holder to store the aliens
 const aliens = []
