@@ -31,8 +31,9 @@
   color: #2485b5;
   font-size: 35px;
   font-size: 2.1875rem;
-  margin-bottom: 30%;
+  margin-bottom: 15%;
   font-size: 25px;
+  z-index: 3;
 }
 
 /*# sourceMappingURL=customize.css.map */

@@ -13,7 +13,8 @@
     text-decoration: none;
     #go {
         @include buttons.go();
-        margin-bottom: 30%;
+        margin-bottom: 15%;
         font-size: 25px;
+        z-index: 3;
     }
 }
