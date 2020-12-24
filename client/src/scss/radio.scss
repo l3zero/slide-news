@@ -7,7 +7,7 @@
     @include fonts.font-acme();
     @include fonts.font-size(40px);
     @include helpers.flex-column(center);
-    margin-top: 20%;
+    margin-top: 15%;
     width: 100%;
 
     form {
