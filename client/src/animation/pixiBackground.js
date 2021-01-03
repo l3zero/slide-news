@@ -1,74 +1,76 @@
 import * as PIXI from 'pixi.js'
 
-const app = new PIXI.Application()
-document.querySelector('#root').appendChild(app.view)
+export const app = new PIXI.Application()
+// document.body.appendChild(app.view)
 
-// holder to store the aliens
-const aliens = []
+// holder to store the icons
+const icons = []
 
-const totalDudes = 20
+const numIcons = 6
 
-for (let i = 0; i < totalDudes; i++) {
+for (let i = 0; i < numIcons; i++) {
    // create a new Sprite that uses the image name that we just generated as its source
-   const dude = PIXI.Sprite.from('../img/slide.svg')
+   const icon = PIXI.Sprite.from(require('../img/devto.png'))
 
    // set the anchor point so the texture is centerd on the sprite
-   dude.anchor.set(0.5)
+   icon.anchor.set(0.5)
+   icon.width = 50
+   icon.height = 50
 
-   // set a random scale for the dude - no point them all being the same size!
-   dude.scale.set(0.8 + Math.random() * 0.3)
+   // set a random scale for the icon - no point them all being the same size!
+   icon.scale.set(0.8 + Math.random() * 0.3)
 
-   // finally lets set the dude to be at a random position..
-   dude.x = Math.random() * app.screen.width
-   dude.y = Math.random() * app.screen.height
+   // finally lets set the icon to be at a random position..
+   icon.x = Math.random() * app.screen.width
+   icon.y = Math.random() * app.screen.height
 
-   dude.tint = Math.random() * 0xffffff
+   //    icon.tint = Math.random() * 0xffffff
 
    // create some extra properties that will control movement :
    // create a random direction in radians. This is a number between 0 and PI*2 which is the equivalent of 0 - 360 degrees
-   dude.direction = Math.random() * Math.PI * 2
+   icon.direction = Math.random() * Math.PI * 2
 
-   // this number will be used to modify the direction of the dude over time
-   dude.turningSpeed = Math.random() - 0.8
+   // this number will be used to modify the direction of the icon over time
+   icon.turningSpeed = Math.random() - 0.8
 
-   // create a random speed for the dude between 2 - 4
-   dude.speed = 2 + Math.random() * 2
+   // create a random speed for the icon between 2 - 4
+   icon.speed = 2 + Math.random() * 2
 
-   // finally we push the dude into the aliens array so it it can be easily accessed later
-   aliens.push(dude)
+   // finally we push the icon into the icons array so it it can be easily accessed later
+   icons.push(icon)
 
-   app.stage.addChild(dude)
+   app.stage.addChild(icon)
 }
 
-// create a bounding box for the little dudes
-const dudeBoundsPadding = 100
-const dudeBounds = new PIXI.Rectangle(
-   -dudeBoundsPadding,
-   -dudeBoundsPadding,
-   app.screen.width + dudeBoundsPadding * 2,
-   app.screen.height + dudeBoundsPadding * 2
+// create a bounding box for the little icons
+const iconBoundsPadding = 50
+const iconBounds = new PIXI.Rectangle(
+   -iconBoundsPadding,
+   -iconBoundsPadding,
+   app.screen.width + iconBoundsPadding * 2,
+   app.screen.height + iconBoundsPadding * 2
 )
 
 app.ticker.add(() => {
-   // iterate through the dudes and update their position
-   for (let i = 0; i < aliens.length; i++) {
-      const dude = aliens[i]
-      dude.direction += dude.turningSpeed * 0.01
-      dude.x += Math.sin(dude.direction) * dude.speed
-      dude.y += Math.cos(dude.direction) * dude.speed
-      dude.rotation = -dude.direction - Math.PI / 2
+   // iterate through the icons and update their position
+   for (let i = 0; i < icons.length; i++) {
+      const icon = icons[i]
+      icon.direction += icon.turningSpeed * 0.01
+      icon.x += Math.sin(icon.direction) * icon.speed
+      icon.y += Math.cos(icon.direction) * icon.speed
+      icon.rotation = -icon.direction - Math.PI / 2
 
-      // wrap the dudes by testing their bounds...
-      if (dude.x < dudeBounds.x) {
-         dude.x += dudeBounds.width
-      } else if (dude.x > dudeBounds.x + dudeBounds.width) {
-         dude.x -= dudeBounds.width
+      // wrap the icons by testing their bounds...
+      if (icon.x < iconBounds.x) {
+         icon.x += iconBounds.width
+      } else if (icon.x > iconBounds.x + iconBounds.width) {
+         icon.x -= iconBounds.width
       }
 
-      if (dude.y < dudeBounds.y) {
-         dude.y += dudeBounds.height
-      } else if (dude.y > dudeBounds.y + dudeBounds.height) {
-         dude.y -= dudeBounds.height
+      if (icon.y < iconBounds.y) {
+         icon.y += iconBounds.height
+      } else if (icon.y > iconBounds.y + iconBounds.height) {
+         icon.y -= iconBounds.height
       }
    }
 })
