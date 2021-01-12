@@ -1,0 +1,21 @@
+@use 'partials/fonts' as fonts;
+
+#email-form {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: bottom;
+    align-items: start;
+    min-width: 100%;
+    min-height: 100%;
+    overflow-y: hidden;
+    padding-left: 5%;
+    padding-top: 10%;
+    background-color: rgba(0, 0, 0, 0.83);
+    @include fonts.font-acme();
+    @include fonts.font-size(14px);
+    letter-spacing: 1.5px;
+    transition: 0.5s ease;
+}
