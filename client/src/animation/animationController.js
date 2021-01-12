@@ -1,5 +1,4 @@
 import {gsap} from 'gsap'
-import {startSlideAnimation} from './p5Fun.js'
 
 export function createTimeline() {
    return gsap.timeline({
@@ -81,5 +80,5 @@ export function editMiniViewOpen(element) {
    })
 }
 export function newFlash(element) {
-   gsap.from(element, {color: 'red', opacity: 1, duration: 2, repeat: 10, yoyo: true})
+   gsap.from(element, {color: 'red', opacity: 1, duration: 2, repeat: 5, yoyo: true})
 }

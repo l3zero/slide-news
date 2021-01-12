@@ -8,7 +8,6 @@ import Customize from './Customize.js'
 import NotFound from './static/NotFound.js'
 import {createTimeline, editIntro} from '../animation/animationController.js'
 import {checkIntro} from '../animation/animationValidator.js'
-import {app} from '../animation/pixiBackground.js'
 class MainApp extends Component {
    componentDidMount() {
       window.localStorage.setItem('animateIntro', JSON.stringify(true))
@@ -19,7 +18,6 @@ class MainApp extends Component {
 
          window.localStorage.setItem('animateIntro', JSON.stringify(false))
       }
-      // document.querySelector('footer').appendChild(app.view)
    }
    render() {
       return (
