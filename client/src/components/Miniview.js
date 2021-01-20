@@ -40,7 +40,7 @@ export default function Miniview(props) {
                </button>
             </div>
          </div>
-         <EmailForm />
+         <EmailForm articles={props.articles} />
       </React.Fragment>
    )
 

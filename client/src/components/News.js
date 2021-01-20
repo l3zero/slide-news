@@ -126,7 +126,7 @@ export default function News(props) {
       let interval
       if (myResponses !== null && myResponses !== undefined && myResponses.length !== 0) {
          document.getElementById(`${urlToId(myResponses[0].url)}`).style.opacity = 1
-         interval = setInterval(scrollToNextArticle, 5000)
+         interval = setInterval(scrollToNextArticle, 8000)
       }
       return () => clearInterval(interval)
       // eslint-disable-next-line react-hooks/exhaustive-deps
