@@ -3,17 +3,25 @@ import emailjs from 'emailjs-com'
 import moment from 'moment'
 import {emailVal} from '../helpers/validation.js'
 import '../styles/emailForm.css'
+import {sortArticles} from '../helpers/sort.js'
+import {urlToId} from '../helpers/urlConverter'
 
 export default function EmailForm(props) {
    function handleEmailSubmit(e) {
       e.preventDefault()
 
       if (emailVal(document.querySelector('#email-input').value)) {
+         let counter = 0
+         let test = sortArticles(props.articles)
+            .map(
+               (article) => `${article.title}:
+         ${article.url}`
+            )
+            .join('<br></br>')
          let msg = {
             from_name: 'Slide News',
             to_name: document.querySelector('#email-input').value,
-            // subject: "subject",
-            message: props.articles,
+            message_html: test,
             current_date: moment().format('LLLL')
          }
 
@@ -26,10 +34,10 @@ export default function EmailForm(props) {
             )
             .then(
                (result) => {
-                  console.log(result.text)
+                  // console.log(result.text)
                },
                (error) => {
-                  console.error(error.text)
+                  // console.error(error.text)
                }
             )
       } else {
