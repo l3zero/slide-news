@@ -1,3 +1,4 @@
+//Helper for sorting articles
 export function sortArticles(articles) {
    // eslint-disable-next-line array-callback-return
    return articles.sort((a, b) => {

@@ -12,7 +12,7 @@ export default function EmailForm(props) {
 
       if (emailVal(document.querySelector('#email-input').value)) {
          let counter = 0
-         let test = sortArticles(props.articles)
+         let msg = sortArticles(props.articles)
             .map(
                (article) => `${article.title}:
          ${article.url}`
