@@ -4,6 +4,7 @@ import ArticleList from './ArticleList.js'
 import fetch, {Request} from 'node-fetch'
 import {checkStatus} from '../helpers/httpStatusCheck'
 import {editMiniViewOpen} from '../animation/animationController.js'
+import EmailForm from './EmailForm'
 import '../styles/miniview.css'
 
 export default function Miniview(props) {
@@ -15,8 +16,11 @@ export default function Miniview(props) {
                <div id='menu-articles' onClick={viewArticleList}>
                   Articles
                </div>
-               <div id='menu-clear' onClick={showWarning}>
+               <div id='menu-options' onClick={showWarning}>
                   Options
+               </div>
+               <div id='menu-email' onClick={viewEmailForm}>
+                  Email
                </div>
             </div>
          </div>
@@ -36,6 +40,7 @@ export default function Miniview(props) {
                </button>
             </div>
          </div>
+         <EmailForm articles={props.articles} />
       </React.Fragment>
    )
 
@@ -50,6 +55,9 @@ export default function Miniview(props) {
    function closeWarning() {
       document.getElementsByClassName('options-warning')[0].style.display = 'none'
    }
+   function viewEmailForm(e) {
+      document.getElementById('email-form').style.display = 'flex'
+   }
    function clearOptions(e) {
       e.preventDefault()
       fetch(
@@ -60,7 +68,7 @@ export default function Miniview(props) {
       )
          .then(checkStatus)
          .catch((err) => {
-            console.log(err.statusText)
+            console.error(err.statusText)
          })
 
       window.localStorage.removeItem('myNewsOptions')

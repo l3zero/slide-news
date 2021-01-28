@@ -13,13 +13,13 @@ app.disable('x-powered-by')
 app.set('trust proxy', 1)
 //DB Stuff
 db.once('open', (_) => {
-   console.log('Database connected')
+   // console.log('Database connected')
 })
 db.on('error', (err) => {
    console.error('connection error: ', err)
 })
 db.on('disconnected', function () {
-   console.log('Database disconnected')
+   // console.log('Database disconnected')
 })
 //Process stuff
 process.on('unhandledRejection', (reason, p) => {
@@ -44,7 +44,7 @@ app.use(bodyParser.json())
 const apiLimiter = rateLimit({
    windowMs: 10 * 60 * 1000, // 10 minutes
    max: 100,
-   message: 'The server has received more than 100 requests in 10 minutes, chill out  for a few :)',
+   message: 'The server has received more than 100 requests in 10 minutes, chill out for a few :)',
 })
 app.use('/mynews', newsRouter, apiLimiter)
 

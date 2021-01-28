@@ -7,9 +7,9 @@
     "node": ">=12.6.3"
   },
   "dependencies": {
-    "@inlet/react-pixi": "^6.0.6",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "emailjs-com": "^2.6.4",
     "express": "^4.17.1",
     "gsap": "^3.2.6",
     "moment": "^2.24.0",
@@ -25,7 +25,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.3",
-    "sass": "^1.26.8"
+    "sass": "^1.26.8",
+    "validator": "^13.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
