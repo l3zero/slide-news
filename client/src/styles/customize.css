@@ -20,6 +20,7 @@
 #news-link {
   display: none;
   text-decoration: none;
+  z-index: 10;
 }
 #news-link #go {
   display: none;

@@ -11,6 +11,7 @@
 #news-link {
     display: none;
     text-decoration: none;
+    z-index: 10;
     #go {
         @include buttons.go();
         margin-bottom: 15%;
