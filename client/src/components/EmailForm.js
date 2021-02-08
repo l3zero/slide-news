@@ -26,10 +26,10 @@ export default function EmailForm(props) {
 
          emailjs
             .send(
-               process.env.REACT_APP_SERVICE_ID,
-               process.env.REACT_APP_EMAIL_TEMPLATE,
+               process.env['REACT_APP_SERVICE_ID'],
+               process.env['REACT_APP_EMAIL_TEMPLATE'],
                email,
-               process.env.REACT_APP_EMAIL_ID
+               process.env['REACT_APP_EMAIL_ID']
             )
             .then(
                (result) => {
