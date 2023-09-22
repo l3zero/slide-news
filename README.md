@@ -1,3 +1,2 @@
 # Slide
-React web app allowing you to get relevant, constantly updated news articles from DEV.to<br><br>I started this app so I can grab relevant news and get updated articles based on my topics automatically. The project quickly grew and I decided to make it into a bigger application to help fellow DEV users get news and never have to worry about looking for updated articles based on their interests.<br><br>Version 1.0 is live with more features and improvements to come. I will be expanding it to include some or all of the following: users link with DEV.to, other news sources integration, sharing / email functionality, categorical views, other fun things :)<br><br>
-If you're curious about the current list of future updates, check out the 'Projects' tab above.
+React SPA learning project with DEV.to API.
